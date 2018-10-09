@@ -1,9 +1,11 @@
 import * as React from 'react';
 
+import spritesheet from './assets/player_sprites.png'
+
 class Avatar extends React.Component {
   public render() {
     return(
-      <p>AVATAR WORKING</p>
+      <img src={ spritesheet }/>
     );
   }
 }
