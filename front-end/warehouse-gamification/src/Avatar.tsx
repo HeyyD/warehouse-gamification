@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import spritesheet from './assets/player_sprites.png'
+import './Avatar.scss'
+import player from './assets/player_sprites.png';
 
 class Avatar extends React.Component {
 
@@ -9,23 +10,22 @@ class Avatar extends React.Component {
   
   constructor(props: any) {
     super(props);
-    this.image.src = spritesheet;
-  }
-
-  public componentDidMount() {
-    this.updateCanvas()
+    this.image.src = player;
+    this.image.onload = () => {
+      this.updateCanvas();
+    }
   }
 
   public render() {
     return(
-      <canvas ref={ canvas => (this.canvas = canvas) }>ASD</canvas>
+      <canvas className='avatar-canvas' ref={ canvas => (this.canvas = canvas) } >ASD</canvas>
     );
   }
 
   private updateCanvas() {
     if(this.canvas) {
       const ctx = this.canvas.getContext('2d');
-      ctx!.fillRect(0, 0, 100, 100)
+      ctx!.drawImage(this.image, 0, 0, 500, 500);
     }
   }
 }
