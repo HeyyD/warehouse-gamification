@@ -18,7 +18,7 @@ class Avatar extends React.Component {
 
   public render() {
     return(
-      <canvas className='avatar-canvas' ref={ canvas => (this.canvas = canvas) } >ASD</canvas>
+      <canvas ref={ canvas => (this.canvas = canvas) } >ASD</canvas>
     );
   }
 
