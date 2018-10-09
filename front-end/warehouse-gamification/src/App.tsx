@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.scss';
 
-import Avatar from './Avatar';
+import Avatar from './Avatar/Avatar';
 import logo from './logo.svg';
 
 class App extends React.Component {
