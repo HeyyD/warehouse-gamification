@@ -1,7 +1,8 @@
 import * as React from 'react';
 
-import player from '../assets/player_sprites.png';
-import './Avatar.scss'
+import player from '../assets/female_sprites.png';
+import './Avatar.scss';
+import SpriteSheet from './SpriteSheet';
 
 class Avatar extends React.Component {
 
@@ -24,13 +25,11 @@ class Avatar extends React.Component {
 
   private updateCanvas() {
     if(this.canvas) {
-
-      // const hRatio = 90 / this.image.width;
-      // const vRatio = 90 / this.image.height;
-      // const ratio  = Math.min (hRatio, vRatio);
-
       const ctx = this.canvas.getContext('2d');
-      ctx!.drawImage(this.image, 0, 0, this.image.width, this.image.height, 0, 0, 90, 90);
+      ctx!.clearRect(0, 0, this.image.width / 56, 90)
+
+      const ss = new SpriteSheet(this.image, 1, 56);
+      ss.draw(ctx!, 0, 33);
     }
   }
 }
