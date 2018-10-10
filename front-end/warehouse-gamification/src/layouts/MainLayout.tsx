@@ -1,9 +1,15 @@
 import * as React from 'react'; 
+import './MainLayout.scss';  
 
 const MainLayout = () => {
   return (
-    <div>
-      moi
+    <div className='main-layout'>
+      <div className='avatar'>
+        avatari
+      </div>
+      <div className='info'>
+        moi
+      </div>
     </div>
   );
 };

@@ -1,0 +1,13 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .avatar {
+    flex: 1 0 auto;
+    background-color: red;
+  }
+  .info {
+    flex: 2 0 auto;
+    background-color: green;
+  }
+}
