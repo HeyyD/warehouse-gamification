@@ -1,6 +1,6 @@
 import { Circle } from 'rc-progress';
 import * as React from 'react'; 
-import './ProgressBar.scss';
+import './ProgressCircle.scss';
 
 const ProgressCircle = () => {
   return(
