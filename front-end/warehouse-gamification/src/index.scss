@@ -1,7 +1,12 @@
+$space-sm: 5px;
+$space-md: 10px;
+$space-lg: 20px;
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
 }
 
 html, body, #root, #root>div {

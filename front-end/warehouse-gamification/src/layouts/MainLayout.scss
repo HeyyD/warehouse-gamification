@@ -1,13 +1,19 @@
+@import '../index.scss';
 .main-layout {
   display: flex;
   flex-direction: column;
   height: 100%;
   .avatar {
     flex: 1 0 auto;
-    background-color: red;
   }
   .info {
     flex: 2 0 auto;
-    background-color: green;
+    padding: $space-lg;
+  }
+  h2 {
+    margin: 0;
+  }
+  h3 {
+    margin: 0;
   }
 }
