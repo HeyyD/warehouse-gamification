@@ -1,8 +1,11 @@
 import * as React from 'react';
+import './Stat.scss';
 
 const Stat = () => {
   return(
-    <div> moi </div>
+    <div className='stat'> 
+      <i className='fa fa-archive' aria-hidden='true'/>
+    </div>
   );
 };
 

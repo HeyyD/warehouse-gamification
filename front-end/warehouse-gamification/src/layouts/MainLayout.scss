@@ -8,8 +8,19 @@
     background-color: #F0F0F0;
   }
   .info {
+    display: flex;
+    flex-direction: column;
     flex: 2 0 auto;
     padding: $space-lg;
+    .name {
+      flex: 1 0 auto;
+    }
+    .stats {
+      flex: 5 0 auto;
+    }
+    .quest {
+      flex: 2 0 auto;
+    }
   }
   h2 {
     margin: 0;

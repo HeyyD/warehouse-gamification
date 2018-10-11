@@ -1,0 +1,16 @@
+@import '../index.scss';
+
+.stat {
+  display: flex;
+  background-color: $color-primary;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  i {
+    color: #fff;
+    display: block;
+    align-self: center;
+  }
+}

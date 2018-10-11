@@ -13,9 +13,13 @@ const MainLayout = () => {
           <h3>Gladiator</h3>
           <h2>Tom, lvl20</h2>
         </div>
-        <div className='experience'>
-          <ProgressCircle />
+        <div className='stats'>
+          hello
         </div>
+        <div className='quest'>
+          hello
+        </div>
+        <ProgressCircle />
       </div>
     </div>
   );
