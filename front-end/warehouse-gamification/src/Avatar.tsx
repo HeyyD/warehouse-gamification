@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import player from '../assets/player_sprites105x.png';
+import player from './assets/player_sprites105x.png';
 import SpriteSheet from './SpriteSheet';
 
 class Avatar extends React.Component {
