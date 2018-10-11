@@ -20,7 +20,11 @@ class Avatar extends React.Component {
 
   public render() {
     return(
-      <canvas ref={ canvas => (this.canvas = canvas) } >ASD</canvas>
+      <canvas
+        width={ this.spritesheet ? this.spritesheet.width : 0 }
+        height={ this.spritesheet ? this.spritesheet.height : 0 }
+        ref={ canvas => (this.canvas = canvas) }>The avatar canvas
+      </canvas>
     );
   }
 
