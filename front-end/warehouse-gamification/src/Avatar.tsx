@@ -21,8 +21,8 @@ class Avatar extends React.Component {
   public render() {
     return(
       <canvas
-        width={ this.spritesheet ? this.spritesheet.width : 0 }
-        height={ this.spritesheet ? this.spritesheet.height : 0 }
+        width={ this.spritesheet ? this.spritesheet.getWidth() : 0 }
+        height={ this.spritesheet ? this.spritesheet.getHeight() : 0 }
         ref={ canvas => (this.canvas = canvas) }>The avatar canvas
       </canvas>
     );
@@ -34,7 +34,7 @@ class Avatar extends React.Component {
       const ctx = this.canvas.getContext('2d');
       const ss = this.spritesheet!;
 
-      ctx!.clearRect(0, 0, this.image.width / ss.width, ss.height);
+      ctx!.clearRect(0, 0, this.image.width / ss.getWidth(), ss.getHeight());
 
       ss.draw(ctx!, 0, 0);
       ss.draw(ctx!, 1, 0);
