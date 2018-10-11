@@ -1,7 +1,7 @@
 class SpriteSheet {
 
-  private width: number;
-  private height: number;
+  public width: number;
+  public height: number;
 
   constructor(private image: HTMLImageElement, public rows: number, public cols: number) {
     this.width = image.width / cols;
