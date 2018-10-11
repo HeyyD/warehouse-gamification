@@ -30,11 +30,18 @@ class Avatar extends React.Component {
 
   private updateCanvas() {
     if(this.canvas) {
+      this.forceUpdate()
       const ctx = this.canvas.getContext('2d');
-      ctx!.clearRect(0, 0, this.image.width / 56, 90)
+      const ss = this.spritesheet!;
 
-      const ss = new SpriteSheet(this.image, 1, 56);
-      ss.draw(ctx!, 0, 33);
+      ctx!.clearRect(0, 0, this.image.width / ss.width, ss.height);
+
+      ss.draw(ctx!, 0, 0);
+      ss.draw(ctx!, 1, 0);
+      ss.draw(ctx!, 3, 1);
+      ss.draw(ctx!, 4, 1);
+      ss.draw(ctx!, 6, 1);
+      ss.draw(ctx!, 7, 1);
     }
   }
 }
