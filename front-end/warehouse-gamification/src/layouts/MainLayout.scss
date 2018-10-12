@@ -1,25 +1,24 @@
 @import '../index.scss';
 .main-layout {
-  display: flex;
-  flex-direction: column;
   height: 100%;
+  width: 100%;
   .avatar {
-    flex: 1 0 auto;
+    height: 35%;
     background-color: #F0F0F0;
   }
   .info {
     display: flex;
     flex-direction: column;
-    flex: 2 0 auto;
+    height: 65%;
     padding: $space-lg;
     .name {
-      flex: 1 0 auto;
+      flex: 1 0;
     }
     .stats {
-      flex: 5 0 auto;
+      flex: 5 0;
     }
     .quest {
-      flex: 2 0 auto;
+      flex: 2 0;
     }
   }
   h2 {

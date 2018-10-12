@@ -1,6 +1,7 @@
-import * as React from 'react'; 
-import ProgressCircle from '../components/ProgressCircle'; 
-import './MainLayout.scss';  
+import * as React from 'react';
+import ProgressCircle from '../components/ProgressCircle';
+import Stat from '../components/Stat';
+import './MainLayout.scss'; 
 
 const MainLayout = () => {
   return (
@@ -14,7 +15,8 @@ const MainLayout = () => {
           <h2>Tom, lvl20</h2>
         </div>
         <div className='stats'>
-          hello
+          <Stat/>
+          <Stat/>
         </div>
         <div className='quest'>
           hello
