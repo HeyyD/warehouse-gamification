@@ -1,19 +1,20 @@
 import * as React from 'react';
 import './Stat.scss';
 
-const Stat = () => {
+const Stat = ({icon, text, stat}: {icon: string, text: string, stat: number}) => {
   return(
     <div className='stat-container'>
       <div className='stat'> 
-        <i className='fa fa-archive' aria-hidden='true'/>
+        <i className={icon} aria-hidden='true'/>
       </div>
       <div className='stat-info'>
-        <label>Boxes</label>
+        <label>{text}</label>
         <br/>
-        <label>483</label>
+        <label>{stat}</label>
       </div>
     </div>
   );
 };
 
 export default Stat;
+// fa fa-archive

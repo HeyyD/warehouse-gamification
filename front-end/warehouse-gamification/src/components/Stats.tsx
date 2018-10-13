@@ -7,9 +7,9 @@ const Stats = () => {
     <div className='stats'>
       <h2> Stats </h2>
       <div className='stats-container'>
-        <Stat/>
-        <Stat/>
-        <Stat/>
+        <Stat icon='fa fa-archive' text='Boxes' stat={244} />
+        <Stat icon='fa fa-archive' text='Boxes' stat={244} />
+        <Stat icon='fa fa-archive' text='Boxes' stat={244} />
       </div>
     </div>
   );
