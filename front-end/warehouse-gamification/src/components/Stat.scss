@@ -19,3 +19,13 @@
     font-size: 3em;
   }
 }
+.stat-container {
+  text-align: center;
+  width: 5em;
+  display: inline-block;
+  margin-bottom: $space-md;
+  margin-left: 1em;
+}
+.stat-info {
+  font-weight: bold;
+}

@@ -15,6 +15,8 @@ const MainLayout = () => {
           <h2>Tom, lvl20</h2>
         </div>
         <div className='stats'>
+          <h2> Stats </h2>
+          <Stat/>
           <Stat/>
           <Stat/>
         </div>
