@@ -1,9 +1,15 @@
 import * as React from 'react';
+import Stat from './Stat';
 
 const Stats = () => {
-  <div>
-    hello
-  </div>;
+  return (
+    <div className='stats'>
+      <h2> Stats </h2>
+      <Stat/>
+      <Stat/>
+      <Stat/>
+    </div>
+  );
 };
 
 export default Stats;
