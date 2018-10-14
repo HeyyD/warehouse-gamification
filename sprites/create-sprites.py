@@ -61,4 +61,5 @@ for dir in directories:
 
     shutil.rmtree(dir)
 
+print('\nDONE!!')
 sprites_zip.close()
