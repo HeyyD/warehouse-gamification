@@ -1,0 +1,24 @@
+@import '../index.scss';
+.main-layout {
+  height: 100%;
+  width: 100%;
+  .avatar {
+    height: 35%;
+    background-color: #F0F0F0;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    height: 65%;
+    padding: $space-lg;
+    .name {
+      flex: 1 0;
+    }
+  }
+  h2 {
+    margin: 0;
+  }
+  h3 {
+    margin: 0;
+  }
+}

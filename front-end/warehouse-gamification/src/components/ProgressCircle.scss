@@ -1,0 +1,24 @@
+.progressbar-container{
+  width: 10em;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  div {
+    display: inline-block;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    font-size: 1.5em;
+    span {
+      margin-top: 0.5em;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}

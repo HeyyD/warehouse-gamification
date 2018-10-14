@@ -1,0 +1,24 @@
+@import '../index.scss';
+
+.quest {
+  flex: 3 0;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-weight: normal;
+  }
+  span {
+    margin-top: $space-md;
+    margin-bottom: $space-md;
+  }
+  .line-container {
+    font-size: 1.5em;
+    text-align: center;
+    position: relative;
+    span {
+      vertical-align: middle;
+      position: relative;
+      bottom: 1.5em;
+    }
+  }
+}
