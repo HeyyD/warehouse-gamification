@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import './Avatar.scss';
+
 import hairImage from './assets/spritesheet_hair.png';
 import shirtImage from './assets/spritesheet_shirts.png';
 import skinImage from './assets/spritesheet_skin.png';
@@ -18,6 +20,9 @@ class Avatar extends React.Component {
   
   constructor(props: any) {
     super(props);
+
+    this.updateCanvas = this.updateCanvas.bind(this);
+
     this.skinSrc.src = skinImage;
     this.shirtSrc.src = shirtImage;
     this.hairSrc.src = hairImage;
@@ -31,11 +36,12 @@ class Avatar extends React.Component {
 
   public render() {
     return(
-      <canvas
-        width={ 105 }
-        height={ 105 }
-        ref={ canvas => (this.canvas = canvas) }>The avatar canvas
-      </canvas>
+      <div className="avatar-container">
+        <div className="canvas-container">
+          <canvas width={ 105 } height={ 105 } ref={ canvas => (this.canvas = canvas) }>The avatar canvas</canvas>
+        </div>
+        <button onClick={ this.updateCanvas }>Create random avatar</button>
+      </div>
     );
   }
 
