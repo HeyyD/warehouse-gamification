@@ -1,3 +1,12 @@
 .avatar-container {
-  display: block;
+  display: flex;
+  height: 100%;
+
+  .canvas-container {
+    display: flex;
+    
+    canvas {
+      flex: 1 0 auto;
+    }
+  }
 }
