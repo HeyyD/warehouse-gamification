@@ -1,16 +1,24 @@
 @import '../index.scss';
+
 .main-layout {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   .avatar {
-    height: 35%;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    height: $avatar-size;
     background-color: #F0F0F0;
   }
   .info {
     display: flex;
     flex-direction: column;
-    // height: 65%;
+    flex: 1 1 auto;
     padding: $space-lg;
+    position: relative;
+
     .name {
       flex: 1 0;
     }
