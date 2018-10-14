@@ -1,19 +1,30 @@
 import * as React from 'react';
 
-import player from './assets/player_sprites105x.png';
+import hairImage from './assets/spritesheet_hair.png';
+import shirtImage from './assets/spritesheet_shirts.png';
+import skinImage from './assets/spritesheet_skin.png';
 import SpriteSheet from './SpriteSheet';
 
 class Avatar extends React.Component {
 
-  private image = new Image()
+  private skinSrc = new Image();
+  private shirtSrc = new Image();
+  private hairSrc = new Image();
   private canvas: HTMLCanvasElement | null;
-  private spritesheet?: SpriteSheet;
+
+  private skin?: SpriteSheet;
+  private shirt?: SpriteSheet;
+  private hair?: SpriteSheet;
   
   constructor(props: any) {
     super(props);
-    this.image.src = player;
-    this.image.onload = () => {
-      this.spritesheet = new SpriteSheet(this.image, 8, 10);
+    this.skinSrc.src = skinImage;
+    this.shirtSrc.src = shirtImage;
+    this.hairSrc.src = hairImage;
+    this.hairSrc.onload = () => {
+      this.skin = new SpriteSheet(this.skinSrc, 13, 10);
+      this.shirt = new SpriteSheet(this.shirtSrc, 4, 10);
+      this.hair = new SpriteSheet(this.hairSrc, 16, 10);
       this.updateCanvas();
     }
   }
@@ -21,8 +32,8 @@ class Avatar extends React.Component {
   public render() {
     return(
       <canvas
-        width={ this.spritesheet ? this.spritesheet.getWidth() : 0 }
-        height={ this.spritesheet ? this.spritesheet.getHeight() : 0 }
+        width={ 105 }
+        height={ 105 }
         ref={ canvas => (this.canvas = canvas) }>The avatar canvas
       </canvas>
     );
@@ -30,18 +41,16 @@ class Avatar extends React.Component {
 
   private updateCanvas() {
     if(this.canvas) {
-      this.forceUpdate()
       const ctx = this.canvas.getContext('2d');
-      const ss = this.spritesheet!;
+      const skin = this.skin!;
+      const shirt = this.shirt!;
+      const hair = this.hair!;
 
-      ctx!.clearRect(0, 0, this.image.width / ss.getWidth(), ss.getHeight());
+      ctx!.clearRect(0, 0, this.skinSrc.width / skin.getWidth(), skin.getHeight());
 
-      ss.draw(ctx!, 0, 0);
-      ss.draw(ctx!, 1, 0);
-      ss.draw(ctx!, 3, 1);
-      ss.draw(ctx!, 4, 1);
-      ss.draw(ctx!, 6, 1);
-      ss.draw(ctx!, 7, 1);
+      skin.draw(ctx!, 0, 0);
+      shirt.draw(ctx!, 0, 0);
+      hair.draw(ctx!, 0, 0);
     }
   }
 }
