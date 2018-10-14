@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+
+import Avatar from '../Avatar';
 import CurrentQuest from '../components/CurrentQuest';
 import ProgressCircle from '../components/ProgressCircle';
 import Stats from '../components/Stats';
@@ -11,7 +13,7 @@ const MainLayout = ({user, quest}: {user: User, quest: Quest}) => {
   return (
     <div className='main-layout'>
       <div className='avatar'>
-        avatari
+        <Avatar />
       </div>
       <div className='info'>
         <div className='name'>

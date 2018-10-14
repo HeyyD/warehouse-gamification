@@ -35,14 +35,14 @@ class Avatar extends React.Component {
       this.shirt = new SpriteSheet(this.shirtSrc, 4, 10);
       this.hair = new SpriteSheet(this.hairSrc, 16, 10);
       this.updateCanvas();
-    }
+    };
   }
 
   public render() {
     return(
       <div className="avatar-container">
         <div className="canvas-container">
-          <canvas width={ 90 } height={ 90 } ref={ canvas => (this.canvas = canvas) }>The avatar canvas</canvas>
+          <canvas ref={ canvas => (this.canvas = canvas) }>The avatar canvas</canvas>
         </div>
         <button onClick={ this.updateCanvas }>Create random avatar</button>
       </div>

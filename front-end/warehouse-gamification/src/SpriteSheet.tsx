@@ -10,7 +10,7 @@ class SpriteSheet {
 
   public draw(ctx: CanvasRenderingContext2D, row: number, col: number): void {
     // ctx.drawImage(this.image, col * this.width, row * this.height, this.width, this.height, col, row, this.width, this.height);
-    ctx.drawImage(this.image, col * this.width, row * this.height, this.width, this.height, 0, 0, this.width, this.height);
+    ctx.drawImage(this.image, col * this.width, row * this.height, this.width, this.height, 0, 0, ctx.canvas.width, ctx.canvas.height);
   }
 
   public getWidth(): number {
