@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import CurrentQuest from '../components/CurrentQuest';
 import ProgressCircle from '../components/ProgressCircle';
 import Stats from '../components/Stats';
 import User from '../models/user';
@@ -17,9 +18,7 @@ const MainLayout = ({user}: {user: User}) => {
           <h2>{user.name}, lvl{user.lvl}</h2>
         </div>
         <Stats user={user}/>
-        <div className='quest'>
-          hello
-        </div>
+        <CurrentQuest />
         <ProgressCircle />
       </div>
     </div>

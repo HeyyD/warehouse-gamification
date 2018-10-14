@@ -10,4 +10,6 @@ declare module "rc-progress" {
   }
   export class Circle extends React.Component<ILineProps, {}> {
   }
+  export class Line extends React.Component<ILineProps, {}> {
+  }
 }
