@@ -31,9 +31,9 @@ class Avatar extends React.Component {
     this.shirtSrc.src = shirtImage;
     this.hairSrc.src = hairImage;
     this.hairSrc.onload = () => {
-      this.skin = new SpriteSheet(this.skinSrc, 13, 10);
-      this.shirt = new SpriteSheet(this.shirtSrc, 4, 10);
-      this.hair = new SpriteSheet(this.hairSrc, 16, 10);
+      this.skin = new SpriteSheet(this.skinSrc, 13, 10, 6);
+      this.shirt = new SpriteSheet(this.shirtSrc, 4, 10, 6);
+      this.hair = new SpriteSheet(this.hairSrc, 16, 10, 4);
       this.updateCanvas();
     };
   }

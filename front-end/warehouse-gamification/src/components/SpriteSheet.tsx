@@ -6,10 +6,10 @@ class SpriteSheet {
   private height: number;
   private sprites: ISprite[];
 
-  constructor(private image: HTMLImageElement, private rows: number, private cols: number) {
+  constructor(private image: HTMLImageElement, private rows: number, private cols: number, emptyFrames?: number) {
     this.width = image.width / cols;
     this.height = image.height / rows;
-    this.sprites = this.createSprites(rows, cols);
+    this.sprites = this.createSprites(rows, cols, emptyFrames);
   }
 
   public draw(ctx: CanvasRenderingContext2D, sprite: ISprite): void {
@@ -40,12 +40,15 @@ class SpriteSheet {
     return this.sprites[sprite];
   }
 
-  private createSprites(rows: number, cols: number): ISprite[] {
+  private createSprites(rows: number, cols: number, emptyFrames = 0): ISprite[] {
     const sprites = [];
+    const frameAmount = rows * cols - emptyFrames;
+    let index = 0;
 
     for (let i = 0; i < rows; i++) {
-      for(let j = 0; j < cols; j++) {
+      for(let j = 0; j < cols && index < frameAmount; j++) {
         sprites.push({x: j, y: i});
+        index++;
       }
     }
     return sprites;
