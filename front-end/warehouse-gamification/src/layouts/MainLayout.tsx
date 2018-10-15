@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import Avatar from '../Avatar';
+import Avatar from '../components/Avatar';
 import CurrentQuest from '../components/CurrentQuest';
 import ProgressCircle from '../components/ProgressCircle';
 import Stats from '../components/Stats';
