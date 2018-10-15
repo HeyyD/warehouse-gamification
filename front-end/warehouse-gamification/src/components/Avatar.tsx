@@ -56,16 +56,11 @@ class Avatar extends React.Component {
       const shirt = this.shirt!;
       const hair = this.hair!;
 
-      // ctx!.clearRect(0, 0, this.skinSrc.width / skin.getWidth(), skin.getHeight());
       ctx!.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-      // skin.draw(ctx!, 0, 0);
-      // shirt.draw(ctx!, 0, 0);
-      // hair.draw(ctx!, 0, 0);
-
-      skin.draw(ctx!, getRandomInt(0, skin.getRows()), getRandomInt(0, skin.getColumns()));
-      shirt.draw(ctx!, getRandomInt(0, shirt.getRows()), getRandomInt(0, shirt.getColumns()));
-      hair.draw(ctx!, getRandomInt(0, hair.getRows()), getRandomInt(0, hair.getColumns()));
+      skin.draw(ctx!, skin.getSprite(getRandomInt(0, skin.getSprites().length - 1)));
+      shirt.draw(ctx!, shirt.getSprite(getRandomInt(0, shirt.getSprites().length - 1)));
+      hair.draw(ctx!, hair.getSprite(getRandomInt(0, hair.getSprites().length - 1)));
     }
   }
 }
