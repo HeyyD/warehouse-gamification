@@ -25,9 +25,9 @@ class Avatar extends React.Component {
 
   private canvas: HTMLCanvasElement | null;
 
-  private skin?: SpriteSheet;
-  private shirt?: SpriteSheet;
-  private hair?: SpriteSheet;
+  private skinSpritesheet?: SpriteSheet;
+  private shirtSpritesheet?: SpriteSheet;
+  private hairSpritesheet?: SpriteSheet;
   
   constructor(props: any) {
     super(props);
@@ -44,9 +44,9 @@ class Avatar extends React.Component {
       img.onload = () => {
         loadedImages++;
         if(loadedImages === this.images.length) {
-          this.skin = new SpriteSheet(this.skinSrc, 13, 10, 6);
-          this.shirt = new SpriteSheet(this.shirtSrc, 4, 10, 6);
-          this.hair = new SpriteSheet(this.hairSrc, 16, 10, 4);
+          this.skinSpritesheet = new SpriteSheet(this.skinSrc, 13, 10, 6);
+          this.shirtSpritesheet = new SpriteSheet(this.shirtSrc, 4, 10, 6);
+          this.hairSpritesheet = new SpriteSheet(this.hairSrc, 16, 10, 4);
           this.updateCanvas();
         }
       };
@@ -67,9 +67,9 @@ class Avatar extends React.Component {
   private updateCanvas() {
     if(this.canvas) {
       const ctx = this.canvas.getContext('2d');
-      const skin = this.skin!;
-      const shirt = this.shirt!;
-      const hair = this.hair!;
+      const skin = this.skinSpritesheet!;
+      const shirt = this.shirtSpritesheet!;
+      const hair = this.hairSpritesheet!;
 
       ctx!.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
