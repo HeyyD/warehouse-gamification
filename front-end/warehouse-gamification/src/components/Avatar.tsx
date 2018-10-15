@@ -16,6 +16,13 @@ class Avatar extends React.Component {
   private skinSrc = new Image();
   private shirtSrc = new Image();
   private hairSrc = new Image();
+
+  private images = [
+    this.skinSrc,
+    this.shirtSrc,
+    this.hairSrc
+  ];
+
   private canvas: HTMLCanvasElement | null;
 
   private skin?: SpriteSheet;
@@ -30,12 +37,20 @@ class Avatar extends React.Component {
     this.skinSrc.src = skinImage;
     this.shirtSrc.src = shirtImage;
     this.hairSrc.src = hairImage;
-    this.hairSrc.onload = () => {
-      this.skin = new SpriteSheet(this.skinSrc, 13, 10, 6);
-      this.shirt = new SpriteSheet(this.shirtSrc, 4, 10, 6);
-      this.hair = new SpriteSheet(this.hairSrc, 16, 10, 4);
-      this.updateCanvas();
-    };
+
+    // Makes sure all the images are loaded before drawing
+    let loadedImages = 0;
+    this.images.forEach(img => {
+      img.onload = () => {
+        loadedImages++;
+        if(loadedImages === this.images.length) {
+          this.skin = new SpriteSheet(this.skinSrc, 13, 10, 6);
+          this.shirt = new SpriteSheet(this.shirtSrc, 4, 10, 6);
+          this.hair = new SpriteSheet(this.hairSrc, 16, 10, 4);
+          this.updateCanvas();
+        }
+      };
+    });
   }
 
   public render() {
