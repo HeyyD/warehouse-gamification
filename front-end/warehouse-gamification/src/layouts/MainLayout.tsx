@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Avatar from '../components/Avatar';
 import CurrentQuest from '../components/CurrentQuest';
+import Navigation from '../components/Navigation';
 import ProgressCircle from '../components/ProgressCircle';
 import Stats from '../components/Stats';
 import Quest from '../models/quest';
@@ -12,6 +13,7 @@ import './MainLayout.scss';
 const MainLayout = ({user, quest}: {user: User, quest: Quest}) => {
   return (
     <div className='main-layout'>
+      <Navigation />
       <div className='avatar'>
         <Avatar />
       </div>

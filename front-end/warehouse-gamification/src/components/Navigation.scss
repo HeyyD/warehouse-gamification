@@ -1,0 +1,27 @@
+@import '../index.scss';
+
+.navigation {
+  height: 8%;
+  background-color: #eb9605;
+  color: #fff;
+  overflow: hidden;
+  font-size: 2.5em;
+  padding-left: $space-md;
+  .sidebar {
+    position: fixed;
+    font-size: 15px;
+    background-color: #868686;
+    color: black;
+    height: 100%;
+    width: 40%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: $space-md;
+    .navi-item {
+      border-bottom: solid 1px black;
+
+    }
+  }
+}

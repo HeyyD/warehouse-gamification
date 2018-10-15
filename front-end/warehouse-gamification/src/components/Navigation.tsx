@@ -1,8 +1,16 @@
-import React from 'react';
+import * as React from 'react'; 
+import './Navigation.scss'; 
 
 const Navigation = () => {
   return (
-    <div> Hello </div>
+    <div className='navigation'>
+      <i className='fa fa-bars' /> 
+      <div className='sidebar'>
+        <div className='navi-item'>Navi Item</div>
+        <div className='navi-item'>Navi Item</div>
+        <div className='navi-item'>Navi Item</div>
+      </div>
+    </div>
   );
 };
 
