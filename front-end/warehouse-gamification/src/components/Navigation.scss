@@ -8,8 +8,9 @@
   font-size: 2.5em;
   padding-left: $space-md;
   .sidebar {
-    position: fixed;
-    font-size: 15px;
+    position: absolute;
+    font-size: 18px;
+    z-index: 1000;
     background-color: #868686;
     color: black;
     height: 100%;
@@ -19,9 +20,5 @@
     display: flex;
     flex-direction: column;
     padding: $space-md;
-    .navi-item {
-      border-bottom: solid 1px black;
-
-    }
   }
 }
