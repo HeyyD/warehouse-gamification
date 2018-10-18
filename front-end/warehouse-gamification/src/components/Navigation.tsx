@@ -6,7 +6,7 @@ const Navigation = () => {
   return (
     <div className='navigation'>
       <i className='fa fa-bars' /> 
-      <div className='sidebar'>
+      <div className='sidebar' style={{display: 'none'}}>
         <div className='sidebar-profile'>
           <img src='https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png' />
           <h2> Tom </h2>
