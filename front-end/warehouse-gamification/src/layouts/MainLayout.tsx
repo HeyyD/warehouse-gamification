@@ -32,8 +32,8 @@ const MainLayout = ({user, quest}: {user: User, quest: Quest}) => {
 
 const mapStateToProps = (state: {user: User, quest: Quest}) => {
   return {
-    user: state.user,
-    quest: state.quest
+    quest: state.quest,
+    user: state.user
   };
 };
 

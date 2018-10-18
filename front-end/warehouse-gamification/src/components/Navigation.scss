@@ -14,11 +14,27 @@
     background-color: #868686;
     color: black;
     height: 100%;
-    width: 40%;
+    width: 50%;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     padding: $space-md;
+    .sidebar-profile {
+      display: flex;
+      padding: $space-md;
+      width: 100%;
+      margin-bottom: $space-lg;
+      img {
+        display: inline-block;
+        width: 3em;
+        height: 3em;
+        border-radius: 50%;
+        margin-right: $space-md;
+      }
+      h2 {
+        align-self: center;
+      }
+    }
   }
 }

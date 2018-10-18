@@ -1,6 +1,10 @@
 @import '../index.scss';
 .navi-item {
   border-bottom: solid 1px black;
+  cursor: pointer;
   padding-top: $space-lg;
   padding-bottom: $space-lg;
+  span {
+    margin-left: $space-sm;
+  }
 }

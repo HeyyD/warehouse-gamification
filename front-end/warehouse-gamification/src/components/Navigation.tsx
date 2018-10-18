@@ -7,9 +7,13 @@ const Navigation = () => {
     <div className='navigation'>
       <i className='fa fa-bars' /> 
       <div className='sidebar'>
-        <NavigationItem text='Settings' />
-        <NavigationItem text='Settings' />
-        <NavigationItem text='Settings' />
+        <div className='sidebar-profile'>
+          <img src='https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png' />
+          <h2> Tom </h2>
+        </div>
+        <NavigationItem text='Settings' icon='fa fa-cog' />
+        <NavigationItem text='Settings' icon='fa fa-cog' />
+        <NavigationItem text='Settings' icon='fa fa-cog' />
       </div>
     </div>
   );
