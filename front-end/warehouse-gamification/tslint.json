@@ -7,6 +7,20 @@
     ]
   },
   "rules": {
-    "semicolon": [true, "always"]
+    "semicolon": [true, "always"],
+    "no-shadowed-variable": [
+      false,
+      {
+        "class": false,
+        "enum": false,
+        "function": false,
+        "interface": false,
+        "namespace": false,
+        "typeAlias": false,
+        "typeParameter": false
+      }
+    ],
+    "no-console": ["log"]
+
   }
 }

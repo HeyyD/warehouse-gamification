@@ -12,6 +12,10 @@ class App extends React.Component {
         <div>
         <Route exact={true} path='/'
           render={() =>(<MainLayout> <MainPage /> </MainLayout>)} />
+        <Route exact={true} path='/inventory'
+          render={() =>(<MainLayout> <div>inventory</div> </MainLayout>)} />
+        <Route exact={true} path='/settings'
+          render={() =>(<MainLayout> <div>settings</div> </MainLayout>)} />
         </div>
       </Router>
       </div>

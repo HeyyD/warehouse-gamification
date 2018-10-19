@@ -7,6 +7,10 @@
   overflow: hidden;
   font-size: 2.5em;
   padding-left: $space-md;
+  a {
+    text-decoration: none;
+    color: black;
+  }
   .sidebar {
     position: absolute;
     font-size: 18px;

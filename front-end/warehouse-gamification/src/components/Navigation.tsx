@@ -1,5 +1,6 @@
 import * as React from 'react'; 
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { toggle } from '../reducers/sidebarReducer';
 import './Navigation.scss'; 
 import NavigationItem from './NavigationItem';
@@ -15,18 +16,18 @@ const Navigation = ({toggled, toggle} : {toggled: boolean, toggle: ()=>{}}) => {
   return (
     <div className='navigation'>
       <i className='fa fa-bars' onClick={openSidebar}/> 
-      <div className='sidebar' 
-        style={{display: toggled? 'inline-block' : 'none'}}
-        onClick={preventPropagation}
-      >
-        <div className='sidebar-profile'>
-          <img src='https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png' />
-          <h2> Tom </h2>
+        <div className='sidebar' 
+          style={{display: toggled? 'inline-block' : 'none'}}
+          onClick={preventPropagation}
+        >
+          <div className='sidebar-profile'>
+            <img src='https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png' />
+            <h2> Tom </h2>
+          </div>
+          <Link to='/'><NavigationItem text='Home' icon='fa fa-home' /></Link>
+          <Link to='/inventory'><NavigationItem text='Inventory' icon='fa fa-archive' /></Link>
+          <Link to='/settings'><NavigationItem text='Settings' icon='fa fa-cog' /></Link>
         </div>
-        <NavigationItem text='Settings' icon='fa fa-cog' />
-        <NavigationItem text='Settings' icon='fa fa-cog' />
-        <NavigationItem text='Settings' icon='fa fa-cog' />
-      </div>
     </div>
   );
 };
