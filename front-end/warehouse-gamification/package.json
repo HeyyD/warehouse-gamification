@@ -5,6 +5,7 @@
   "dependencies": {
     "@petejkim/react-scripts-ts-sass": "2.15.2",
     "@types/react-redux": "^6.0.9",
+    "@types/react-router": "^4.0.32",
     "rc-progress": "^2.2.6",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
