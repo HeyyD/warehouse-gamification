@@ -1,8 +1,10 @@
+@import '../index.scss';
+
 .progressbar-container{
   width: 10em;
   position: absolute;
-  top: 35%;
-  right: 40px;
+  right: $space-md;
+  top: 17em;
   background-color: #fff;
   border-radius: 50%;
   border: 5px solid #fff;
