@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Router } from 'react-router';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
 import MainLayout from './layouts/MainLayout'; 
 import MainPage from './pages/MainPage';
@@ -9,7 +9,10 @@ class App extends React.Component {
     return (
       <div>
       <Router>
-        <Route><MainLayout> <MainPage /> </MainLayout> </Route>
+        <div>
+        <Route exact={true} path='/'
+          render={() =>(<MainLayout> <MainPage /> </MainLayout>)} />
+        </div>
       </Router>
       </div>
     );
@@ -17,4 +20,5 @@ class App extends React.Component {
 }
 
 export default App;
+
 
