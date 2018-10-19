@@ -1,17 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Avatar from '../components/Avatar';
 import CurrentQuest from '../components/CurrentQuest';
 import Stats from '../components/Stats';
 import Quest from '../models/quest';
 import User from '../models/user';
+import './MainPage.scss';
 
 const MainPage = ({user, quest}: {user: User, quest: Quest}) => {
   return(
     <React.Fragment>
-      <div className='avatar'>
-        <Avatar />
-      </div>
       <div className='info'>
         <div className='name'>
           <h3>{user.title}</h3>
