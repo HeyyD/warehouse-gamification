@@ -5,10 +5,20 @@ import './Navigation.scss';
 import NavigationItem from './NavigationItem';
 
 const Navigation = ({toggled, toggle} : {toggled: boolean, toggle: ()=>{}}) => {
+  const openSidebar = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    toggle(); 
+  };
+  const preventPropagation = (event: React.MouseEvent<HTMLElement>) =>{
+    event.stopPropagation(); 
+  };
   return (
     <div className='navigation'>
-      <i className='fa fa-bars' onClick={toggle}/> 
-      <div className='sidebar' style={{display: toggled? 'inline-block' : 'none'}}>
+      <i className='fa fa-bars' onClick={openSidebar}/> 
+      <div className='sidebar' 
+        style={{display: toggled? 'inline-block' : 'none'}}
+        onClick={preventPropagation}
+      >
         <div className='sidebar-profile'>
           <img src='https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png' />
           <h2> Tom </h2>

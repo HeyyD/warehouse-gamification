@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-
 import Avatar from '../components/Avatar';
 import CurrentQuest from '../components/CurrentQuest';
 import Navigation from '../components/Navigation';
@@ -8,11 +7,12 @@ import ProgressCircle from '../components/ProgressCircle';
 import Stats from '../components/Stats';
 import Quest from '../models/quest';
 import User from '../models/user';
+import { setFalse } from '../reducers/sidebarReducer';
 import './MainLayout.scss'; 
 
-const MainLayout = ({user, quest}: {user: User, quest: Quest}) => {
+const MainLayout = ({user, quest, setFalse}: {user: User, quest: Quest, setFalse: ()=>{}}) => {
   return (
-    <div className='main-layout'>
+    <div className='main-layout' onClick={setFalse}>
       <Navigation />
       <div className='avatar'>
         <Avatar />
@@ -37,4 +37,4 @@ const mapStateToProps = (state: {user: User, quest: Quest}) => {
   };
 };
 
-export default connect(mapStateToProps)(MainLayout);
+export default connect(mapStateToProps,{setFalse})(MainLayout);
