@@ -11,10 +11,10 @@ const Sidebar = posed.div({
   visible: { left: 0}
 });
 
-const Navigation = ({toggled, toggle} : {toggled: boolean, toggle: ()=>{}}) => {
+const Navigation = (props : {toggled: boolean, toggle: ()=>{}}) => {
   const openSidebar = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
-    toggle(); 
+    props.toggle(); 
   };
   const preventPropagation = (event: React.MouseEvent<HTMLElement>) =>{
     event.stopPropagation(); 
@@ -22,7 +22,7 @@ const Navigation = ({toggled, toggle} : {toggled: boolean, toggle: ()=>{}}) => {
   return (
     <div className='navigation'>
       <i className='fa fa-bars' onClick={openSidebar}/> 
-        <Sidebar className='sidebar' pose={toggled ? 'visible' : 'hidden'} onClick={preventPropagation}>
+        <Sidebar className='sidebar' pose={props.toggled ? 'visible' : 'hidden'} onClick={preventPropagation}>
           <div className='sidebar-profile'>
             <img src='https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png' />
             <h2> Tom </h2>

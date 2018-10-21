@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { setFalse } from '../reducers/sidebarReducer';
 import './NavigationItem.scss';
 
-const NavigationItem = ({text, icon, setFalse}: {text: string, icon: string, setFalse: ()=>{}}) => {
+const NavigationItem = (props: {text: string, icon: string, setFalse: ()=>{}}) => {
   return (
-    <div className='navi-item' onClick={setFalse}>
-      <i className={icon} />
-      <span>{text}</span>
+    <div className='navi-item' onClick={props.setFalse}>
+      <i className={props.icon} />
+      <span>{props.text}</span>
     </div>
   );
 };

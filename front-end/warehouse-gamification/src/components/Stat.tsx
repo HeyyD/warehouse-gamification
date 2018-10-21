@@ -1,16 +1,16 @@
 import * as React from 'react';
 import './Stat.scss';
 
-const Stat = ({icon, text, stat}: {icon: string, text: string, stat: number}) => {
+const Stat = (props: {icon: string, text: string, stat: number}) => {
   return(
     <div className='stat-container'>
       <div className='stat'> 
-        <i className={icon} aria-hidden='true'/>
+        <i className={props.icon} aria-hidden='true'/>
       </div>
       <div className='stat-info'>
-        <label>{text}</label>
+        <label>{props.text}</label>
         <br/>
-        <label>{stat}</label>
+        <label>{props.stat}</label>
       </div>
     </div>
   );
