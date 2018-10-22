@@ -13,9 +13,11 @@ class Inventory extends React.Component {
     }
 
     return (
-      <div className='inventory-container'>
-        { items }
-      </div>
+      <React.Fragment>
+        <div className='inventory-container'>
+          { items }
+        </div>
+      </React.Fragment>
     );
   }
 }

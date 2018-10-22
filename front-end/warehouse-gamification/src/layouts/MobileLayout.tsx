@@ -16,7 +16,7 @@ const MobileLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => 
         </div>
         <div className='content-wrapper'>
           <ProgressCircle />
-          {children}
+          { children }
         </div>
       </div>
     );
