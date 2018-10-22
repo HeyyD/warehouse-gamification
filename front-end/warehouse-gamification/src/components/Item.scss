@@ -1,0 +1,9 @@
+@import '../index.scss';
+
+.item-wrapper {
+  padding: $space-md;
+
+  img {
+    border: solid black 1px;
+  }
+}
