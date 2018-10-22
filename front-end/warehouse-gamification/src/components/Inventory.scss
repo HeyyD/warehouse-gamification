@@ -1,12 +1,18 @@
 @import '../index.scss';
 
-.inventory-container {
+.inventory-wrapper {
   display: flex;
-  background: $color-primary-light;
-  flex-wrap: wrap;
-  justify-content: center;
-  overflow: scroll;
-  height: calc(100% - 104px);
-  border-top: solid 2px $color-primary;
-  border-bottom: solid 2px $color-primary;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  .inventory-container {
+    display: flex;
+    background: $color-primary-light;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: scroll;
+    height: calc(100% - 104px);
+    border-top: solid 2px $color-primary;
+    border-bottom: solid 2px $color-primary;
+  }
 }
