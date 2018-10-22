@@ -14,8 +14,10 @@ const MainLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => {
         <div className='avatar'>
           <Avatar />
         </div>
-        <ProgressCircle />
-        {children} 
+        <div className='content-wrapper'>
+          <ProgressCircle />
+          {children}
+        </div>
       </div>
     );
   

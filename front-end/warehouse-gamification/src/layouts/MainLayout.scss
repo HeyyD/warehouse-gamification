@@ -12,4 +12,9 @@
     height: $avatar-size;
     background-color: #F0F0F0;
   }
+
+  .content-wrapper {
+    justify-self: flex-end;
+    position: relative;
+  }
 }

@@ -8,9 +8,9 @@ import MainPage from './pages/MainPage';
 class App extends React.Component {
   public render() {
     return (
-      <div>
+      <React.Fragment>
       <Router>
-        <div>
+        <div className='content-wrapper'>
         <Route exact={true} path='/'
           render={() =>(<MainLayout> <MainPage /> </MainLayout>)} />
         <Route exact={true} path='/inventory'
@@ -19,7 +19,7 @@ class App extends React.Component {
           render={() =>(<MainLayout> <div>settings</div> </MainLayout>)} />
         </div>
       </Router>
-      </div>
+      </React.Fragment>
     );
   }
 }
