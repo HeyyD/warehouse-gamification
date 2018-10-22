@@ -17,11 +17,14 @@ class Inventory extends React.Component {
     return (
       <div className='inventory-wrapper'>
         <Router>
-          { 
-            // <Route path='/asd' render={ () => <div className='inventory-container'>{ items }</div> }/>
-          }
           <React.Fragment>
-            <Route exact={ true } path='/inventory' render={ () => <Link to='/inventory/asd'>ASD</Link> }/>
+            <Route exact={ true } path='/inventory' render={ () =>
+              <ul className='inventory-menu'>
+                <li><Link to='/inventory/asd'>Skin</Link></li>
+                <li><Link to='/inventory/asd'>Hair</Link></li>
+                <li><Link to='/inventory/asd'>Shirts</Link></li>
+              </ul>
+            }/>
             <Route exact={ true } path='/inventory/asd' render={ () => <div className='inventory-container'>{ this.items }</div> }/>
           </React.Fragment>
         </Router>

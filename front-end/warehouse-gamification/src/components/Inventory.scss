@@ -6,6 +6,28 @@
   justify-content: flex-end;
   height: calc(100% - 104px);
 
+  .inventory-menu {
+    height: 100%;
+    padding: 0;
+    text-align: center;
+    font-size: 1.5em;
+    list-style: none;
+
+    li {
+      margin: $space-md;
+      background: $color-primary-light;
+      border-radius: 10px;
+      a {
+        padding: $space-md;
+        display: block;
+        height: 100%;
+        width: 100%;
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+  }
+
   .inventory-container {
     display: flex;
     background: $color-primary-light;
