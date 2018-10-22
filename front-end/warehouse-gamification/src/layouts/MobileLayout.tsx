@@ -4,9 +4,9 @@ import Avatar from '../components/Avatar';
 import Navigation from '../components/Navigation';
 import ProgressCircle from '../components/ProgressCircle';
 import { setFalse } from '../reducers/sidebarReducer';
-import './MainLayout.scss'; 
+import './MobileLayout.scss'; 
 
-const MainLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => {
+const MobileLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => {
     const { setFalse, children } = props;
     return (
       <div className='main-layout' onClick={setFalse}>
@@ -23,4 +23,4 @@ const MainLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => {
   
 };
 
-export default connect(null,{setFalse})(MainLayout);
+export default connect(null,{setFalse})(MobileLayout);
