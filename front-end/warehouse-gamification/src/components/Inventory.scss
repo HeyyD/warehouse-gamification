@@ -2,8 +2,11 @@
 
 .inventory-container {
   display: flex;
+  background: $color-primary-light;
   flex-wrap: wrap;
   justify-content: center;
   overflow: scroll;
-  height: calc(100% - 100px);
+  height: calc(100% - 104px);
+  border-top: solid 2px $color-primary;
+  border-bottom: solid 2px $color-primary;
 }
