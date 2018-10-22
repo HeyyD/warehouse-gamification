@@ -1,0 +1,14 @@
+@import '../index.scss';
+
+.stats {
+  flex: 5 0;
+  padding-top: $space-lg;
+  justify-content: space-evenly;
+  h2 {
+    font-weight: normal;
+  }
+  .stats-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

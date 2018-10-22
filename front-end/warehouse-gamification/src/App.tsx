@@ -1,22 +1,28 @@
 import * as React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
-
-import logo from './logo.svg';
+import MainLayout from './layouts/MainLayout'; 
+import MainPage from './pages/MainPage';
 
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+      <div>
+      <Router>
+        <div>
+        <Route exact={true} path='/'
+          render={() =>(<MainLayout> <MainPage /> </MainLayout>)} />
+        <Route exact={true} path='/inventory'
+          render={() =>(<MainLayout> <div>inventory</div> </MainLayout>)} />
+        <Route exact={true} path='/settings'
+          render={() =>(<MainLayout> <div>settings</div> </MainLayout>)} />
+        </div>
+      </Router>
       </div>
     );
   }
 }
 
 export default App;
+
+

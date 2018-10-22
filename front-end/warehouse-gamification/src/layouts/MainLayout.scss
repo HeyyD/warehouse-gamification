@@ -1,0 +1,15 @@
+@import '../index.scss';
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  .avatar {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    height: $avatar-size;
+    background-color: #F0F0F0;
+  }
+}

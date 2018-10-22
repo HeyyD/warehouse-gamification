@@ -1,0 +1,43 @@
+@import '../index.scss';
+
+.navigation {
+  height: 8%;
+  background-color: #eb9605;
+  color: #fff;
+  overflow: hidden;
+  font-size: 2.5em;
+  padding-left: $space-md;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .sidebar {
+    position: absolute;
+    font-size: 18px;
+    z-index: 1000;
+    background-color: #999999;
+    color: black;
+    height: 100%;
+    width: 50%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: $space-md;
+    .sidebar-profile {
+      display: flex;
+      padding: $space-md;
+      width: 100%;
+      margin-bottom: $space-lg;
+      img {
+        display: inline-block;
+        width: 3em;
+        height: 3em;
+        border-radius: 50%;
+        margin-right: $space-md;
+      }
+      h2 {
+        align-self: center;
+      }
+    }
+  }
+}

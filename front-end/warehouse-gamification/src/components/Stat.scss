@@ -1,0 +1,31 @@
+@import '../index.scss';
+
+.stat {
+  display: flex;
+  background-color: $color-primary;
+  width: 5em;
+  height: 5em;
+  flex-shrink: 0;
+  border-radius: 50%;
+  text-align: center;
+  margin-top: $space-md;
+  vertical-align: middle;
+  text-align: center;
+  i {
+    color: #fff;
+    display: block;
+    margin: auto;
+    flex-shrink: 0;
+    align-self: center;
+    font-size: 3em;
+  }
+}
+.stat-container {
+  text-align: center;
+  width: 5em;
+  display: inline-block;
+  margin-bottom: $space-md;
+}
+.stat-info {
+  font-weight: bold;
+}

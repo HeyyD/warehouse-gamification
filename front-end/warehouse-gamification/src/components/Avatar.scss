@@ -1,0 +1,20 @@
+@import '../index.scss';
+
+.avatar-container {
+  display: flex;
+  height: $avatar-size;
+
+  .canvas-container {
+    width: $avatar-size;
+
+    canvas {
+      height: $avatar-size;
+      width: $avatar-size;
+    }
+  }
+
+  button {
+    width: 100px;
+    height: 100px;
+  }
+}
