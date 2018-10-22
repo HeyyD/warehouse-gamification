@@ -3,8 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var Connection = require('tedious').Connection;
-var Request = require('tedious').Request;
+const Sequelize = require('sequelize');
 var db = require('./secret/db.json');
 
 
@@ -42,48 +41,68 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
-// Create connection to database
-var config = 
-   {
-     userName: db.username,
-     password: db.password,
-     server: db.address,
-     options: 
-        {
-           database: 'warehouseDB' //update me
-           , encrypt: true
-        }
-   }
-var connection = new Connection(config);
-
-// Attempt to connect and execute queries if connection goes through
-connection.on('connect', function(err) {
-    if (err) {
-          console.log(err)
-    } else{
-        queryDatabase()
-    }
+// ORM connection
+const warehouseDB = new Sequelize('warehouseDB', db.username, db.password, {
+  dialect: 'mssql',
+  host: db.address,
+  port: 1433, // Default port
+  encrypt: true,
+  logging: false, // disable logging; default: console.log
+  dialectOptions: {
+    encrypt: true,
+    requestTimeout: 10000
+  }
 });
 
-function queryDatabase()
-   { console.log('Reading rows from the Table...');
+// Define the 'User' model
+var User = warehouseDB.define('user', {
+  username: Sequelize.STRING,
+  password: Sequelize.STRING,
+  level: Sequelize.INTEGER,
+  xp: Sequelize.INTEGER,
+});
 
-       // Read all rows from table
-     request = new Request(
-          "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'",
-          function(err, rowCount, rows) {
-                console.log(rowCount + ' row(s) returned');
-                process.exit();
-        }
-      );
+// Define the 'Quest' model
+const Quest = warehouseDB.define('quest', {
+  title: Sequelize.STRING,
+  dueDate: Sequelize.DATE,
+  isComplete: Sequelize.BOOLEAN,
+  description: Sequelize.TEXT,
+});
+Quest.hasMany(User);
 
-     request.on('row', function(columns) {
-        columns.forEach(function(column) {
-            console.log("%s\t%s", column.metadata.colName, column.value);
-         });
-      });
-     connection.execSql(request);
-   }
+warehouseDB.sync({force: true})
+.then(function() {
 
+    // Create demo: Create a User instance and save it to the database
+    User.create({
+      username: 'Demon_Slayer99',
+      password: 'Shrestinian',
+      level: 12,
+      xp: 1251
+    })
+    .then(function(user) {
+        console.log('\nCreated User:', user.get({ plain: true}));
+
+        Quest.create({
+            title: 'Kill the Box Dragon!',
+            dueDate: new Date(2017,04,01),
+            isComplete: false,
+            description: "Just kill the dragon!"
+        })
+        .then(function(quest) {
+            console.log('\nCreated Quests:', quest.get({ plain: true}));
+
+            quest.setUsers([user])
+            .then(function() {
+            
+                // Read demo: find incomplete tasks assigned to user 'Anna''
+                User.findAll()
+                .then(function(users) {
+                    console.log('all users: ', JSON.stringify(users));                    
+                })
+            })
+        })
+    })
+})
 module.exports = app;
