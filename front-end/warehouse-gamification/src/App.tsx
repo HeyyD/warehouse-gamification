@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
+
 import Inventory from './components/Inventory';
+import ItemList from './components/ItemList';
 import MobileLayout from './layouts/MobileLayout'; 
 import MainPage from './pages/MainPage';
 
@@ -24,9 +26,16 @@ class App extends React.Component {
   }
 
   private inventoryLayout(): JSX.Element {
+
+    const itemLists: ItemList[] = [
+      <ItemList key='Skins'/> as unknown as ItemList,
+      <ItemList key='Hair'/> as unknown as ItemList,
+      <ItemList key='Shirts'/> as unknown as ItemList
+    ];
+
     return (
       <MobileLayout>
-        <Inventory/>
+        <Inventory lists={ itemLists }/>
       </MobileLayout>
     );
   }
