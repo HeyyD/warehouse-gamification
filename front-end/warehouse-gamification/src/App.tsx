@@ -6,6 +6,7 @@ import MobileLayout from './layouts/MobileLayout';
 import MainPage from './pages/MainPage';
 
 class App extends React.Component {
+
   public render() {
     return (
       <React.Fragment>
@@ -13,13 +14,20 @@ class App extends React.Component {
         <div className='content-wrapper'>
         <Route exact={true} path='/'
           render={() =>(<MobileLayout> <MainPage /> </MobileLayout>)} />
-        <Route exact={true} path='/inventory'
-          render={() =>(<MobileLayout> <Inventory /> </MobileLayout>)} />
+        <Route exact={true} path='/inventory' render={ this.inventoryLayout } />
         <Route exact={true} path='/settings'
           render={() =>(<MobileLayout> <div>settings</div> </MobileLayout>)} />
         </div>
       </Router>
       </React.Fragment>
+    );
+  }
+
+  private inventoryLayout(): JSX.Element {
+    return (
+      <MobileLayout>
+        <Inventory/>
+      </MobileLayout>
     );
   }
 }
