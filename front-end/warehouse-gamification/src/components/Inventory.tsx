@@ -14,9 +14,11 @@ class Inventory extends React.Component<{ lists: ItemList[] }> {
     return (
       <div className='inventory-wrapper'>
         <ul className='inventory-menu'>
-          <li><Link to='/inventory/asd'>Skin</Link></li>
-          <li><Link to='/inventory/asd'>Hair</Link></li>
-          <li><Link to='/inventory/asd'>Shirts</Link></li>
+          {
+            this.props.lists.map((list, index) => {
+              return <li key={ index }><Link to={ `inventory/${ list.props.id }` }>{ list.props.id.toUpperCase() }</Link></li>;
+            })
+          }
         </ul>
       </div>
     );

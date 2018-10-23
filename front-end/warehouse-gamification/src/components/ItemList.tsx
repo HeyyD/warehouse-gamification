@@ -4,7 +4,8 @@ import Item from './Item';
 
 import './ItemList.scss';
 
-class ItemList extends React.Component {
+class ItemList extends React.Component<{ id: string }> {
+
   public render() {
     const items = [];
 

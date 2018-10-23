@@ -28,9 +28,9 @@ class App extends React.Component {
   private inventoryLayout(): JSX.Element {
 
     const itemLists: ItemList[] = [
-      <ItemList key='Skins'/> as unknown as ItemList,
-      <ItemList key='Hair'/> as unknown as ItemList,
-      <ItemList key='Shirts'/> as unknown as ItemList
+      <ItemList id='skins' /> as unknown as ItemList,
+      <ItemList id='hair' /> as unknown as ItemList,
+      <ItemList id='shirts'/> as unknown as ItemList
     ];
 
     return (
@@ -42,5 +42,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-
