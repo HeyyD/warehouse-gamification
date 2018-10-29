@@ -43,11 +43,11 @@ app.use(function(err, req, res, next) {
 
 // ORM connection
 const warehouseDB = new Sequelize('warehouseDB', db.username, db.password, {
-  dialect: 'mssql',
+  dialect: 'mssql', // SQLServer
   host: db.address,
   port: 1433, // Default port
   encrypt: true,
-  logging: false, // disable logging; default: console.log
+  logging: false, 
   dialectOptions: {
     encrypt: true,
     requestTimeout: 10000
@@ -55,7 +55,7 @@ const warehouseDB = new Sequelize('warehouseDB', db.username, db.password, {
 });
 
 // Define the 'User' model
-var User = warehouseDB.define('user', {
+var UserModel = warehouseDB.define('user', {
   username: Sequelize.STRING,
   password: Sequelize.STRING,
   level: Sequelize.INTEGER,
@@ -63,19 +63,19 @@ var User = warehouseDB.define('user', {
 });
 
 // Define the 'Quest' model
-const Quest = warehouseDB.define('quest', {
+const QuestModel = warehouseDB.define('quest', {
   title: Sequelize.STRING,
   dueDate: Sequelize.DATE,
   isComplete: Sequelize.BOOLEAN,
   description: Sequelize.TEXT,
 });
-Quest.hasMany(User);
+QuestModel.hasMany(UserModel);
 
 warehouseDB.sync({force: true})
 .then(function() {
 
     // Create demo: Create a User instance and save it to the database
-    User.create({
+    UserModel.create({
       username: 'Demon_Slayer99',
       password: 'Shrestinian',
       level: 12,
@@ -84,7 +84,7 @@ warehouseDB.sync({force: true})
     .then(function(user) {
         console.log('\nCreated User:', user.get({ plain: true}));
 
-        Quest.create({
+        QuestModel.create({
             title: 'Kill the Box Dragon!',
             dueDate: new Date(2017,04,01),
             isComplete: false,
@@ -97,7 +97,7 @@ warehouseDB.sync({force: true})
             .then(function() {
             
                 // Read demo: find incomplete tasks assigned to user 'Anna''
-                User.findAll()
+                UserModel.findAll()
                 .then(function(users) {
                     console.log('all users: ', JSON.stringify(users));                    
                 })
@@ -105,4 +105,4 @@ warehouseDB.sync({force: true})
         })
     })
 })
-module.exports = app;
+module.exports = { app, warehouseDB, UserModel, QuestModel };
