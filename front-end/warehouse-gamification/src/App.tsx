@@ -26,12 +26,10 @@ class App extends React.Component {
       <React.Fragment>
       <Router>
         <div className='content-wrapper'>
-        <Route exact={true} path='/'
-          render={() =>(<MobileLayout> <MainPage /> </MobileLayout>)} />
-        <Route exact={true} path='/inventory' render={ this.inventoryLayout } />
-        <Route exact={true} path='/inventory/:id' render={({match}) => this.itemListLayout(match.params.id) }/>
-        <Route exact={true} path='/settings'
-          render={() =>(<MobileLayout> <div>settings</div> </MobileLayout>)} />
+          <Route exact={true} path='/' render={() =>(<MobileLayout> <MainPage /> </MobileLayout>)} />
+          <Route exact={true} path='/inventory' render={ this.inventoryLayout } />
+          <Route exact={true} path='/inventory/:id' render={({match}) => this.itemListLayout(match.params.id) }/>
+          <Route exact={true} path='/settings' render={() =>(<MobileLayout> <div>settings</div> </MobileLayout>)} />
         </div>
       </Router>
       </React.Fragment>
