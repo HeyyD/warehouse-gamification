@@ -9,6 +9,18 @@ import MainPage from './pages/MainPage';
 
 class App extends React.Component {
 
+
+  private itemLists: ItemList[] = [
+    <ItemList id='skins' /> as unknown as ItemList,
+    <ItemList id='hair' /> as unknown as ItemList,
+    <ItemList id='shirts'/> as unknown as ItemList
+  ];
+
+  constructor(props: any) {
+    super(props);
+    this.inventoryLayout = this.inventoryLayout.bind(this);
+  }
+
   public render() {
     return (
       <React.Fragment>
@@ -17,6 +29,7 @@ class App extends React.Component {
         <Route exact={true} path='/'
           render={() =>(<MobileLayout> <MainPage /> </MobileLayout>)} />
         <Route exact={true} path='/inventory' render={ this.inventoryLayout } />
+        <Route exact={true} path='/inventory/:id' render={({match}) => this.itemListLayout(match.params.id) }/>
         <Route exact={true} path='/settings'
           render={() =>(<MobileLayout> <div>settings</div> </MobileLayout>)} />
         </div>
@@ -25,17 +38,21 @@ class App extends React.Component {
     );
   }
 
+  private itemListLayout(id: string): JSX.Element | undefined {
+    for(const list of this.itemLists) {
+      if (list.props.id === id) {
+        return (
+          <MobileLayout>{ list }</MobileLayout>
+        );
+      }
+    }
+    return undefined;
+  }
+
   private inventoryLayout(): JSX.Element {
-
-    const itemLists: ItemList[] = [
-      <ItemList id='skins' /> as unknown as ItemList,
-      <ItemList id='hair' /> as unknown as ItemList,
-      <ItemList id='shirts'/> as unknown as ItemList
-    ];
-
     return (
       <MobileLayout>
-        <Inventory lists={ itemLists }/>
+        <Inventory lists={ this.itemLists }/>
       </MobileLayout>
     );
   }
