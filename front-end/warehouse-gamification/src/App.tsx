@@ -1,14 +1,19 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
-
 import Inventory from './components/Inventory';
 import ItemList from './components/ItemList';
 import MobileLayout from './layouts/MobileLayout'; 
 import MainPage from './pages/MainPage';
+import { getSpritesheetData } from './reducers/assetsReducer';
 
-class App extends React.Component {
+interface IPropit {
+  getSpritesheetData: () => any;
+  assets: [];
+}
 
+class App extends React.Component<IPropit> {
 
   private itemLists: ItemList[] = [
     <ItemList id='skins' /> as unknown as ItemList,
@@ -16,9 +21,14 @@ class App extends React.Component {
     <ItemList id='shirts'/> as unknown as ItemList
   ];
 
-  constructor(props: any) {
+  constructor(props: IPropit) {
     super(props);
     this.inventoryLayout = this.inventoryLayout.bind(this);
+  }
+
+  public async componentDidMount() {
+    await this.props.getSpritesheetData();
+    console.log(this.props.assets);
   }
 
   public render() {
@@ -46,7 +56,6 @@ class App extends React.Component {
     }
     return undefined;
   }
-
   private inventoryLayout(): JSX.Element {
     return (
       <MobileLayout>
@@ -56,4 +65,9 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state: {assets: []}) => {
+  return {
+    assets: state.assets
+  };
+};
+export default connect(mapStateToProps, {getSpritesheetData})(App);
