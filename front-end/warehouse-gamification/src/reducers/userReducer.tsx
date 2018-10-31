@@ -15,7 +15,6 @@ const mockUser = {
 };
 
 const reducer = (state = mockUser, action: {type: string, equipment: IEquipment}) => {
-  console.log(action.type);
   switch(action.type){
     case 'CHANGE_EQUIPMENT':
       return action.equipment;

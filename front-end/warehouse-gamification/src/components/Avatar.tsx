@@ -5,10 +5,12 @@ import './Avatar.scss';
 import hairImage from '../assets/spritesheet_hair.png';
 import shirtImage from '../assets/spritesheet_shirts.png';
 import skinImage from '../assets/spritesheet_skin.png';
-// import store from '../store';
 import SpriteSheet from './SpriteSheet';
+import IUser from '../models/user';
+import { connect } from 'react-redux';
+import IEquipment from '../models/IEquipment';
 
-class Avatar extends React.Component {
+class Avatar extends React.Component<{equipment: IEquipment}> {
 
   private skinSrc = new Image();
   private shirtSrc = new Image();
@@ -26,7 +28,7 @@ class Avatar extends React.Component {
   private shirtSpritesheet?: SpriteSheet;
   private hairSpritesheet?: SpriteSheet;
   
-  constructor(props: any) {
+  constructor(props: {equipment: IEquipment}) {
     super(props);
 
     this.skinSrc.src = skinImage;
@@ -35,6 +37,21 @@ class Avatar extends React.Component {
   }
 
   public render() {
+
+    if(this.canvas) {
+      const ctx = this.canvas.getContext('2d');
+      const skin = this.skinSpritesheet!;
+      const shirt = this.shirtSpritesheet!;
+      const hair = this.hairSpritesheet!;
+
+      ctx!.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      const equipment = this.props.equipment;
+
+      skin.draw(ctx!, skin.getSprite(equipment.skin));
+      shirt.draw(ctx!, shirt.getSprite(equipment.shirt));
+      hair.draw(ctx!, hair.getSprite(equipment.hair));
+    }
+
     return(
       <div className="avatar-container">
         <div className="canvas-container">
@@ -61,11 +78,11 @@ class Avatar extends React.Component {
             const hair = this.hairSpritesheet!;
       
             ctx!.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            // const equipment = store.getState().user.equipment;
+            const equipment = this.props.equipment;
 
-            skin.draw(ctx!, skin.getSprite(0));
-            shirt.draw(ctx!, shirt.getSprite(0));
-            hair.draw(ctx!, hair.getSprite(0));
+            skin.draw(ctx!, skin.getSprite(equipment.skin));
+            shirt.draw(ctx!, shirt.getSprite(equipment.shirt));
+            hair.draw(ctx!, hair.getSprite(equipment.hair));
           }
         }
       };
@@ -73,4 +90,10 @@ class Avatar extends React.Component {
   }
 }
 
-export default Avatar;
+const mapStateToProps = (state: {user: IUser}) => {
+  return{
+    equipment: state.user.equipment
+  };
+};
+
+export default connect(mapStateToProps, null)(Avatar);
