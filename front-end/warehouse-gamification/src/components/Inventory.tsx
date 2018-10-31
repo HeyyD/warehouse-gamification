@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import ItemList from './ItemList';
 
 import './Inventory.scss';
 
-class Inventory extends React.Component<{ lists: ItemList[] }> {
+class Inventory extends React.Component<{ lists: JSX.Element[] }> {
 
-  constructor(props: { lists: ItemList[] }) {
+  constructor(props: { lists: JSX.Element[] }) {
     super(props);
   }
 

@@ -69,4 +69,4 @@ const mapStateToProps = (state: {user: IUser}) => {
     equipment: state.user.equipment
   };
 };
-export default connect(mapStateToProps, {changeEquipment})(ItemList);
+export default connect(mapStateToProps, {changeEquipment}) (ItemList);

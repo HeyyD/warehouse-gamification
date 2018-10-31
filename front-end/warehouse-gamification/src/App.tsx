@@ -16,7 +16,7 @@ interface IPropit {
 
 class App extends React.Component<IPropit> {
 
-  private itemLists: ItemList[] = [];
+  private itemLists: JSX.Element[] = [];
 
   constructor(props: IPropit) {
     super(props);
@@ -49,21 +49,21 @@ class App extends React.Component<IPropit> {
     hair.src = this.props.assets['hair'];
     hair.onload = () => {
       const ss = new SpriteSheet(hair, 16, 10, 4);
-      this.itemLists.push(<ItemList id='hair' spritesheet={ ss }/> as unknown as ItemList);
+      this.itemLists.push(<ItemList id='hair' spritesheet={ ss }/>);
     };
 
     const skin = new Image();
     skin.src = this.props.assets['skin'];
     skin.onload = () => {
       const ss = new SpriteSheet(skin, 13, 10, 6);
-      this.itemLists.push(<ItemList id='skin' spritesheet={ ss }/> as unknown as ItemList);
+      this.itemLists.push(<ItemList id='skin' spritesheet={ ss }/>);
     };
 
     const shirt = new Image();
     shirt.src = this.props.assets['shirt'];
     shirt.onload = () => {
       const ss = new SpriteSheet(shirt, 4, 10, 6);
-      this.itemLists.push(<ItemList id='shirt' spritesheet={ ss }/> as unknown as ItemList);
+      this.itemLists.push(<ItemList id='shirt' spritesheet={ ss }/>);
     };
   }
 
