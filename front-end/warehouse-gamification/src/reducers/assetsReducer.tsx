@@ -1,4 +1,6 @@
-import getSpritesheets from '../services/assetsService';
+import hairImage from '../assets/spritesheet_hair.png';
+import shirtImage from '../assets/spritesheet_shirts.png';
+import skinImage from '../assets/spritesheet_skin.png';
 
 const reducer = (state = [], action: {type: string, data: any}) => {
   switch(action.type) {
@@ -10,8 +12,8 @@ const reducer = (state = [], action: {type: string, data: any}) => {
 };
 
 export const getSpritesheetData = () => {
-  return async (dispatch: any) => {
-    const ssData = await getSpritesheets();
+  return (dispatch: any) => {
+    const ssData = [hairImage, shirtImage, skinImage];
     dispatch({
       data: ssData,
       type: 'INIT'

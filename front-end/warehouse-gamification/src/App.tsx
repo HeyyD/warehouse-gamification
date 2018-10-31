@@ -4,31 +4,35 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
 import Inventory from './components/Inventory';
 import ItemList from './components/ItemList';
+import SpriteSheet from './components/SpriteSheet';
 import MobileLayout from './layouts/MobileLayout'; 
 import MainPage from './pages/MainPage';
 import { getSpritesheetData } from './reducers/assetsReducer';
 
 interface IPropit {
   getSpritesheetData: () => any;
-  assets: [];
+  assets: any[];
 }
 
 class App extends React.Component<IPropit> {
 
+  /*
   private itemLists: ItemList[] = [
-    <ItemList id='skins' /> as unknown as ItemList,
+    // <ItemList id='skins' /> as unknown as ItemList,
     <ItemList id='hair' /> as unknown as ItemList,
-    <ItemList id='shirts'/> as unknown as ItemList
+    // <ItemList id='shirts'/> as unknown as ItemList
   ];
+  */
+
+  private itemLists: ItemList[] = [];
 
   constructor(props: IPropit) {
     super(props);
     this.inventoryLayout = this.inventoryLayout.bind(this);
   }
 
-  public async componentDidMount() {
-    await this.props.getSpritesheetData();
-    console.log(this.props.assets);
+  public componentDidMount() {
+    this.initSpritesheets();
   }
 
   public render() {
@@ -44,6 +48,16 @@ class App extends React.Component<IPropit> {
       </Router>
       </React.Fragment>
     );
+  }
+
+  private async initSpritesheets() {
+    await this.props.getSpritesheetData();
+    const image = new Image();
+    image.src = this.props.assets[0];
+    image.onload = () => {
+      const hairSS = new SpriteSheet(image, 16, 10, 4);
+      this.itemLists.push(<ItemList id='hair' spritesheet={ hairSS }/> as unknown as ItemList);
+    };
   }
 
   private itemListLayout(id: string): JSX.Element | undefined {
@@ -65,7 +79,7 @@ class App extends React.Component<IPropit> {
   }
 }
 
-const mapStateToProps = (state: {assets: []}) => {
+const mapStateToProps = (state: {assets: any[]}) => {
   return {
     assets: state.assets
   };
