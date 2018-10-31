@@ -1,21 +1,31 @@
 import * as React from 'react';
-
+import { connect } from 'react-redux';
+import IEquipment from '../models/IEquipment';
+import IUser from '../models/user';
+import { changeEquipment} from '../reducers/userReducer';
 import './ItemList.scss';
 import SpriteSheet from './SpriteSheet';
 
-class ItemList extends React.Component<{ id: string, spritesheet: SpriteSheet }> {
+interface IProps {
+  changeEquipment: (equipment: IEquipment) => any;
+  id: string;
+  spritesheet: SpriteSheet;
+  equipment: IEquipment;
+}
+
+class ItemList extends React.Component<IProps> {
 
   private canvasRefs: HTMLCanvasElement[] = [];
   private items: JSX.Element[];
 
 
-  constructor(props: { id: string, spritesheet: SpriteSheet }) {
+  constructor(props: IProps) {
     super(props);
 
     this.items = this.props.spritesheet.getSprites().map((sprite, index) => {
       return (
         <div key={ index } className='item-wrapper'>
-          <canvas ref={ (canvas) => this.canvasRefs.push(canvas!) } width='90px' height='90px'>item</canvas>
+          <canvas onClick={() => this.changeEquipment(index) } ref={ (canvas) => this.canvasRefs.push(canvas!) } width='90px' height='90px'>item</canvas>
         </div>
       );
     });
@@ -39,5 +49,24 @@ class ItemList extends React.Component<{ id: string, spritesheet: SpriteSheet }>
       ss.draw(ctx!, ss.getSprite(index));
     });
   }
+
+  private changeEquipment(index: number) {
+    const newState = {};
+
+    Object.keys(this.props.equipment).forEach(key => {
+      if(key === this.props.id) {
+        newState[key] = index;
+      } else {
+        newState[key] = this.props.equipment[key];
+      }
+    });
+    this.props.changeEquipment(newState as IEquipment);
+  }
 }
-export default ItemList;
+
+const mapStateToProps = (state: {user: IUser}) => {
+  return {
+    equipment: state.user.equipment
+  };
+};
+export default connect(mapStateToProps, {changeEquipment})(ItemList);
