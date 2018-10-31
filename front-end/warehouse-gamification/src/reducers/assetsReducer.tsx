@@ -13,7 +13,12 @@ const reducer = (state = [], action: {type: string, data: any}) => {
 
 export const getSpritesheetData = () => {
   return (dispatch: any) => {
-    const ssData = [hairImage, shirtImage, skinImage];
+    // const ssData = [hairImage, shirtImage, skinImage];
+    const ssData = {
+      'hair' : hairImage,
+      'shirt' : shirtImage,
+      'skin' : skinImage
+    };
     dispatch({
       data: ssData,
       type: 'INIT'

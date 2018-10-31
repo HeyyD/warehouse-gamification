@@ -11,18 +11,10 @@ import { getSpritesheetData } from './reducers/assetsReducer';
 
 interface IPropit {
   getSpritesheetData: () => any;
-  assets: any[];
+  assets: {};
 }
 
 class App extends React.Component<IPropit> {
-
-  /*
-  private itemLists: ItemList[] = [
-    // <ItemList id='skins' /> as unknown as ItemList,
-    <ItemList id='hair' /> as unknown as ItemList,
-    // <ItemList id='shirts'/> as unknown as ItemList
-  ];
-  */
 
   private itemLists: ItemList[] = [];
 
@@ -52,11 +44,26 @@ class App extends React.Component<IPropit> {
 
   private async initSpritesheets() {
     await this.props.getSpritesheetData();
-    const image = new Image();
-    image.src = this.props.assets[0];
-    image.onload = () => {
-      const hairSS = new SpriteSheet(image, 16, 10, 4);
-      this.itemLists.push(<ItemList id='hair' spritesheet={ hairSS }/> as unknown as ItemList);
+
+    const hair = new Image();
+    hair.src = this.props.assets['hair'];
+    hair.onload = () => {
+      const ss = new SpriteSheet(hair, 16, 10, 4);
+      this.itemLists.push(<ItemList id='hair' spritesheet={ ss }/> as unknown as ItemList);
+    };
+
+    const skin = new Image();
+    skin.src = this.props.assets['skin'];
+    skin.onload = () => {
+      const ss = new SpriteSheet(skin, 13, 10, 6);
+      this.itemLists.push(<ItemList id='skin' spritesheet={ ss }/> as unknown as ItemList);
+    };
+
+    const shirt = new Image();
+    shirt.src = this.props.assets['shirt'];
+    shirt.onload = () => {
+      const ss = new SpriteSheet(shirt, 4, 10, 6);
+      this.itemLists.push(<ItemList id='shirt' spritesheet={ ss }/> as unknown as ItemList);
     };
   }
 
@@ -79,7 +86,7 @@ class App extends React.Component<IPropit> {
   }
 }
 
-const mapStateToProps = (state: {assets: any[]}) => {
+const mapStateToProps = (state: {assets: {}}) => {
   return {
     assets: state.assets
   };

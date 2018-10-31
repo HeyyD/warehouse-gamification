@@ -33,7 +33,6 @@ class ItemList extends React.Component<{ id: string, spritesheet: SpriteSheet }>
 
   private initDraw(): void {
     const ss = this.props.spritesheet;
-    console.log(ss);
     this.canvasRefs.forEach((canvas, index) => {
       const ctx = canvas.getContext('2d')!;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
