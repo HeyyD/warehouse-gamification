@@ -15,20 +15,24 @@ interface IProps {
   assets: {};
 }
 
-class ItemList extends React.Component<IProps> {
+interface IState {
+  items: JSX.Element[] | null;
+}
+
+class ItemList extends React.Component<IProps, IState> {
 
   private canvasRefs: HTMLCanvasElement[] = [];
-  private items: JSX.Element[];
   private spritesheet: SpriteSheet;
 
   constructor(props: IProps) {
     super(props);
     this.initSpritesheets();
+    this.state = {items: null};
   }
 
   public render() {
     return (
-      <div className='inventory-container'>{ this.items }</div> 
+      <div className='inventory-container'>{ this.state.items ? this.state.items : 'Loading...' }</div> 
     );
   }
 
@@ -64,7 +68,7 @@ class ItemList extends React.Component<IProps> {
 
 
   private initDraw(): void {
-    this.items = this.spritesheet.getSprites().map((sprite, index) => {
+    const items = this.spritesheet.getSprites().map((sprite, index) => {
       return (
         <div key={ index } className='item-wrapper'>
           <canvas onClick={() => this.changeEquipment(index) } ref={ (canvas) => this.canvasRefs.push(canvas!) } width='90px' height='90px'>item</canvas>
@@ -72,8 +76,7 @@ class ItemList extends React.Component<IProps> {
       );
     });
 
-    this.forceUpdate();
-
+    this.setState({items});
     const ss = this.spritesheet;
     this.canvasRefs.forEach((canvas, index) => {
       const ctx = canvas.getContext('2d')!;
