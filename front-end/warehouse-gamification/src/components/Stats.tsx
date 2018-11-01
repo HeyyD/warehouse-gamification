@@ -1,5 +1,5 @@
 import * as React from 'react';
-import User from '../models/user';
+import User from '../models/IUser';
 import Stat from './Stat';
 import './Stats.scss';
 

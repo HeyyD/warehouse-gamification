@@ -17,16 +17,16 @@ const mockUser = {
 const reducer = (state = mockUser, action: {type: string, equipment: IEquipment}) => {
   switch(action.type){
     case 'CHANGE_EQUIPMENT':
-      return action.equipment;
+      return {...state, equipment: action.equipment};
     default:
       return state;
   }
 };
 
-export const changeEquipment = (equipment: IEquipment) => {
+export const changeEquipment = (eq: IEquipment) => {
   return async (dispatch: ({}) => {type: string}) => {
     dispatch({
-      equipment: {equipment},
+      equipment: eq,
       type: 'CHANGE_EQUIPMENT'
     });
   };

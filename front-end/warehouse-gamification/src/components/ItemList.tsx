@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import IEquipment from '../models/IEquipment';
-import IUser from '../models/user';
+import IUser from '../models/IUser';
 import { changeEquipment} from '../reducers/userReducer';
 import './ItemList.scss';
 import SpriteSheet from './SpriteSheet';
