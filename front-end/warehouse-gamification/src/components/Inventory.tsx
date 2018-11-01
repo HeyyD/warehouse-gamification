@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 
 import './Inventory.scss';
 
-class Inventory extends React.Component<{ lists: JSX.Element[] }> {
+interface IProps extends RouteComponentProps<any> {
+  lists: string[];
+}
 
-  constructor(props: { lists: JSX.Element[] }) {
+class Inventory extends React.Component<IProps> {
+
+  constructor(props: IProps) {
     super(props);
   }
 
@@ -15,7 +19,8 @@ class Inventory extends React.Component<{ lists: JSX.Element[] }> {
         <ul className='inventory-menu'>
           {
             this.props.lists.map((list, index) => {
-              return <li key={ index }><Link to={ `inventory/${ list.props.id }` }>{ list.props.id.toUpperCase() }</Link></li>;
+              // return <li key={ index }><Link to={ `inventory/${ list.props.id }` }>{ list.props.id.toUpperCase() }</Link></li>;
+              return <li key={ index }><Link to={ `inventory/${ list }` }>{ list.toUpperCase() }</Link></li>;
             })
           }
         </ul>
@@ -23,4 +28,4 @@ class Inventory extends React.Component<{ lists: JSX.Element[] }> {
     );
   }
 }
-export default Inventory;
+export default withRouter (Inventory);

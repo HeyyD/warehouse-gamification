@@ -20,7 +20,7 @@ class App extends React.Component<IPropit> {
 
   constructor(props: IPropit) {
     super(props);
-    this.inventoryLayout = this.inventoryLayout.bind(this);
+    // this.inventoryLayout = this.inventoryLayout.bind(this);
   }
 
   public componentDidMount() {
@@ -33,8 +33,10 @@ class App extends React.Component<IPropit> {
       <Router>
         <div className='content-wrapper'>
           <Route exact={true} path='/' render={() =>(<MobileLayout> <MainPage /> </MobileLayout>)} />
-          <Route exact={true} path='/inventory' render={ this.inventoryLayout } />
-          <Route exact={true} path='/inventory/:id' render={({match}) => this.itemListLayout(match.params.id) }/>
+          <Route exact={true} path='/inventory/' render={ this.inventoryLayout } />
+          {
+          //  <Route exact={true} path='/inventory/:id' render={({match}) => this.itemListLayout(match.params.id) }/>
+          }
           <Route exact={true} path='/settings' render={() =>(<MobileLayout> <div>settings</div> </MobileLayout>)} />
         </div>
       </Router>
@@ -67,6 +69,7 @@ class App extends React.Component<IPropit> {
     };
   }
 
+  /*
   private itemListLayout(id: string): JSX.Element | undefined {
     for(const list of this.itemLists) {
       if (list.props.id === id) {
@@ -77,10 +80,12 @@ class App extends React.Component<IPropit> {
     }
     return undefined;
   }
+
+  */
   private inventoryLayout(): JSX.Element {
     return (
       <MobileLayout>
-        <Inventory lists={ this.itemLists }/>
+        <Inventory lists={['hair', 'skin', 'shirts']}/>
       </MobileLayout>
     );
   }
