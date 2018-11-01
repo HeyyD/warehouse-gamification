@@ -3,13 +3,19 @@ import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 
 import './Inventory.scss';
 import ItemList from './ItemList';
+import { connect } from 'react-redux';
 
-class Inventory extends React.Component<RouteComponentProps<any>> {
+interface IProps extends RouteComponentProps<any> {
+  assets: {data: {}};
+}
 
-  private lists = ['hair', 'skin', 'shirt'];
+class Inventory extends React.Component<IProps> {
 
-  constructor(props: RouteComponentProps<any>) {
+  private lists: string[];
+
+  constructor(props: IProps) {
     super(props);
+    this.lists = Object.keys(this.props.assets.data);
   }
 
   public render() {
@@ -31,4 +37,10 @@ class Inventory extends React.Component<RouteComponentProps<any>> {
   }
 }
 
-export default withRouter (Inventory);
+const mapStateToProps = (state: {assets: {data: {}}}) => {
+  return {
+    assets: state.assets
+  };
+};
+
+export default withRouter(connect(mapStateToProps, null) (Inventory));
