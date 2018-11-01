@@ -35,13 +35,9 @@ class Avatar extends React.Component<IProps> {
   
   constructor(props: IProps) {
     super(props);
-    this.initSpritesheets = this.initSpritesheets.bind(this);
-
     this.skinSrc.src = skinImage;
     this.shirtSrc.src = shirtImage;
     this.hairSrc.src = hairImage;
-
-    this.initSpritesheets();
   }
 
   public render() {
@@ -95,11 +91,6 @@ class Avatar extends React.Component<IProps> {
         }
       };
     });
-  }
-
-  private initSpritesheets() {
-    // await getSpritesheetData();
-    // console.log(this.props.assets);
   }
 }
 
