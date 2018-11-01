@@ -28,7 +28,7 @@ const Navigation = (props : {toggled: boolean, toggle: ()=>{}}) => {
             <h2> Tom </h2>
           </div>
           <Link to='/'><NavigationItem text='Home' icon='fa fa-home' /></Link>
-          <Link to='/inventory'><NavigationItem text='Inventory' icon='fa fa-archive' /></Link>
+          <Link to='/inventory/menu'><NavigationItem text='Inventory' icon='fa fa-archive' /></Link>
           <Link to='/settings'><NavigationItem text='Settings' icon='fa fa-cog' /></Link>
         </Sidebar>
     </div>
