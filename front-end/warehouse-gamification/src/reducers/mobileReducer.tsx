@@ -7,7 +7,7 @@ const reducer = (state = true, action: {type: string, isMobile?: boolean}) => {
   }
 };
 
-export const changeState = (isMobile: boolean) => {
+export const changeMobileState = (isMobile: boolean) => {
   return async (dispatch: ({}) => any) => {
     dispatch({
       isMobile,
