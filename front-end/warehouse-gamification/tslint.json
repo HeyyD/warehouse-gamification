@@ -8,6 +8,10 @@
   },
   "rules": {
     "semicolon": [true, "always"],
-    "no-console": ["log"]
+    "no-console": ["log"],
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "jsx-no-lambda": false,
+    "no-string-literal": false
   }
 }

@@ -1,4 +1,4 @@
-import ISprite from './ISprite';
+import ISprite from '../models/ISprite';
 
 class SpriteSheet {
 
