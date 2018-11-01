@@ -3,7 +3,7 @@ import * as React from 'react';
 import './Avatar.scss';
 
 import SpriteSheet from './SpriteSheet';
-import IUser from '../models/user';
+import IUser from '../models/IUser';
 import { connect } from 'react-redux';
 import IEquipment from '../models/IEquipment';
 
