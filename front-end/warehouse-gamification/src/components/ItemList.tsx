@@ -2,14 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import IEquipment from '../models/IEquipment';
 import IUser from '../models/user';
-import { getSpritesheetData } from '../reducers/assetsReducer';
 import { changeEquipment} from '../reducers/userReducer';
 import './ItemList.scss';
 import SpriteSheet from './SpriteSheet';
 
 interface IProps {
   changeEquipment: (equipment: IEquipment) => any;
-  getSpritesheetData: () => any;
   id: string;
   equipment: IEquipment;
   assets: {};
@@ -36,9 +34,7 @@ class ItemList extends React.Component<IProps, IState> {
     );
   }
 
-  private async initSpritesheets() {
-    await this.props.getSpritesheetData();
-
+  private initSpritesheets() {
     switch (this.props.id) {
       case 'hair':
         const hair = new Image();
@@ -105,4 +101,4 @@ const mapStateToProps = (state: {user: IUser, assets: {}}) => {
     equipment: state.user.equipment
   };
 };
-export default connect(mapStateToProps, {changeEquipment, getSpritesheetData}) (ItemList);
+export default connect(mapStateToProps, {changeEquipment}) (ItemList);

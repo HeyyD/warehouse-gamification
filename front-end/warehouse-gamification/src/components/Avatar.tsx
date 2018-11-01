@@ -10,7 +10,12 @@ import IUser from '../models/user';
 import { connect } from 'react-redux';
 import IEquipment from '../models/IEquipment';
 
-class Avatar extends React.Component<{equipment: IEquipment}> {
+interface IProps {
+  equipment: IEquipment;
+  assets: {};
+}
+
+class Avatar extends React.Component<IProps> {
 
   private skinSrc = new Image();
   private shirtSrc = new Image();
@@ -28,12 +33,15 @@ class Avatar extends React.Component<{equipment: IEquipment}> {
   private shirtSpritesheet?: SpriteSheet;
   private hairSpritesheet?: SpriteSheet;
   
-  constructor(props: {equipment: IEquipment}) {
+  constructor(props: IProps) {
     super(props);
+    this.initSpritesheets = this.initSpritesheets.bind(this);
 
     this.skinSrc.src = skinImage;
     this.shirtSrc.src = shirtImage;
     this.hairSrc.src = hairImage;
+
+    this.initSpritesheets();
   }
 
   public render() {
@@ -88,11 +96,17 @@ class Avatar extends React.Component<{equipment: IEquipment}> {
       };
     });
   }
+
+  private initSpritesheets() {
+    // await getSpritesheetData();
+    // console.log(this.props.assets);
+  }
 }
 
-const mapStateToProps = (state: {user: IUser}) => {
+const mapStateToProps = (state: {user: IUser, assets: {}}) => {
   return{
-    equipment: state.user.equipment
+    equipment: state.user.equipment,
+    assets: state.assets
   };
 };
 
