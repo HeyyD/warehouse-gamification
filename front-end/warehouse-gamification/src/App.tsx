@@ -5,8 +5,8 @@ import './App.scss';
 import Inventory from './components/Inventory';
 import MobileLayout from './layouts/MobileLayout';
 import DesktopLayout from './layouts/DesktopLayout';
-import { changeMobileState } from './reducers/mobileReducer';
 import MainPage from './pages/MainPage';
+import { changeMobileState } from './reducers/mobileReducer';
 import {initAssets} from './reducers/assetsReducer';
 
 interface IProps {
