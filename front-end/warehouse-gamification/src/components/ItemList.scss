@@ -6,9 +6,11 @@
   flex-wrap: wrap;
   justify-content: center;
   overflow: scroll;
-  border-top: solid 2px $color-primary;
-  border-bottom: solid 2px $color-primary;
 
+  &.mobile {
+    border-top: solid 2px $color-primary;
+    border-bottom: solid 2px $color-primary;
+  }
 
   .item-wrapper {
     padding: $space-md;

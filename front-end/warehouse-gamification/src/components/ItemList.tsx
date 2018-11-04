@@ -11,6 +11,7 @@ interface IProps {
   id: string;
   equipment: IEquipment;
   assets: {data: {}};
+  isMobile: boolean;
 }
 
 class ItemList extends React.Component<IProps> {
@@ -37,7 +38,7 @@ class ItemList extends React.Component<IProps> {
 
   public render() {
     return (
-      <div className='inventory-container'>{ this.items }</div> 
+      <div className={(this.props.isMobile ? 'mobile ' : '') + 'inventory-container'}>{ this.items }</div> 
     );
   }
 
@@ -64,10 +65,11 @@ class ItemList extends React.Component<IProps> {
   }
 }
 
-const mapStateToProps = (state: {user: IUser, assets: {}}) => {
+const mapStateToProps = (state: {user: IUser, assets: {}, isMobile: boolean}) => {
   return {
     assets: state.assets,
-    equipment: state.user.equipment
+    equipment: state.user.equipment,
+    isMobile: state.isMobile
   };
 };
 export default connect(mapStateToProps, {changeEquipment}) (ItemList);
