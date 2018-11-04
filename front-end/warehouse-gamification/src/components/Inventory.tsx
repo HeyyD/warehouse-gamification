@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import './Inventory.scss';
 import ItemList from './ItemList';
@@ -27,7 +27,7 @@ class Inventory extends React.Component<IProps> {
         <ul className='inventory-menu'>
           {
             this.lists.map((list, index) => {
-              return <li key={ index }><Link to={ list }>{ list.toUpperCase() }</Link></li>;
+              return <li key={ index }><a href={'/inventory/' + list}>{ list.toUpperCase() }</a></li>;
             })
           }
         </ul>
