@@ -20,14 +20,13 @@
   }
   .bottom-section {
     width: 100%;
-    background-color: #c2c2c2;
+    border-top: 2px solid orange;
     height: 100%;
     .inventory-section {
       display: inline-block;
-      padding: $space-lg;
       border-right: solid 2px orange;
       height: 100%;
-      width: 15em;
+      width: 25em;
     }
     .quest-section {
       display: inline-block;
