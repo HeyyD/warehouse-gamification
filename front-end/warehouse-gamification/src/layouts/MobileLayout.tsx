@@ -4,6 +4,7 @@ import Avatar from '../components/Avatar';
 import Navigation from '../components/Navigation';
 import ProgressCircle from '../components/ProgressCircle';
 import { setFalse } from '../reducers/sidebarReducer';
+import { withRouter } from 'react-router-dom';
 import './MobileLayout.scss'; 
 
 const MobileLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => {
@@ -23,4 +24,4 @@ const MobileLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => 
   
 };
 
-export default connect(null,{setFalse})(MobileLayout);
+export default withRouter(connect(null,{setFalse})(MobileLayout) as any);

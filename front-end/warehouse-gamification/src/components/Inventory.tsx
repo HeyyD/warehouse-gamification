@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import './Inventory.scss';
 import ItemList from './ItemList';
@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 interface IProps extends RouteComponentProps<any> {
   assets: {data: {}};
+  isMobile: boolean;
 }
 
 class Inventory extends React.Component<IProps> {
@@ -19,27 +20,29 @@ class Inventory extends React.Component<IProps> {
   }
 
   public render() {
-    if (this.props.match.params.id === 'menu') {
-      return (
-        <div className='inventory-wrapper'>
-        <ul className='inventory-menu'>
-          {
-            this.lists.map((list, index) => {
-              return <li key={ index }><Link to={ list }>{ list.toUpperCase() }</Link></li>;
-            })
-          }
-        </ul>
-      </div>
-      );
+
+    let element;
+    const { id } = this.props.match.params;
+    const atMenu = !(this.lists.indexOf(id) > -1);
+
+    if (atMenu) {
+      element = <ul className='inventory-menu'>{this.lists.map((list, index) => 
+        <li key={ index }><a href={'/inventory/' + list }>{ list.toUpperCase() }</a></li>)}</ul>;
     } else {
-      return <ItemList id={ this.props.match.params.id } />;
+      element = <ItemList id={ this.props.match.params.id } />;
     }
+    return (
+      <div className={(this.props.isMobile ? 'mobile ' : '') + 'inventory-wrapper' }>
+        {element}
+      </div>
+    );
   }
 }
 
-const mapStateToProps = (state: {assets: {data: {}}}) => {
+const mapStateToProps = (state: {assets: {data: {}}, isMobile: boolean}) => {
   return {
-    assets: state.assets
+    assets: state.assets,
+    isMobile: state.isMobile
   };
 };
 

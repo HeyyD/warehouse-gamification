@@ -1,0 +1,39 @@
+@import '../index.scss';
+
+.desktop-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f2f2f2;
+
+  .upper-section {
+    display: flex;
+    height: 360px;
+
+    .upper-right-section {
+      padding-left: $space-lg;
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+      background-color: #f2f2f2;
+      .player-info {
+        margin-bottom: $space-md;
+      }
+    }
+  }
+  .bottom-section {
+    border-top: 2px solid orange;
+    display: flex;
+    flex: 1 1 100%;
+
+    .inventory-section {
+      display: inline-block;
+      border-right: solid 2px orange;
+      height: 100%;
+      width: 25em;
+    }
+    .quest-section {
+      padding: $space-lg;
+    }
+  }
+}
