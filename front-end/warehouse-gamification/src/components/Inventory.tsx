@@ -22,8 +22,10 @@ class Inventory extends React.Component<IProps> {
   public render() {
 
     let element;
+    const { id } = this.props.match.params;
+    const atMenu = !(this.lists.indexOf(id) > -1);
 
-    if (this.props.match.params.id === 'menu') {
+    if (atMenu) {
       element = <ul className='inventory-menu'>{this.lists.map((list, index) => <li key={ index }><Link to={ list }>{ list.toUpperCase() }</Link></li>)}</ul>;
     } else {
       element = <ItemList id={ this.props.match.params.id } />;

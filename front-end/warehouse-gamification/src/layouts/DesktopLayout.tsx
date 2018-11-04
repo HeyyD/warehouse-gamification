@@ -3,11 +3,20 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Avatar from '../components/Avatar';
 import ProgressBar from '../components/ProgressBar';
+import Inventory from '../components/Inventory';
 import Stats from '../components/Stats';
 import User from '../models/IUser';
 import './DesktopLayout.scss';
 
-const DesktopLayout = (props: {user: User, children: React.ReactNode}) => {
+const DesktopLayout = (
+  props: {
+    user: User, 
+    children: React.ReactNode,
+    location: {pathname: string},
+    isReady: boolean 
+  }) => {
+  const pathname = props.location.pathname.toLowerCase();
+  console.log(props.isReady);
   return(
     <div className='desktop-layout'>
       <div className='upper-section'>
@@ -23,7 +32,7 @@ const DesktopLayout = (props: {user: User, children: React.ReactNode}) => {
       </div>
       <div className='bottom-section'>
         <div className='inventory-section'>
-          {props.children}
+          {pathname.startsWith('/inventory')? props.children : <Inventory />}
         </div>
         <div className='quest-section'>
           quest
@@ -32,9 +41,10 @@ const DesktopLayout = (props: {user: User, children: React.ReactNode}) => {
     </div>
   );
 };
-const mapStateToProps = (state: {user: User}) => {
+const mapStateToProps = (state: {user: User, assets: {isReady: boolean}}) => {
   return {
-    user: state.user 
+    user: state.user,
+    isReady: state.assets.isReady
   };
 };
 
