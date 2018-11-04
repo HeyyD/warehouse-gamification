@@ -4,7 +4,11 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: calc(100% - 104px);
+  height: 100%;
+
+  &.mobile {
+    height: calc(100% - 104px);
+  }
 
   .inventory-menu {
     height: 100%;

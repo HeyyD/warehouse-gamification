@@ -1,12 +1,15 @@
 @import '../index.scss';
 
 .desktop-layout {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   background-color: #f2f2f2;
-  margin-bottom: $space-lg;
+
   .upper-section {
     display: flex;
-    width: 100%;
+    height: 360px;
+
     .upper-right-section {
       padding-left: $space-lg;
       display: flex;
@@ -19,10 +22,10 @@
     }
   }
   .bottom-section {
-    width: 100%;
     border-top: 2px solid orange;
     display: flex;
-    height: 100%;
+    flex: 1 1 100%;
+
     .inventory-section {
       display: inline-block;
       border-right: solid 2px orange;
@@ -31,7 +34,6 @@
     }
     .quest-section {
       padding: $space-lg;
-      height: 100%;
     }
   }
 }
