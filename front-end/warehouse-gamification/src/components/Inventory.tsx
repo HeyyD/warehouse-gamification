@@ -19,7 +19,9 @@ class Inventory extends React.Component<IProps> {
   }
 
   public render() {
-    if (this.props.match.params.id === 'menu') {
+    const { id } = this.props.match.params;
+    const atMenu = !(this.lists.indexOf(id) > -1);
+    if (atMenu) {
       return (
         <div className='inventory-wrapper'>
         <ul className='inventory-menu'>
@@ -32,7 +34,7 @@ class Inventory extends React.Component<IProps> {
       </div>
       );
     } else {
-      return <ItemList id={ this.props.match.params.id } />;
+      return <ItemList id={ id } />;
     }
   }
 }
