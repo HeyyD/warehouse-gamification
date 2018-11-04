@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.scss';
 import Inventory from './components/Inventory';
-import MobileLayout from './layouts/MobileLayout';
-import DesktopLayout from './layouts/DesktopLayout';
+import MainLayout from './layouts/MainLayout';
 import MainPage from './pages/MainPage';
 import { changeMobileState } from './reducers/mobileReducer';
 import {initAssets} from './reducers/assetsReducer';
@@ -43,10 +42,11 @@ class App extends React.Component<IProps> {
         <React.Fragment>
         <Router>
           <div className='content-wrapper'>
-            <Route exact={true} path='/' render={() =>(<MobileLayout> <MainPage /> </MobileLayout>)} />
-            <Route exact={true} path='/inventory/:id' render={() => <MobileLayout><Inventory/></MobileLayout> } />
-            <Route exact={true} path='/settings' render={() =>(<MobileLayout> <div>settings</div> </MobileLayout>)} />
-            <Route exact={true} path='/desktop' render={() =>(<DesktopLayout/>)} />
+            <MainLayout>
+              <Route exact={true} path='/' component={MainPage} />
+              <Route exact={true} path='/inventory/:id' component={Inventory} />
+              <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
+            </MainLayout>
           </div>
         </Router>
         </React.Fragment>
