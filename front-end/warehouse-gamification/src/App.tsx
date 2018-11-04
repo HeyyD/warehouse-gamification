@@ -62,10 +62,10 @@ class App extends React.Component<IProps> {
 
 }
 
-const mapStateToProps = (state: {isMobile: boolean, isReady: boolean}) => {
+const mapStateToProps = (state: {isMobile: boolean, assets: {isReady: boolean}}) => {
   return {
     isMobile: state.isMobile,
-    isReady : state.isReady
+    isReady : state.assets.isReady
   };
 };
 

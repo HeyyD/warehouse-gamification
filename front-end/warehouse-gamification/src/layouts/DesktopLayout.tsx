@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Avatar from '../components/Avatar';
 import ProgressBar from '../components/ProgressBar';
 import Stats from '../components/Stats';
-import User from '../models/user';
+import User from '../models/IUser';
 import './DesktopLayout.scss';
 
 const DesktopLayout = (props: {user: User}) => {
