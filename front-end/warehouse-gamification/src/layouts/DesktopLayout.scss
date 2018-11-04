@@ -19,20 +19,20 @@
     }
   }
   .bottom-section {
-    display: flex;
     width: 100%;
     background-color: #c2c2c2;
-    height: 80%;
+    height: 100%;
     .inventory-section {
       display: inline-block;
       padding: $space-lg;
-      flex: 1 0 auto;
       border-right: solid 2px orange;
+      height: 100%;
+      width: 15em;
     }
     .quest-section {
       display: inline-block;
       padding: $space-lg;
-      flex: 2.5 0 auto;
+      height: 100%;
     }
   }
 }

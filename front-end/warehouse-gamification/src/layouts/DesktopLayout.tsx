@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Avatar from '../components/Avatar';
 import ProgressBar from '../components/ProgressBar';
 import Stats from '../components/Stats';
 import User from '../models/IUser';
 import './DesktopLayout.scss';
 
-const DesktopLayout = (props: {user: User}) => {
+const DesktopLayout = (props: {user: User, children: React.ReactNode}) => {
   return(
     <div className='desktop-layout'>
       <div className='upper-section'>
@@ -22,7 +23,7 @@ const DesktopLayout = (props: {user: User}) => {
       </div>
       <div className='bottom-section'>
         <div className='inventory-section'>
-          inventory
+          {props.children}
         </div>
         <div className='quest-section'>
           quest
@@ -37,4 +38,4 @@ const mapStateToProps = (state: {user: User}) => {
   };
 };
 
-export default connect(mapStateToProps)(DesktopLayout);
+export default withRouter(connect(mapStateToProps)(DesktopLayout) as any);
