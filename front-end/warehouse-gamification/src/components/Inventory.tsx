@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 interface IProps extends RouteComponentProps<any> {
   assets: {data: {}};
+  isMobile: boolean;
 }
 
 class Inventory extends React.Component<IProps> {
@@ -19,27 +20,26 @@ class Inventory extends React.Component<IProps> {
   }
 
   public render() {
+
+    let element;
+
     if (this.props.match.params.id === 'menu') {
-      return (
-        <div className='inventory-wrapper'>
-        <ul className='inventory-menu'>
-          {
-            this.lists.map((list, index) => {
-              return <li key={ index }><Link to={ list }>{ list.toUpperCase() }</Link></li>;
-            })
-          }
-        </ul>
-      </div>
-      );
+      element = <ul className='inventory-menu'>{this.lists.map((list, index) => <li key={ index }><Link to={ list }>{ list.toUpperCase() }</Link></li>)}</ul>;
     } else {
-      return <ItemList id={ this.props.match.params.id } />;
+      element = <ItemList id={ this.props.match.params.id } />;
     }
+    return (
+      <div className={(this.props.isMobile ? 'mobile ' : '') + 'inventory-wrapper' }>
+        {element}
+      </div>
+    );
   }
 }
 
-const mapStateToProps = (state: {assets: {data: {}}}) => {
+const mapStateToProps = (state: {assets: {data: {}}, isMobile: boolean}) => {
   return {
-    assets: state.assets
+    assets: state.assets,
+    isMobile: state.isMobile
   };
 };
 
