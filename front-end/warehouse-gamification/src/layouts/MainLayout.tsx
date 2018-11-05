@@ -1,24 +1,28 @@
 import * as React from 'react';
+import DesktopLayout from './DesktopLayout';
 import { connect } from 'react-redux';
-import Avatar from '../components/Avatar';
-import Navigation from '../components/Navigation';
-import ProgressCircle from '../components/ProgressCircle';
-import { setFalse } from '../reducers/sidebarReducer';
-import './MainLayout.scss'; 
+import { withRouter } from 'react-router-dom';
+import MobileLayout from './MobileLayout';
 
-const MainLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => {
-    const { setFalse, children } = props;
-    return (
-      <div className='main-layout' onClick={setFalse}>
-        <Navigation />
-        <div className='avatar'>
-          <Avatar />
-        </div>
-        <ProgressCircle />
-        {children} 
-      </div>
-    );
-  
+
+const MainLayout = (props: { children: React.ReactNode, isMobile: boolean }) => {
+  return (
+    <React.Fragment>
+      {props.isMobile?
+      <MobileLayout >
+        {props.children}
+      </MobileLayout>
+      :
+      <DesktopLayout>
+        {props.children}
+      </DesktopLayout>}
+    </React.Fragment>
+  );
 };
 
-export default connect(null,{setFalse})(MainLayout);
+const mapStateToProps = (state: {isMobile: boolean}) => {
+  return {
+    isMobile: state.isMobile 
+  };
+};
+export default withRouter(connect(mapStateToProps)( MainLayout ) as any);

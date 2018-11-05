@@ -1,0 +1,23 @@
+@import '../index.scss';
+
+.inventory-container {
+  display: flex;
+  background: $color-primary-light;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: scroll;
+
+  &.mobile {
+    border-top: solid 2px $color-primary;
+    border-bottom: solid 2px $color-primary;
+  }
+
+  .item-wrapper {
+    padding: $space-md;
+
+    canvas {
+      background: #fff;
+      border: solid 1px $color-primary;
+    }
+  }
+}

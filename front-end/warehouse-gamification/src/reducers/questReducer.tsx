@@ -1,7 +1,7 @@
 const mockQuest = {
-  name: 'Defeat the box dragon!',
   current: 20,
   max: 100,
+  name: 'Defeat the box dragon!',
 };
 
 const reducer = (state = mockQuest, action: {type: string}) => {
