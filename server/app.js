@@ -7,8 +7,10 @@ const Sequelize = require('sequelize');
 var db = require('./secret/db.json');
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRoute = require('./routes/index');
+const usersRoute = require('./routes/users');
+const questRoute = require('./routes/quests')
+
 
 var app = express();
 
@@ -22,8 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+// Define routes
+app.use('/', indexRoute);
+app.use('/users', usersRoute);
+app.use('/quests', questRoute)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,68 +46,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// ORM connection
-const warehouseDB = new Sequelize('warehouseDB', db.username, db.password, {
-  dialect: 'mssql', // SQLServer
-  host: db.address,
-  port: 1433, // Default port
-  encrypt: true,
-  logging: false, 
-  dialectOptions: {
-    encrypt: true,
-    requestTimeout: 10000
-  }
-});
 
-// Define the 'User' model
-var UserModel = warehouseDB.define('user', {
-  username: Sequelize.STRING,
-  password: Sequelize.STRING,
-  level: Sequelize.INTEGER,
-  xp: Sequelize.INTEGER,
-});
 
-// Define the 'Quest' model
-const QuestModel = warehouseDB.define('quest', {
-  title: Sequelize.STRING,
-  dueDate: Sequelize.DATE,
-  isComplete: Sequelize.BOOLEAN,
-  description: Sequelize.TEXT,
-});
-QuestModel.hasMany(UserModel);
 
-warehouseDB.sync({force: true})
-.then(function() {
-
-    // Create demo: Create a User instance and save it to the database
-    UserModel.create({
-      username: 'Demon_Slayer99',
-      password: 'Shrestinian',
-      level: 12,
-      xp: 1251
-    })
-    .then(function(user) {
-        console.log('\nCreated User:', user.get({ plain: true}));
-
-        QuestModel.create({
-            title: 'Kill the Box Dragon!',
-            dueDate: new Date(2017,04,01),
-            isComplete: false,
-            description: "Just kill the dragon!"
-        })
-        .then(function(quest) {
-            console.log('\nCreated Quests:', quest.get({ plain: true}));
-
-            quest.setUsers([user])
-            .then(function() {
-            
-                // Read demo: find incomplete tasks assigned to user 'Anna''
-                UserModel.findAll()
-                .then(function(users) {
-                    console.log('all users: ', JSON.stringify(users));                    
-                })
-            })
-        })
-    })
-})
-module.exports = { app, warehouseDB, UserModel, QuestModel };
+module.exports = { app };
