@@ -2,12 +2,13 @@ const fs        = require('fs');
 const path      = require('path');
 const Sequelize = require('sequelize');
 const basename  = path.basename(__filename);
-var secret = require('../secret/db.json');
+const secret = require('../secret/db.json');
+const seed = require('./seed');
 
-let db        = {};
+let db = {};
 
 // ORM connection
-var sequelize = new Sequelize('warehouseDB', secret.username, secret.password, {
+const sequelize = new Sequelize('warehouseDB', secret.username, secret.password, {
     dialect: 'mssql', // SQLServer
     host: secret.address,
     port: 1433, // Default port
@@ -37,40 +38,9 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-// warehouseDB.sync({force: true})
-// .then(function() {
-
-//     // Create demo: Create a User instance and save it to the database
-//     UserModel.create({
-//       username: 'Demon_Slayer99',
-//       password: 'Shrestinian',
-//       level: 12,
-//       xp: 1251
-//     })
-//     .then(function(user) {
-//         console.log('\nCreated User:', user.get({ plain: true}));
-
-//         QuestModel.create({
-//             title: 'Kill the Box Dragon!',
-//             dueDate: new Date(2017,04,01),
-//             isComplete: false,
-//             description: "Just kill the dragon!"
-//         })
-//         .then(function(quest) {
-//             console.log('\nCreated Quests:', quest.get({ plain: true}));
-
-//             quest.setUsers([user])
-//             .then(function() {
-            
-//                 // Read demo: find incomplete tasks assigned to user 'Anna''
-//                 UserModel.findAll()
-//                 .then(function(users) {
-//                     console.log('all users: ', JSON.stringify(users));                    
-//                 })
-//             })
-//         })
-//     })
-// })
+if (process.argv.filter.some((val, index, val) => val === "seed-db")) {
+  seed(db);
+}
 
 module.exports = db;
 
