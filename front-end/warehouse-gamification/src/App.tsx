@@ -7,6 +7,7 @@ import MainLayout from './layouts/MainLayout';
 import MainPage from './pages/MainPage';
 import { changeMobileState } from './reducers/mobileReducer';
 import {initAssets} from './reducers/assetsReducer';
+import Login from './components/Login';
 
 interface IProps {
   initAssets: () => any;
@@ -40,15 +41,18 @@ class App extends React.Component<IProps> {
     if(this.props.isReady) {
       return (
         <React.Fragment>
-        <Router>
-          <div className='content-wrapper'>
-            <MainLayout>
-              <Route exact={true} path='/' component={MainPage} />
-              <Route exact={true} path='/inventory/:id' component={Inventory} />
-              <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
-            </MainLayout>
-          </div>
-        </Router>
+          <Router>
+            <React.Fragment>
+            <Route exact={true} path='/login' component={Login}/>
+            <div className='content-wrapper'>
+              <MainLayout>
+                <Route exact={true} path='/' component={MainPage} />
+                <Route exact={true} path='/inventory/:id' component={Inventory} />
+                <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
+              </MainLayout>
+            </div>
+            </React.Fragment>
+          </Router>
         </React.Fragment>
       ); 
     } else {
