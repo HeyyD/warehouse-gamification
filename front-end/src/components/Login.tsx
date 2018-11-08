@@ -3,14 +3,19 @@ import * as React from 'react';
 import './Login.scss';
 
 interface IProps {
-  login: () => any;
+  login: (login: boolean) => any;
 }
 
 interface IState {
   isReady: boolean;
   username: string;
   password: string;
-  users: [];
+  users: ILogin[];
+}
+
+interface ILogin {
+  username: string;
+  password: string;
 }
 
 class Login extends React.Component<IProps, IState> {
@@ -32,6 +37,7 @@ class Login extends React.Component<IProps, IState> {
     fetch('http://localhost:3001/api/users')
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         this.setState({
           isReady: true,
           users: res
@@ -50,11 +56,22 @@ class Login extends React.Component<IProps, IState> {
             <input name='username' type='text' onChange={e => this.onChange(e)}/>
             <input name='password' type='password' onChange={e => this.onChange(e)}/>
           </div>
-          <button disabled={!this.state.isReady} onClick={e => this.login(e)}>Login</button>
+          <button disabled={!this.state.isReady} onClick={() => this.props.login(this.login())}>Login</button>
         </div>
       </div>
     );
   }
+
+  private login(): boolean {
+    let success = false;
+    this.state.users.forEach(user => {
+      if (user.username === this.state.username && user.password === this.state.password) {
+        success = true;
+      }
+    });
+    return success;
+  }
+
   private onChange(event: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ [event.target.name]: event.target.value } as any);
   }

@@ -41,8 +41,8 @@ class App extends React.Component<IProps> {
 
   public render() {
     if (!this.isLoggedIn) {
-      return <Login login={() => {
-        this.isLoggedIn = true;
+      return <Login login={(login: boolean) => {
+        this.isLoggedIn = login;
         this.forceUpdate();
       }}/>;
     } else if(this.props.isReady) {
