@@ -18,6 +18,8 @@ interface IProps {
 
 class App extends React.Component<IProps> {
 
+  private isLoggedIn = false;
+
   constructor(props: IProps) {
     super(props);
     this.init();
@@ -38,12 +40,15 @@ class App extends React.Component<IProps> {
   }
 
   public render() {
-    if(this.props.isReady) {
+    if (!this.isLoggedIn) {
+      return <Login login={() => {
+        this.isLoggedIn = true;
+        this.forceUpdate();
+      }}/>;
+    } else if(this.props.isReady) {
       return (
         <React.Fragment>
           <Router>
-            <React.Fragment>
-            <Route exact={true} path='/login' component={Login}/>
             <div className='content-wrapper'>
               <MainLayout>
                 <Route exact={true} path='/' component={MainPage} />
@@ -51,7 +56,6 @@ class App extends React.Component<IProps> {
                 <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
               </MainLayout>
             </div>
-            </React.Fragment>
           </Router>
         </React.Fragment>
       ); 
