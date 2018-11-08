@@ -4,18 +4,18 @@ var router = express.Router();
 const models = require('../models');
 
 
-/* GET users listing. */
+/* GET quest listing. */
 router.get('/', function(req, res, next) {
-  models.User.findAll().then(users => {
-    res.json(users);
+  models.Quest.findAll().then(quests => {
+    res.json(quests);
   });
 });
 
 router.get('/:id', function(req, res, next) {
   if(isValidId(req.params.id)) {
-    models.User.findById(req.params.id)
-    .then(users => {
-      res.json(users);
+    models.Quest.findById(req.params.id)
+    .then(quests => {
+      res.json(quests);
     })
     .catch(err => {
       res.json(err)
@@ -34,6 +34,5 @@ const isValidId = (id) => {
   }
   return false;
 }
-
 
 module.exports = router;
