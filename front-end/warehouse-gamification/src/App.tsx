@@ -46,6 +46,7 @@ class App extends React.Component<IProps> {
               <Route exact={true} path='/' component={MainPage} />
               <Route exact={true} path='/inventory/:id' component={Inventory} />
               <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
+              <Route exact={true} path='/quests' render={() =>(<div>quests</div>)} />
             </MainLayout>
           </div>
         </Router>
