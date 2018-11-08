@@ -5,6 +5,7 @@ import './App.scss';
 import Inventory from './components/Inventory';
 import MainLayout from './layouts/MainLayout';
 import MainPage from './pages/MainPage';
+import QuestList from './components/QuestList';
 import { changeMobileState } from './reducers/mobileReducer';
 import {initAssets} from './reducers/assetsReducer';
 
@@ -46,7 +47,7 @@ class App extends React.Component<IProps> {
               <Route exact={true} path='/' component={MainPage} />
               <Route exact={true} path='/inventory/:id' component={Inventory} />
               <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
-              <Route exact={true} path='/quests' render={() =>(<div>quests</div>)} />
+              <Route exact={true} path='/quests' component={QuestList} />
             </MainLayout>
           </div>
         </Router>
