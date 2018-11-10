@@ -3,7 +3,6 @@ const path      = require('path');
 const Sequelize = require('sequelize');
 const basename  = path.basename(__filename);
 const secret = require('../secret/db.json');
-const seed = require('./seed');
 
 let db = {};
 
@@ -20,6 +19,8 @@ const sequelize = new Sequelize('warehouseDB', secret.username, secret.password,
     }
 });
 
+// Wonky code that reads all .js files in this directory, 
+// loads them as sequalize models and links them to the db object
 fs.readdirSync(__dirname)
   .filter(file => {
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
@@ -29,6 +30,7 @@ fs.readdirSync(__dirname)
     db[model.name] = model;
   });
 
+// Add table dependencies - User has many Quests etc.
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
@@ -37,10 +39,6 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-if (process.argv.filter.some((val, index, val) => val === "seed-db")) {
-  seed(db);
-}
 
 module.exports = db;
 

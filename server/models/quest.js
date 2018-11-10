@@ -8,8 +8,13 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Quest.associate = function(models) {
-    models.Quest.hasMany(models.User);
-  };
+      // Links the User table with Quest table by many to many relation through UserQuest table
+      models.Quest.belongsToMany(models.User, {
+        as: 'users',
+        through: 'UserQuest',
+        onDelete: 'CASCADE'
+      });
+  }
 
   return Quest;
 };
