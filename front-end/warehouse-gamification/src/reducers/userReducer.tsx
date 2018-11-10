@@ -2,7 +2,7 @@ import IEquipment from '../models/IEquipment';
 
 const mockUser = {
   name: 'Tom',
-  title: 'gladiator',
+  title: 'Gladiator',
   xp: 213222,
   lvl: 22,
   boxesPicked: 129,
