@@ -41,10 +41,21 @@ class App extends React.Component<IProps> {
 
   public render() {
     if (!this.isLoggedIn) {
-      return <Login login={(login: boolean) => {
-        this.isLoggedIn = login;
-        this.forceUpdate();
-      }}/>;
+      return (
+        <Router>
+          <React.Fragment>
+            <Route exact={true} path='/' render={() => {
+              return(
+                <Login login={(login: boolean) => {
+                  this.isLoggedIn = login;
+                  this.forceUpdate();
+                }}/>
+              );
+            }}/>
+            <Route exact={true} path='/account' render={() => <div>CREATE NEW ACCOUNT</div>} />
+          </React.Fragment>
+        </Router>
+      );
     } else if(this.props.isReady) {
       return (
         <React.Fragment>
