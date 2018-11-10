@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { Line } from 'rc-progress';
+
 
 interface IProps {
-  quest: {name: string, exp: number}
+  quest: {name: string, currentExp: number, requiredExp: number}
 }
 
 class QuestListItem extends React.Component<IProps> {
@@ -12,10 +14,20 @@ class QuestListItem extends React.Component<IProps> {
 
   public render() {
 
+    let expPercent = (this.props.quest.currentExp / this.props.quest.requiredExp) * 100 - 9;
+
     return(
       <div className='quest'>
-        {this.props.quest.name}
-        {this.props.quest.exp}
+        {`${this.props.quest.name}`} <br/>
+         <div className='line-container'>
+        <Line 
+          percent={expPercent}
+          strokeWidth={10}
+          strokeColor="#eb9605"
+          trailWidth={10}
+        />
+        <span>{this.props.quest.currentExp} / {this.props.quest.requiredExp}</span>
+      </div>
       </div>
     )
   }

@@ -7,7 +7,8 @@ interface IProps {
 
 class QuestList extends React.Component<IProps> {
 
-  private quests = [{name: 'asd', exp: 100}, {name: 'asd2', exp: 200}]
+  private quests = [{id: 1, name: 'Beat your friend!', currentExp: 98, requiredExp: 100}, 
+                    {id: 2, name: 'Slay the box dragon!', currentExp: 181, requiredExp: 200}]
 
   constructor(props: IProps) {
     super(props);
@@ -17,11 +18,9 @@ class QuestList extends React.Component<IProps> {
 
     const elements = this.quests.map(q => {
       return(
-        <li>
+        <li key={q.id}>
           <QuestListItem quest={q}/>
-          
         </li>
-        
       )
     })
 
