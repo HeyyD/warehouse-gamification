@@ -1,0 +1,19 @@
+@import '../index.scss';
+@import './Login.scss';
+
+.create-account-container {
+  @extend .login-container;
+
+  &-panel {
+    @extend .login-panel;
+
+    p {
+      margin: $space-md auto 0 auto;
+    }
+
+    input {
+      display: block;
+      margin: $space-sm auto;
+    }
+  }
+}

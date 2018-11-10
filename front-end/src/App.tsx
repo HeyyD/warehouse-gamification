@@ -8,6 +8,7 @@ import MainPage from './pages/MainPage';
 import { changeMobileState } from './reducers/mobileReducer';
 import {initAssets} from './reducers/assetsReducer';
 import Login from './components/Login';
+import CreateAccount from './components/CreateAccount';
 
 interface IProps {
   initAssets: () => any;
@@ -52,7 +53,7 @@ class App extends React.Component<IProps> {
                 }}/>
               );
             }}/>
-            <Route exact={true} path='/account' render={() => <div>CREATE NEW ACCOUNT</div>} />
+            <Route exact={true} path='/account' component={CreateAccount} />
           </React.Fragment>
         </Router>
       );
