@@ -38,7 +38,6 @@ class Login extends React.Component<IProps, IState> {
     fetch('http://localhost:3001/api/users')
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({
           isReady: true,
           users: res
