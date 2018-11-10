@@ -15,10 +15,10 @@ class QuestListItem extends React.Component<IProps> {
 
   public render() {
 
-    let expPercent = (this.props.quest.currentExp / this.props.quest.requiredExp) * 100 - 9;
+    let expPercent = (this.props.quest.currentExp / this.props.quest.requiredExp) * 90;
 
     return(
-      <div className='quest'>
+      <div className='quest-item'>
         <span>{this.props.quest.name}</span>
          <div className='line-container'>
           <Line 

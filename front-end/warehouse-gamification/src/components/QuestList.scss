@@ -1,11 +1,18 @@
 @import '../index.scss';
 
-li {
-    list-style-type: none;
-    
-}
-
 .quest-list {
-    height: calc(100% - 92px);
-    overflow: scroll;
+  height: calc(100% - 92px);
+  overflow: scroll;
+  h2 {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 50%;
+    height: 50%;
+    text-align: left;
+    font-size: 2.5em;
+  }
+  li {
+    list-style-type: none;
+  }
 }

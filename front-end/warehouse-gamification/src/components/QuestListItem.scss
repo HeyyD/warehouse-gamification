@@ -1,15 +1,8 @@
 @import '../index.scss';
 
-.quest {
-  flex: 3 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  h2 {
-    font-weight: normal;
-  }
+.quest-item {
+  margin-right: 5%;
   span {
-    margin-top: $space-md;
     margin-bottom: $space-md;
   }
   .line-container {
