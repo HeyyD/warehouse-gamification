@@ -1,0 +1,11 @@
+@import '../index.scss';
+
+li {
+    list-style-type: none;
+    
+}
+
+.quest-list {
+    height: calc(100% - 92px);
+    overflow: scroll;
+}

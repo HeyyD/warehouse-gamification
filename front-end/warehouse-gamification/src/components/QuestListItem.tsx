@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Line } from 'rc-progress';
+import './QuestListItem.scss';
 
 
 interface IProps {
@@ -18,16 +19,16 @@ class QuestListItem extends React.Component<IProps> {
 
     return(
       <div className='quest'>
-        {`${this.props.quest.name}`} <br/>
+        <span>{this.props.quest.name}</span>
          <div className='line-container'>
-        <Line 
-          percent={expPercent}
-          strokeWidth={10}
-          strokeColor="#eb9605"
-          trailWidth={10}
-        />
-        <span>{this.props.quest.currentExp} / {this.props.quest.requiredExp}</span>
-      </div>
+          <Line 
+            percent={expPercent}
+            strokeWidth={10}
+            strokeColor="#eb9605"
+            trailWidth={10}
+          />
+          <span>{this.props.quest.currentExp} / {this.props.quest.requiredExp}</span>
+        </div>
       </div>
     )
   }

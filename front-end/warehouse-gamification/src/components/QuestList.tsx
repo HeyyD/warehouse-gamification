@@ -1,5 +1,6 @@
 import * as React from 'react';
 import QuestListItem from './QuestListItem';
+import './QuestList.scss';
 
 interface IProps {
 
@@ -25,9 +26,11 @@ class QuestList extends React.Component<IProps> {
     })
 
     return(
-      <ul className='questlist'>
-        {elements}
-      </ul>
+      <div className='quest-list'>
+        <ul>
+          {elements}
+        </ul>
+      </div>
     )
   }
 }
