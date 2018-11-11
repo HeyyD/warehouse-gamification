@@ -1,6 +1,6 @@
 const models = require('../models');
-const jsonUsers = require('./users.json');
-const jsonQuests = require('./quests.json');
+const jsonUsers = require('./data/users.json');
+const jsonQuests = require('./data/quests.json');
 
 
 // Drops previous databases and seed new data
