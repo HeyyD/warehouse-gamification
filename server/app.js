@@ -1,17 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var Connection = require('tedious').Connection;
-var Request = require('tedious').Request;
-var db = require('./secret/db.json');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+const app = express();
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRoute = require('./routes/index');
+const usersRoute = require('./routes/users');
+const questRoute = require('./routes/quests')
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,9 +22,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+// Define routes
+app.use('/', indexRoute);
+app.use('/api/users', usersRoute);
+app.use('/api/quests', questRoute)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,47 +47,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-// Create connection to database
-var config = 
-   {
-     userName: db.username,
-     password: db.password,
-     server: db.address,
-     options: 
-        {
-           database: 'warehouseDB' //update me
-           , encrypt: true
-        }
-   }
-var connection = new Connection(config);
 
-// Attempt to connect and execute queries if connection goes through
-connection.on('connect', function(err) {
-    if (err) {
-          console.log(err)
-    } else{
-        queryDatabase()
-    }
-});
 
-function queryDatabase()
-   { console.log('Reading rows from the Table...');
-
-       // Read all rows from table
-     request = new Request(
-          "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'",
-          function(err, rowCount, rows) {
-                console.log(rowCount + ' row(s) returned');
-                process.exit();
-        }
-      );
-
-     request.on('row', function(columns) {
-        columns.forEach(function(column) {
-            console.log("%s\t%s", column.metadata.colName, column.value);
-         });
-      });
-     connection.execSql(request);
-   }
-
-module.exports = app;
+module.exports = { app };
