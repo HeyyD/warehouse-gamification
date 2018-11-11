@@ -7,30 +7,16 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
   });
 
-
   Quest.associate = function(models) {
-    models.Quest.hasMany(models.User);
-  };
-
-//   Quest.associate = function (models) {
-//     models.Task.belongsTo(models.User, {
-//       onDelete: "CASCADE",
-//       foreignKey: {
-//         allowNull: false
-//       }
-//     });
-//   };
+      // Links the User table with Quest table by many to many relation through UserQuest table
+      models.Quest.belongsToMany(models.User, {
+        as: 'users',
+        through: 'QuestLink',
+        onDelete: 'CASCADE',
+        foreignKey: 'questId',
+        otherKey: 'userId'
+      });
+  }
 
   return Quest;
 };
-
-  
-  
-//   // Define the 'Quest' model
-//   const QuestModel = warehouseDB.define('quest', {
-//     title: Sequelize.STRING,
-//     dueDate: Sequelize.DATE,
-//     isComplete: Sequelize.BOOLEAN,
-//     description: Sequelize.TEXT,
-//   });
-//   QuestModel.hasMany(UserModel);

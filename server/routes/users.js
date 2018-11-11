@@ -6,14 +6,14 @@ const models = require('../models');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  models.User.findAll().then(users => {
+  models.User.findAll({ include: [{ all: true }]}).then(users => {
     res.json(users);
   });
 });
 
 router.get('/:id', function(req, res, next) {
   if(isValidId(req.params.id)) {
-    models.User.findById(req.params.id)
+    models.User.findById(req.params.id, { include: [{ all: true }]})
     .then(users => {
       res.json(users);
     })

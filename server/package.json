@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start-dev": "nodemon"
+    "start-dev": "nodemon",
+    "seed-db":  "node scripts/seed.js"
   },
   "dependencies": {
     "async": "^2.6.1",

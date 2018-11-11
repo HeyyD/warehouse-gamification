@@ -6,18 +6,18 @@ module.exports = (sequelize, DataTypes) => {
     xp: DataTypes.INTEGER,
   });
 
+  
   User.associate = function (models) {
-    models.User.belongsTo(models.Quest, {
-      onDelete: "CASCADE",
-      foreignKey: {
-        allowNull: false
-      }
+    // Links the User table with Quest table by many to many relation through UserQuest table
+    models.User.belongsToMany(models.Quest, {
+      as: 'quests',
+      through: 'QuestLink',
+      onDelete: 'CASCADE',
+      foreignKey: 'userId',
+      otherKey: 'questId'
+
     });
   };
-
-//   User.associate = function(models) {
-//     models.User.hasMany(models.Task);
-//   };
 
   return User;
 };
