@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
   if(isValidId(req.params.id)) {
-    models.User.findById(req.params.id)
+    models.User.findById(req.params.id, { include: [{ all: true }]})
     .then(users => {
       res.json(users);
     })

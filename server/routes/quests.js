@@ -6,18 +6,14 @@ const models = require('../models');
 
 /* GET quest listing. */
 router.get('/', function(req, res, next) {
-  models.Quest.findAll({
-    include: [
-      { model: models.User, as: 'users'}
-    ]
-  }).then(quests => {
+  models.Quest.findAll({ include: [{ all: true }]}).then(quests => {
     res.json(quests);
   });
 });
 
 router.get('/:id', function(req, res, next) {
   if(isValidId(req.params.id)) {
-    models.Quest.findById(req.params.id)
+    models.Quest.findById(req.params.id, { include: [{ all: true }]})
     .then(quests => {
       res.json(quests);
     })
