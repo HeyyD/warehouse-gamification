@@ -6,7 +6,7 @@ const models = require('../models');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  models.User.findAll().then(users => {
+  models.User.findAll({ include: [{ all: true }]}).then(users => {
     res.json(users);
   });
 });

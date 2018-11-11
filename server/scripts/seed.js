@@ -14,9 +14,9 @@ models.sequelize.sync({force: true})
     .then(() => {
         // Read to confirm that data was entered
         models.User.findAll().then(res => {
-            console.info('all users: ', JSON.stringify(res));   
+            console.info('all users: ', res.map(val => val.get({plain: true})));   
             process.exit();                 
-        })
+        });
     })
     .catch(err => {
         console.error(err);
@@ -60,8 +60,7 @@ function createUsers() {
             xp: Math.floor(Math.random()*1000000)
         }
     ];
-    users = [...users, ...jsonUsers]
-    return models.User.bulkCreate(users)
+    return models.User.bulkCreate([...users, ...jsonUsers], {returning: true})
 }
 
 function createQuests() {
@@ -99,13 +98,12 @@ function createQuests() {
         },
     ];
 
-    return models.Quest.bulkCreate([...quests, ...jsonQuests]);
+    return models.Quest.bulkCreate([...quests, ...jsonQuests], { returning: true });
 }
 
 function mapQuestsToUsers(users, quests) {
-    users.array.forEach(user => {
-        const i = Math.floor(Math.random * quests.length)
+    users.forEach(user => {
+        const i = Math.floor(Math.random() * quests.length)
         user.addQuest(quests[i]);
-        quests[i].addUser(user);
     });
 }

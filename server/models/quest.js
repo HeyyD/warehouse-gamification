@@ -11,8 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       // Links the User table with Quest table by many to many relation through UserQuest table
       models.Quest.belongsToMany(models.User, {
         as: 'users',
-        through: 'UserQuest',
-        onDelete: 'CASCADE'
+        through: 'QuestLink',
+        onDelete: 'CASCADE',
+        foreignKey: 'questId',
+        otherKey: 'userId'
       });
   }
 
