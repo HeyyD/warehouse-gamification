@@ -6,6 +6,7 @@
 
   &-panel {
     @extend .login-panel;
+    font-size: 0.8em;
 
     p {
       margin: $space-md auto 0 auto;
