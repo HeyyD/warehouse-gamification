@@ -5,6 +5,7 @@ import IUser from '../models/IUser';
 import { changeEquipment} from '../reducers/userReducer';
 import './ItemList.scss';
 import SpriteSheet from './SpriteSheet';
+import lockedIcon from '../assets/locked-item.png';
 
 interface IProps {
   changeEquipment: (equipment: IEquipment) => any;
@@ -43,12 +44,19 @@ class ItemList extends React.Component<IProps> {
   }
 
   private initDraw(): void {
-    const ss = this.spritesheet;
-    this.canvasRefs.forEach((canvas, index) => {
-      const ctx = canvas.getContext('2d')!;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ss.draw(ctx!, ss.getSprite(index));
-    });
+
+    const img = new Image();
+    img.src = lockedIcon;
+    img.onload = () => {
+      const lock = new SpriteSheet(img, 1, 1);
+      // const ss = this.spritesheet;
+      this.canvasRefs.forEach((canvas, index) => {
+        const ctx = canvas.getContext('2d')!;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // ss.draw(ctx!, ss.getSprite(index));
+        lock.draw(ctx!, lock.getSprite(0));
+      });
+    };
   }
 
   private changeEquipment(index: number) {
