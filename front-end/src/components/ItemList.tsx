@@ -48,13 +48,13 @@ class ItemList extends React.Component<IProps> {
     const img = new Image();
     img.src = lockedIcon;
     img.onload = () => {
-      const lock = new SpriteSheet(img, 1, 1);
-      // const ss = this.spritesheet;
+      // const lock = new SpriteSheet(img, 1, 1);
+      const ss = this.spritesheet;
       this.canvasRefs.forEach((canvas, index) => {
         const ctx = canvas.getContext('2d')!;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // ss.draw(ctx!, ss.getSprite(index));
-        lock.draw(ctx!, lock.getSprite(0));
+        ss.draw(ctx!, ss.getSprite(index));
+        // lock.draw(ctx!, lock.getSprite(0));
       });
     };
   }
