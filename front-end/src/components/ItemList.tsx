@@ -66,16 +66,20 @@ class ItemList extends React.Component<IProps> {
   }
 
   private changeEquipment(index: number) {
-    const newState = {};
+    const availableEquipment = this.props.availableEquipment[this.props.id];
 
-    Object.keys(this.props.equipment).forEach(key => {
-      if(key === this.props.id) {
-        newState[key] = index;
-      } else {
-        newState[key] = this.props.equipment[key];
-      }
-    });
-    this.props.changeEquipment(newState as IEquipment);
+    if (availableEquipment.includes(index)) {
+      const newState = {};
+
+      Object.keys(this.props.equipment).forEach(key => {
+        if(key === this.props.id) {
+          newState[key] = index;
+        } else {
+          newState[key] = this.props.equipment[key];
+        }
+      });
+      this.props.changeEquipment(newState as IEquipment);
+    }
   }
 }
 
