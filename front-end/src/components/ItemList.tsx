@@ -6,11 +6,13 @@ import { changeEquipment} from '../reducers/userReducer';
 import './ItemList.scss';
 import SpriteSheet from './SpriteSheet';
 import lockedIcon from '../assets/locked-item.png';
+import IAvailableEquipment from '../models/IAvailableEquipment';
 
 interface IProps {
   changeEquipment: (equipment: IEquipment) => any;
   id: string;
   equipment: IEquipment;
+  availableEquipment: IAvailableEquipment;
   assets: {data: {}};
   isMobile: boolean;
 }
@@ -44,17 +46,21 @@ class ItemList extends React.Component<IProps> {
   }
 
   private initDraw(): void {
-
+    const availableEquipment = this.props.availableEquipment[this.props.id];
     const img = new Image();
     img.src = lockedIcon;
     img.onload = () => {
-      // const lock = new SpriteSheet(img, 1, 1);
+      const lock = new SpriteSheet(img, 1, 1);
       const ss = this.spritesheet;
       this.canvasRefs.forEach((canvas, index) => {
         const ctx = canvas.getContext('2d')!;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ss.draw(ctx!, ss.getSprite(index));
-        // lock.draw(ctx!, lock.getSprite(0));
+
+        if (availableEquipment.includes(index)) {
+          ss.draw(ctx!, ss.getSprite(index));
+        } else {
+          lock.draw(ctx!, lock.getSprite(0));
+        }
       });
     };
   }
@@ -77,6 +83,7 @@ const mapStateToProps = (state: {user: IUser, assets: {}, isMobile: boolean}) =>
   return {
     assets: state.assets,
     equipment: state.user.equipment,
+    availableEquipment: state.user.availableEquipment,
     isMobile: state.isMobile
   };
 };
