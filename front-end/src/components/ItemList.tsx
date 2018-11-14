@@ -52,6 +52,14 @@ class ItemList extends React.Component<IProps, IState> {
     this.initDraw();
   }
 
+  public componentDidUpdate() {
+    const availableEquipment = this.props.availableEquipment[this.props.id];
+    if (!availableEquipment.includes(this.selectedItemIndex)) {
+      availableEquipment.push(this.selectedItemIndex);
+    }
+    this.initDraw();
+  }
+
   public render() {
     return (
       <React.Fragment>
