@@ -15,9 +15,13 @@
   .item-wrapper {
     padding: $space-md;
 
-    canvas {
-      background: #fff;
-      border: solid 1px $color-primary;
+    &-available {
+      padding: $space-md;
+      
+      canvas {
+        background: #fff;
+        border: solid 1px $color-primary;
+      }
     }
   }
 }

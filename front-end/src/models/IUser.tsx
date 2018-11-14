@@ -1,4 +1,5 @@
 import IEquipment from "./IEquipment";
+import IAvailableEquipment from "./IAvailableEquipment";
 
 export default interface IUser {
   name: string;
@@ -8,4 +9,5 @@ export default interface IUser {
   boxesPicked: number;
   questsCompleted: number;
   equipment: IEquipment;
+  availableEquipment: IAvailableEquipment;
 }
