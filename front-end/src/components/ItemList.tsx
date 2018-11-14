@@ -7,6 +7,7 @@ import './ItemList.scss';
 import SpriteSheet from './SpriteSheet';
 import lockedIcons from '../assets/spritesheet_items.png';
 import IAvailableEquipment from '../models/IAvailableEquipment';
+import UnlockModal from '../modals/UnlockModal';
 
 interface IProps {
   changeEquipment: (equipment: IEquipment) => any;
@@ -23,6 +24,7 @@ class ItemList extends React.Component<IProps> {
   private canvasRefs: HTMLCanvasElement[] = [];
   private spritesheet: SpriteSheet;
   private items: JSX.Element[] = [];
+  private showModal = false;
 
   constructor(props: IProps) {
     super(props);
@@ -42,7 +44,13 @@ class ItemList extends React.Component<IProps> {
 
   public render() {
     return (
-      <div className={(this.props.isMobile ? 'mobile ' : '') + 'inventory-container'}>{ this.items }</div> 
+      <React.Fragment>
+        {
+        this.showModal &&
+        <UnlockModal />
+        }
+        <div className={(this.props.isMobile ? 'mobile ' : '') + 'inventory-container'}>{ this.items }</div>
+      </React.Fragment>
     );
   }
 
@@ -82,6 +90,12 @@ class ItemList extends React.Component<IProps> {
         }
       });
       this.props.changeEquipment(newState as IEquipment);
+    } else if (this.props.user.lvl >= index){
+      console.log('UNLOCK!!');
+      this.showModal = true;
+      this.forceUpdate();
+    } else {
+      console.log('LOCKED!!');
     }
   }
 }
