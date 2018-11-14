@@ -41,9 +41,7 @@ class ItemList extends React.Component<IProps, IState> {
 
     this.items = this.spritesheet.getSprites().map((sprite, index) => {
       return (
-        <div key={ index } className='item-wrapper'>
-          <canvas onClick={() => this.changeEquipment(index) } ref={ (canvas) => this.canvasRefs.push(canvas!) } width='90px' height='90px'>item</canvas>
-        </div>
+        <canvas key={ index } onClick={() => this.changeEquipment(index) } ref={ (canvas) => this.canvasRefs.push(canvas!) } width='90px' height='90px'>item</canvas>
       );
     });
   }
@@ -52,7 +50,7 @@ class ItemList extends React.Component<IProps, IState> {
     this.initDraw();
   }
 
-  public componentDidUpdate() {
+  public componentWillUpdate() {
     const availableEquipment = this.props.availableEquipment[this.props.id];
     if (!availableEquipment.includes(this.selectedItemIndex)) {
       availableEquipment.push(this.selectedItemIndex);
@@ -67,7 +65,15 @@ class ItemList extends React.Component<IProps, IState> {
           this.state.showModal &&
           <UnlockModal spritesheet={this.spritesheet} index={this.selectedItemIndex} onClick={() => this.setState({showModal: false}) } />
         }
-        <div className={(this.props.isMobile ? 'mobile ' : '') + 'inventory-container'}>{ this.items }</div>
+        <div className={(this.props.isMobile ? 'mobile ' : '') + 'inventory-container'}>
+          { this.items.map((item, index) => {
+            return (
+              <div key={ index } className={'item-wrapper' + (this.props.availableEquipment[this.props.id ].includes(index) ? '-available' : '')}>
+                {item}
+              </div>
+            );
+          }) }
+        </div>
       </React.Fragment>
     );
   }
