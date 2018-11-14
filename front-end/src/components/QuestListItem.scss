@@ -2,6 +2,10 @@
 
 .quest-item {
   margin-right: 5%;
+  a {
+    text-decoration: none;
+    color: black;
+  }
   span {
     margin-bottom: $space-md;
   }

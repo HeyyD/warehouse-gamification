@@ -6,6 +6,7 @@ import Inventory from './components/Inventory';
 import MainLayout from './layouts/MainLayout';
 import MainPage from './pages/MainPage';
 import QuestList from './components/QuestList';
+import QuestSingle from './components/QuestSingle';
 import { changeMobileState } from './reducers/mobileReducer';
 import {initAssets} from './reducers/assetsReducer';
 
@@ -48,6 +49,7 @@ class App extends React.Component<IProps> {
               <Route exact={true} path='/inventory/:id' component={Inventory} />
               <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
               <Route exact={true} path='/quests' component={QuestList} />
+              <Route exact={true} path='/quests/1' component={QuestSingle} />
             </MainLayout>
           </div>
         </Router>
