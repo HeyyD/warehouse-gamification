@@ -27,6 +27,10 @@
       border: 2px solid $color-primary;
       background: white;
     }
+
+    button {
+      padding: $space-md;
+    }
   }
 
   &-background {

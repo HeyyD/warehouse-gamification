@@ -19,16 +19,26 @@ interface IProps {
   isMobile: boolean;
 }
 
-class ItemList extends React.Component<IProps> {
+interface IState {
+  showModal: boolean;
+}
+
+class ItemList extends React.Component<IProps, IState> {
 
   private canvasRefs: HTMLCanvasElement[] = [];
   private spritesheet: SpriteSheet;
   private items: JSX.Element[] = [];
-  private showModal = false;
+
+  private selectedItemIndex: number;
 
   constructor(props: IProps) {
     super(props);
     this.spritesheet = this.props.assets.data[this.props.id];
+
+    this.state = {
+      showModal: false
+    };
+
     this.items = this.spritesheet.getSprites().map((sprite, index) => {
       return (
         <div key={ index } className='item-wrapper'>
@@ -46,8 +56,8 @@ class ItemList extends React.Component<IProps> {
     return (
       <React.Fragment>
         {
-          this.showModal &&
-          <UnlockModal />
+          this.state.showModal &&
+          <UnlockModal spritesheet={this.spritesheet} index={this.selectedItemIndex} onClick={() => this.setState({showModal: false}) } />
         }
         <div className={(this.props.isMobile ? 'mobile ' : '') + 'inventory-container'}>{ this.items }</div>
       </React.Fragment>
@@ -91,9 +101,8 @@ class ItemList extends React.Component<IProps> {
       });
       this.props.changeEquipment(newState as IEquipment);
     } else if (this.props.user.lvl >= index){
-      console.log('UNLOCK!!');
-      this.showModal = true;
-      this.forceUpdate();
+      this.selectedItemIndex = index;
+      this.setState({showModal: true});
     } else {
       console.log('LOCKED!!');
     }
