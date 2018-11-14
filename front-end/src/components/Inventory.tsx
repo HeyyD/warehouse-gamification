@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter, Link } from 'react-router-dom';
 
 import './Inventory.scss';
 import ItemList from './ItemList';
@@ -27,7 +27,8 @@ class Inventory extends React.Component<IProps> {
 
     if (atMenu) {
       element = <ul className='inventory-menu'>{this.lists.map((list, index) => 
-        <li key={ index }><a href={'/inventory/' + list }>{ list.toUpperCase() }</a></li>)}</ul>;
+        // <li key={ index }><a href={'/inventory/' + list }>{ list.toUpperCase() }</a></li>)}</ul>;
+        <li key={ index }><Link to={`/inventory/${list}`}>{ list.toUpperCase() }</Link></li>)}</ul>;
     } else {
       element = <ItemList id={ this.props.match.params.id } />;
     }

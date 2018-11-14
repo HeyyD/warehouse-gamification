@@ -17,13 +17,13 @@ const mockUser = {
     weapon: 0
   },
   availableEquipment: {
-    hair: [0],
-    skin: [0],
-    shirt: [0],
-    armor: [0],
-    helmet: [0],
-    accessory: [0],
-    weapon: [0]
+    hair: [0, 1, 2, 3],
+    skin: [0, 1, 2, 3],
+    shirt: [0, 1, 2, 3],
+    armor: [0, 1, 2, 3],
+    helmet: [0, 1, 2, 3],
+    accessory: [0, 1, 2, 3],
+    weapon: [0, 1, 2, 3]
   }
 };
 
