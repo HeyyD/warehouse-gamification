@@ -19,6 +19,10 @@ class Avatar extends React.Component<IProps> {
   private skin: SpriteSheet;
   private hair: SpriteSheet;
   private shirt: SpriteSheet;
+  private armor: SpriteSheet;
+  private accessory: SpriteSheet;
+  private helmet: SpriteSheet;
+  private weapon: SpriteSheet;
 
   constructor(props: IProps) {
     super(props);
@@ -29,6 +33,10 @@ class Avatar extends React.Component<IProps> {
     this.skin = data['skin'];
     this.hair = data['hair'];
     this.shirt = data['shirt'];
+    this.armor = data['armor'];
+    this.accessory = data['accessory'];
+    this.helmet = data['helmet'];
+    this.weapon = data['weapon'];
   }
 
   public componentDidMount() {
@@ -59,6 +67,10 @@ class Avatar extends React.Component<IProps> {
       this.skin.draw(ctx!, this.skin.getSprite(equipment.skin));
       this.shirt.draw(ctx!, this.shirt.getSprite(equipment.shirt));
       this.hair.draw(ctx!, this.hair.getSprite(equipment.hair));
+      this.armor.draw(ctx!, this.armor.getSprite(equipment.armor));
+      this.helmet.draw(ctx!, this.helmet.getSprite(equipment.helmet));
+      this.accessory.draw(ctx!, this.accessory.getSprite(equipment.accessory));
+      this.weapon.draw(ctx!, this.weapon.getSprite(equipment.weapon));
     }
   }
 }
