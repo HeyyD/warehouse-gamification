@@ -4,7 +4,7 @@ const mockUser = {
   name: 'Tom',
   title: 'gladiator',
   xp: 213222,
-  lvl: 22,
+  lvl: 6,
   boxesPicked: 129,
   questsCompleted: 32,
   equipment : {
