@@ -1,0 +1,38 @@
+@import '../index.scss';
+
+.modal {
+  position: fixed;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  &-panel {
+    color: wheat;
+    padding: $space-md;
+    background: $color-primary-light;
+    border: 3px solid $color-primary;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    canvas {
+      display: block;
+      margin: auto;
+      margin: $space-md auto;
+      border: 2px solid $color-primary;
+      background: white;
+    }
+  }
+
+  &-background {
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    background: black;
+  }
+}

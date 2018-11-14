@@ -46,8 +46,8 @@ class ItemList extends React.Component<IProps> {
     return (
       <React.Fragment>
         {
-        this.showModal &&
-        <UnlockModal />
+          this.showModal &&
+          <UnlockModal />
         }
         <div className={(this.props.isMobile ? 'mobile ' : '') + 'inventory-container'}>{ this.items }</div>
       </React.Fragment>
