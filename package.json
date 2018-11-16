@@ -2,10 +2,10 @@
   "name": "warehouse-gamification",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "server/bin/www.js",
   "scripts": {
     "preinstall": "npm install --prefix ./server && npm install --prefix ./front-end",
-    "postinstall": "npm run build --prefix ./front-end && mv ./front-end/build ./server/public",
+    "postinstall": "npm run build --prefix ./front-end && mv ./front-end/build/* ./server/public",
     "start": "pm2 start server/bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
