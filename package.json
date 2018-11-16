@@ -1,0 +1,25 @@
+{
+  "name": "warehouse-gamification",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npm install --prefix ./server && npm install --prefix ./front-end",
+    "postinstall": "npm run build --prefix ./front-end && mv ./front-end/build ./server/public",
+    "start": "pm2 start server/bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeyyD/warehouse-gamification.git"
+  },
+  "author": "Konsta Lehtinen, Sami Hautamäki, Heidi Häti, Tom Bäckman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeyyD/warehouse-gamification/issues"
+  },
+  "homepage": "https://warehouse-gamification-app.herokuapp.com/",
+  "dependencies": {
+    "pm2": "^3.2.2"
+  }
+}
