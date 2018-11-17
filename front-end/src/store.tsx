@@ -6,6 +6,7 @@ import questReducer from './reducers/questReducer';
 import managerReducer from './reducers/managerReducer';
 import sidebarReducer from './reducers/sidebarReducer';
 import userReducer from './reducers/userReducer';
+import usersReducer from './reducers/usersReducer';
 
 const reducer = combineReducers({
   assets: assetsReducer,
@@ -13,7 +14,8 @@ const reducer = combineReducers({
   isMobile: mobileReducer,
   quest: questReducer,
   sidebar: sidebarReducer,
-  user: userReducer
+  user: userReducer,
+  users: usersReducer
 });
 
 const store = createStore(

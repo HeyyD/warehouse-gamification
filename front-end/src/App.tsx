@@ -8,6 +8,7 @@ import MainPage from './pages/MainPage';
 import ManagerLayout from './layouts/ManagerLayout';
 import { changeMobileState } from './reducers/mobileReducer';
 import {initAssets} from './reducers/assetsReducer';
+import { initUsers } from './reducers/usersReducer';
 
 interface IProps {
   initAssets: () => any;
@@ -15,6 +16,7 @@ interface IProps {
   isReady: boolean;
   isMobile: boolean;
   changeMobileState: (state: boolean) => any;
+  initUsers: () => any;
 }
 
 class App extends React.Component<IProps> {
@@ -64,6 +66,9 @@ class App extends React.Component<IProps> {
 
   private async init() {
     this.props.initAssets();
+    if(this.props.isManager) {
+      this.props.initUsers(); 
+    }
   }
 
 }
@@ -76,4 +81,4 @@ const mapStateToProps = (state: {isManager: boolean, isMobile: boolean, assets: 
   };
 };
 
-export default connect(mapStateToProps, {changeMobileState, initAssets})(App);
+export default connect(mapStateToProps, {changeMobileState, initAssets, initUsers})(App);
