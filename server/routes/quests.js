@@ -46,6 +46,17 @@ router.delete('/:id', (req, res, next) => {
     }) 
   }
 })
+router.post('/', (req, res, next) => {
+  const body = req.body
+  //Day that is week from now
+  models.Quest.create({ 
+    title: body.title,
+    isComplete: false,
+    description: body.description
+  })
+    .then( q => res.json(q) )
+    .catch( err => res.json(err) )
+})
 
 const isValidId = (id) => {
   if (!isNaN(id) & isFinite(id) & id %1 === 0) {
