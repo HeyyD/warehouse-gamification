@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Table, Header } from 'semantic-ui-react';
 
-const ManagerQuest = ({title}: {title: string}) => {
+const ManagerQuest = ({title, id}: {title: string, id: string}) => {
   return(
     <Table.Row>
+      <Table.Cell>{id}</Table.Cell>
       <Table.Cell>
         <Header as='h4' image={true}>
           <Header.Content>
@@ -11,7 +12,6 @@ const ManagerQuest = ({title}: {title: string}) => {
           </Header.Content>
         </Header>
       </Table.Cell>
-      <Table.Cell>filler</Table.Cell>
       <Table.Cell>filler2</Table.Cell>
     </Table.Row>
   );

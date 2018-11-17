@@ -15,7 +15,9 @@ const ManagerQuests = ({quests}: {quests: []}) => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          <ManagerQuest title="moi" />
+        { quests.map( (q: {title: string, id: string}) =>
+          <ManagerQuest key={'quest'+q.id} title={q.title} id={q.id}/>
+        )}
         </Table.Body>
       </Table>
   );
