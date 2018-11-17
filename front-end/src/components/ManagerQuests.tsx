@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Table } from 'semantic-ui-react';
+import ManagerQuest from '../components/ManagerQuest';
+import { connect } from 'react-redux';
 
-const ManagerQuests = () => {
+const ManagerQuests = ({quests}: {quests: []}) => {
+  console.log(quests);
   return(
       <Table basic='very' celled={true} collapsing={true}>
         <Table.Header>
@@ -12,10 +15,14 @@ const ManagerQuests = () => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          moi
+          <ManagerQuest title="moi" />
         </Table.Body>
       </Table>
   );
 };
-
-export default ManagerQuests;
+const mapStateToProps = (state:{quests:[]}) => {
+  return {
+    quests: state.quests 
+  };
+};
+export default connect(mapStateToProps)(ManagerQuests);
