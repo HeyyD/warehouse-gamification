@@ -5,7 +5,7 @@
   "main": "server/bin/www.js",
   "scripts": {
     "preinstall": "npm install --prefix ./server && npm install --prefix ./front-end",
-    "heroku-postbuild": "npm run build --prefix ./front-end && echo JOOOOOpelis && cpx front-end/build/**/*.* server/public",
+    "heroku-postbuild": "npm install --prefix /front-end --only=dev, npm run build --prefix ./front-end && echo JOOOOOpelis && cpx front-end/build/**/*.* server/public",
     "postinstall": " cpx front-end/build/**/*.* server/public",
     "start": "pm2 start server/bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
