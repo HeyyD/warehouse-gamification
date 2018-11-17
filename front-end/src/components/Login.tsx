@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 import './Login.scss';
 
@@ -38,6 +37,7 @@ class Login extends React.Component<IProps, IState> {
     fetch('http://localhost:3001/api/users')
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         this.setState({
           isReady: true,
           users: res
@@ -57,10 +57,6 @@ class Login extends React.Component<IProps, IState> {
             <input name='password' type='password' onChange={e => this.onChange(e)}/>
           </div>
           <button disabled={!this.state.isReady} onClick={() => this.props.login(this.login())}>Login</button>
-          <div className='sign-up'>
-            <p>Don't have a account?</p>
-            <Link to='/account'>Sign up</Link>
-          </div>
         </div>
       </div>
     );
