@@ -16,12 +16,19 @@ interface IProps {
   changeMobileState: (state: boolean) => any;
 }
 
-class App extends React.Component<IProps> {
+interface IState {
+  isLoggedIn: boolean;
+}
 
-  private isLoggedIn = false;
+class App extends React.Component<IProps, IState> {
 
   constructor(props: IProps) {
     super(props);
+
+    this.state = {
+      isLoggedIn: false
+    };
+
     this.init();
     window.addEventListener('resize', this.handleResize); 
     if(window.innerWidth > 720){
@@ -40,11 +47,10 @@ class App extends React.Component<IProps> {
   }
 
   public render() {
-    if (!this.isLoggedIn) {
+    if (!this.state.isLoggedIn) {
       return (
         <Login login={(login: boolean) => {
-          this.isLoggedIn = login;
-          this.forceUpdate();
+          this.setState({isLoggedIn: login});
         }}/>
       );
     } else if(this.props.isReady) {
