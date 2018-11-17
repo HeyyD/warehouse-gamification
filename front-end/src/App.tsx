@@ -9,6 +9,7 @@ import ManagerLayout from './layouts/ManagerLayout';
 import { changeMobileState } from './reducers/mobileReducer';
 import {initAssets} from './reducers/assetsReducer';
 import { initUsers } from './reducers/usersReducer';
+import { initQuests } from './reducers/questsReducer';
 
 interface IProps {
   initAssets: () => any;
@@ -17,6 +18,7 @@ interface IProps {
   isMobile: boolean;
   changeMobileState: (state: boolean) => any;
   initUsers: () => any;
+  initQuests: () => any;
 }
 
 class App extends React.Component<IProps> {
@@ -68,6 +70,7 @@ class App extends React.Component<IProps> {
     this.props.initAssets();
     if(this.props.isManager) {
       this.props.initUsers(); 
+      this.props.initQuests();
     }
   }
 
@@ -81,4 +84,4 @@ const mapStateToProps = (state: {isManager: boolean, isMobile: boolean, assets: 
   };
 };
 
-export default connect(mapStateToProps, {changeMobileState, initAssets, initUsers})(App);
+export default connect(mapStateToProps, {changeMobileState, initAssets, initUsers, initQuests})(App);

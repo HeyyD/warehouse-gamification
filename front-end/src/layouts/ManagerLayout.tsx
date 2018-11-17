@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ManagerUsers from '../components/ManagerUsers';
-import { Menu, Header } from 'semantic-ui-react';
+import ManagerQuests from '../components/ManagerQuests';
+import { Menu, Header, Grid } from 'semantic-ui-react';
 
 
 const ManagerLayout = () => {
@@ -13,7 +14,14 @@ const ManagerLayout = () => {
           </Header>
         </Menu.Item>
       </Menu> 
-      <ManagerUsers />
+      <Grid padded='vertically' columns={2} container={true} stackable={true} >
+        <Grid.Column>
+          <ManagerUsers />
+        </Grid.Column>
+        <Grid.Column>
+          <ManagerQuests />
+        </Grid.Column>
+      </Grid>
     </React.Fragment>
   );
 };
