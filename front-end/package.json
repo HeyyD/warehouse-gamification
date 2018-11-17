@@ -20,7 +20,7 @@
     "typescript": "^3.1.1"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
+    "start": "ls && react-scripts-ts start",
     "build": "npx react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
