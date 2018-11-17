@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Table, Header, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { deleteQuest } from '../reducers/questsReducer';
 
-const ManagerQuest = ({title, id}: {title: string, id: string}) => {
+const ManagerQuest = ({title, id, deleteQuest}: {title: string, id: string, deleteQuest: (id: string) => any}) => {
   return(
     <Table.Row>
       <Table.Cell>{id}</Table.Cell>
@@ -12,9 +14,9 @@ const ManagerQuest = ({title, id}: {title: string, id: string}) => {
           </Header.Content>
         </Header>
       </Table.Cell>
-      <Table.Cell><Button color="red">Delete Quest </Button></Table.Cell>
+      <Table.Cell><Button color="red" onClick={() => deleteQuest(id)}>Delete Quest </Button></Table.Cell>
     </Table.Row>
   );
 };
 
-export default ManagerQuest;
+export default connect(null, {deleteQuest})( ManagerQuest );

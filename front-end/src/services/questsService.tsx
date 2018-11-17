@@ -7,6 +7,12 @@ const getAll = async () => {
   return req.data;
 };
 
+const deleteById = async (id: string) => {
+  const req = await axios.delete(`${baseUrl}/${id}`);
+  return req.data;
+};
+
 export default {
-  getAll
+  getAll,
+  deleteById
 };
