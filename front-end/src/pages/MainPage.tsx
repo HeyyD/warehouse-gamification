@@ -2,11 +2,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import CurrentQuest from '../components/CurrentQuest';
 import Stats from '../components/Stats';
-import Quest from '../models/quest';
+import IQuest from '../models/quest';
 import IUser from '../models/IUser';
 import './MainPage.scss';
 
-const MainPage = (props: {user: IUser, quest: Quest}) => {
+const MainPage = (props: {user: IUser, quest: IQuest}) => {
   return(
     <React.Fragment>
       <div className='info'>
