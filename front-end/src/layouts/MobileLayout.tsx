@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import './MobileLayout.scss'; 
 
 const MobileLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => {
+    // tslint:disable-next-line:no-shadowed-variable
     const { setFalse, children } = props;
     return (
       <div className='main-layout' onClick={setFalse}>
