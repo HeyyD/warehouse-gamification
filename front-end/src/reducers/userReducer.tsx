@@ -1,4 +1,5 @@
 import IEquipment from '../models/IEquipment';
+import ILoginInfo from '../models/ILoginInfo';
 
 const mockUser = {
   name: 'Tom',
@@ -27,10 +28,17 @@ const mockUser = {
   }
 };
 
-const reducer = (state = mockUser, action: {type: string, equipment: IEquipment}) => {
+const reducer = (state = mockUser, action: {type: string, equipment: IEquipment, user: ILoginInfo}) => {
   switch(action.type){
     case 'CHANGE_EQUIPMENT':
       return {...state, equipment: action.equipment};
+    case 'CHANGE_USER':
+      return {
+        ...state,
+        name: action.user.username,
+        lvl: action.user.level,
+        xp: action.user.xp
+      };
     default:
       return state;
   }
@@ -41,6 +49,15 @@ export const changeEquipment = (eq: IEquipment) => {
     dispatch({
       equipment: eq,
       type: 'CHANGE_EQUIPMENT'
+    });
+  };
+};
+
+export const changeUser = (loginInfo: ILoginInfo) => {
+  return async (dispatch: ({}) => {type: string}) => {
+    dispatch({
+      type: 'CHANGE_USER',
+      user: loginInfo
     });
   };
 };
