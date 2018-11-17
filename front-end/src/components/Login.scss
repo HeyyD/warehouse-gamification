@@ -1,0 +1,31 @@
+@import '../index.scss';
+
+.login-container {
+  background: $color-primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .login-panel {
+    background: #ddd;
+    border-radius: 20px;
+    text-align: center;
+    padding: $space-md;
+    margin: $space-md;
+
+    .input-container {
+      input {
+        display: block;
+        margin: $space-md auto;
+      }
+    }
+
+    .sign-up {
+      padding-top: $space-md;
+
+      a, p {
+        margin: 0;
+      }
+    }
+  }
+}
