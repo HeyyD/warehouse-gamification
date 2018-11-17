@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Table, Header, Image } from 'semantic-ui-react';
+import { Table, Header, Image, Button } from 'semantic-ui-react';
 
 const ManagerUser = ({username, level} : {username: string, level: number}) => {
   return(
@@ -14,7 +14,7 @@ const ManagerUser = ({username, level} : {username: string, level: number}) => {
         </Header>
       </Table.Cell>
       <Table.Cell>{level}</Table.Cell>
-      <Table.Cell>Morning shift</Table.Cell>
+      <Table.Cell><Button color="red">PUNISH</Button></Table.Cell>
     </Table.Row>
   );
 };

@@ -11,7 +11,7 @@ const ManagerUsers = ({users}: {users: []}) => {
           <Table.Row>
             <Table.HeaderCell>Worker</Table.HeaderCell>
             <Table.HeaderCell>Level</Table.HeaderCell>
-            <Table.HeaderCell>Shift</Table.HeaderCell>
+            <Table.HeaderCell>Remove exp</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>

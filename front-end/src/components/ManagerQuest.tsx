@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Table, Header } from 'semantic-ui-react';
+import { Table, Header, Button } from 'semantic-ui-react';
 
 const ManagerQuest = ({title, id}: {title: string, id: string}) => {
   return(
@@ -12,7 +12,7 @@ const ManagerQuest = ({title, id}: {title: string, id: string}) => {
           </Header.Content>
         </Header>
       </Table.Cell>
-      <Table.Cell>filler2</Table.Cell>
+      <Table.Cell><Button color="red">Delete Quest </Button></Table.Cell>
     </Table.Row>
   );
 };

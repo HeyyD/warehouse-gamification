@@ -25,8 +25,27 @@ router.get('/:id', function(req, res, next) {
         msg: "Bad request"
     })
   }
-});
+})
 
+router.delete('/:id', (req, res, next) => {
+  if(isValidId(req.params.id)) {
+    models.Quest.destroy({
+      where: {
+        id: req.params.id 
+      } 
+    })
+    .then(quest => {
+      res.json({msg: "Deleted"}) 
+    })
+    .catch(err => {
+      res.json(err) 
+    })
+  }else {
+    res.json({
+      msg: "Bad request" 
+    }) 
+  }
+})
 
 const isValidId = (id) => {
   if (!isNaN(id) & isFinite(id) & id %1 === 0) {

@@ -9,9 +9,9 @@ const ManagerQuests = ({quests}: {quests: []}) => {
       <Table basic='very' celled={true} collapsing={true}>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Quest</Table.HeaderCell>
-            <Table.HeaderCell>Level</Table.HeaderCell>
-            <Table.HeaderCell>Button</Table.HeaderCell>
+            <Table.HeaderCell>Id</Table.HeaderCell>
+            <Table.HeaderCell>Title</Table.HeaderCell>
+            <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
