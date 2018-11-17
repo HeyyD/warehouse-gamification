@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ManagerUsers from '../components/ManagerUsers';
 import ManagerQuests from '../components/ManagerQuests';
+import QuestForm from '../components/QuestForm';
 import { Menu, Header, Grid } from 'semantic-ui-react';
 
 
@@ -19,6 +20,7 @@ const ManagerLayout = () => {
           <ManagerUsers />
         </Grid.Column>
         <Grid.Column>
+          <QuestForm />
           <ManagerQuests />
         </Grid.Column>
       </Grid>

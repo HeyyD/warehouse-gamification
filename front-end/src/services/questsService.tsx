@@ -12,7 +12,13 @@ const deleteById = async (id: string) => {
   return req.data;
 };
 
+const create = async (quest: {title: string, description: string}) =>  {
+  const req = await axios.post(baseUrl, quest);
+  return req.data;
+};
+
 export default {
+  create,
   getAll,
   deleteById
 };
