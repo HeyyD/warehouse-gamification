@@ -8,6 +8,7 @@ import MainPage from './pages/MainPage';
 import { changeMobileState } from './reducers/mobileReducer';
 import {initAssets} from './reducers/assetsReducer';
 import Login from './components/Login';
+import Friends from './components/Friends';
 
 interface IProps {
   initAssets: () => any;
@@ -61,6 +62,7 @@ class App extends React.Component<IProps, IState> {
               <MainLayout>
                 <Route exact={true} path='/' component={MainPage} />
                 <Route exact={true} path='/inventory/:id' component={Inventory} />
+                <Route exact={true} path='/friends' component={Friends} />
                 <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
               </MainLayout>
             </div>
