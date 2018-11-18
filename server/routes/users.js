@@ -28,14 +28,18 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.put('/:id', (req, res, next) => {
-  console.log(req.body.lvl, req.params.id);
+  console.log(req.body.level, req.params.id);
   if(isValidId(req.params.id)) {
     models.User.update(
       {level: req.body.level},
-      {where: {id: req.params.id}} 
+      {plain: true, returning: true, where: {id: req.params.id}} 
     ) 
-    .then((rowsUpdated) => {
-      res.json(rowsUpdated) 
+    .then( () => {
+      models.User.findById(req.params.id, { include: [{all: true}]})
+        .then(user => {
+          res.json(user) 
+        })
+        .catch(e => res.json(e))
     })
     .catch(e => {
       res.json(e) 
