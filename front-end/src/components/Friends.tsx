@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import './Friends.scss';
+
 interface IState {
   users: JSX.Element[];
 }
@@ -25,13 +27,21 @@ class Friends extends React.Component<{}, IState> {
 
   public render() {
     return(
-      <ul>{this.state.users}</ul>
+      <ul className='friends-list'>{this.state.users}</ul>
     );
   }
 
-  private createListItems(users: Array<{username: string}>): JSX.Element[] {
+  private createListItems(users: Array<{username: string, level: number, xp: number}>): JSX.Element[] {
     return users.map((user, index) => {
-      return <li key={index}>{user.username}</li>;
+      return (
+        <li key={index}>
+          <i className='fa fa-user' />
+          <div className='item-content'>
+            <div className='item-content-name'>{user.username}</div>
+            <div className='item-content-info'>{`Level: ${user.level}`}</div>
+          </div>
+        </li>
+      );
     });
   }
 }
