@@ -27,7 +27,7 @@ class App extends React.Component<IProps, IState> {
     super(props);
 
     this.state = {
-      isLoggedIn: true
+      isLoggedIn: false
     };
 
     this.init();

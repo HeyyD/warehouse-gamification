@@ -1,14 +1,20 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
 import './Friends.scss';
+import IUser from 'src/models/IUser';
+
+interface IProps {
+  user: IUser;
+}
 
 interface IState {
   users: JSX.Element[];
 }
 
-class Friends extends React.Component<{}, IState> {
+class Friends extends React.Component<IProps, IState> {
 
-  constructor(props: {}) {
+  constructor(props: IProps) {
     super(props);
     this.createListItems = this.createListItems.bind(this);
     this.state = {
@@ -32,7 +38,7 @@ class Friends extends React.Component<{}, IState> {
   }
 
   private createListItems(users: Array<{username: string, level: number, xp: number}>): JSX.Element[] {
-    return users.map((user, index) => {
+    return users.filter(user => user.username !== this.props.user.name).map((user, index) => {
       return (
         <li key={index}>
           <i className='fa fa-user' />
@@ -45,4 +51,11 @@ class Friends extends React.Component<{}, IState> {
     });
   }
 }
-export default Friends;
+
+const mapStateToProps = (state: {user: IUser}) => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(mapStateToProps, null) (Friends);
