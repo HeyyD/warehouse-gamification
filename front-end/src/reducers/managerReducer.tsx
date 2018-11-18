@@ -1,4 +1,4 @@
-const reducer = (state = true, action: {type: string, isManager?: boolean}) => {
+const reducer = (state = false, action: {type: string, isManager?: boolean}) => {
   switch(action.type){
     case 'SWITCHMANAGER':
       return action.isManager;
