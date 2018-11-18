@@ -25,6 +25,5 @@
   },
   "engines": {
     "node": "10.7.0"
-  },
-  "cacheDirectories": ["front-end/node_modules", "server/node_modules"]
+  }
 }
