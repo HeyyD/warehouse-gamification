@@ -3,6 +3,7 @@ import { Table, Header, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { deleteQuest } from '../reducers/questsReducer';
 
+// tslint:disable-next-line:no-shadowed-variable
 const ManagerQuest = ({title, id, deleteQuest}: {title: string, id: string, deleteQuest: (id: string) => any}) => {
   return(
     <Table.Row>
