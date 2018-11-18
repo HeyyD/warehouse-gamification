@@ -5,16 +5,22 @@ import './App.scss';
 import Inventory from './components/Inventory';
 import MainLayout from './layouts/MainLayout';
 import MainPage from './pages/MainPage';
+import ManagerLayout from './layouts/ManagerLayout';
 import { changeMobileState } from './reducers/mobileReducer';
 import {initAssets} from './reducers/assetsReducer';
+import { initUsers } from './reducers/usersReducer';
+import { initQuests } from './reducers/questsReducer';
 import Login from './components/Login';
 import Friends from './components/Friends';
 
 interface IProps {
   initAssets: () => any;
+  isManager: boolean;
   isReady: boolean;
   isMobile: boolean;
   changeMobileState: (state: boolean) => any;
+  initUsers: () => any;
+  initQuests: () => any;
 }
 
 interface IState {
@@ -57,16 +63,20 @@ class App extends React.Component<IProps, IState> {
     } else if(this.props.isReady) {
       return (
         <React.Fragment>
-          <Router>
-            <div className='content-wrapper'>
-              <MainLayout>
-                <Route exact={true} path='/' component={MainPage} />
-                <Route exact={true} path='/inventory/:id' component={Inventory} />
-                <Route exact={true} path='/friends' component={Friends} />
-                <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
-              </MainLayout>
-            </div>
-          </Router>
+        <Router>
+          <div className='content-wrapper'>
+          { this.props.isManager? 
+            <ManagerLayout />
+            :
+            <MainLayout>
+              <Route exact={true} path='/' component={MainPage} />
+              <Route exact={true} path='/inventory/:id' component={Inventory} />
+              <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
+              <Route exact={true} path='/friends' component={Friends} />
+            </MainLayout>
+          }
+          </div>
+        </Router>
         </React.Fragment>
       ); 
     } else {
@@ -76,15 +86,20 @@ class App extends React.Component<IProps, IState> {
 
   private async init() {
     this.props.initAssets();
+    if(this.props.isManager) {
+      this.props.initUsers(); 
+      this.props.initQuests();
+    }
   }
 
 }
 
-const mapStateToProps = (state: {isMobile: boolean, assets: {isReady: boolean}}) => {
+const mapStateToProps = (state: {isManager: boolean, isMobile: boolean, assets: {isReady: boolean}}) => {
   return {
+    isManager: state.isManager,
     isMobile: state.isMobile,
     isReady : state.assets.isReady
   };
 };
 
-export default connect(mapStateToProps, {changeMobileState, initAssets})(App);
+export default connect(mapStateToProps, {changeMobileState, initAssets, initUsers, initQuests})(App);

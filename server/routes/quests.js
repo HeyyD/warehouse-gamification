@@ -25,8 +25,38 @@ router.get('/:id', function(req, res, next) {
         msg: "Bad request"
     })
   }
-});
+})
 
+router.delete('/:id', (req, res, next) => {
+  if(isValidId(req.params.id)) {
+    models.Quest.destroy({
+      where: {
+        id: req.params.id 
+      } 
+    })
+    .then(quest => {
+      res.json({msg: "Deleted"}) 
+    })
+    .catch(err => {
+      res.json(err) 
+    })
+  }else {
+    res.json({
+      msg: "Bad request" 
+    }) 
+  }
+})
+router.post('/', (req, res, next) => {
+  const body = req.body
+  //Day that is week from now
+  models.Quest.create({ 
+    title: body.title,
+    isComplete: false,
+    description: body.description
+  })
+    .then( q => res.json(q) )
+    .catch( err => res.json(err) )
+})
 
 const isValidId = (id) => {
   if (!isNaN(id) & isFinite(id) & id %1 === 0) {
