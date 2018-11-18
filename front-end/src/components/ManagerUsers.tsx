@@ -15,11 +15,12 @@ const ManagerUsers = ({users}: {users: []}) => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {users.map( (u:{username: string, level: number, id: number}, i) => 
+          {users.map( (u:{username: string, level: number, id: string}, i) => 
            <ManagerUser 
             key={u.id}
             username={u.username}
-            level={u.level}/>
+            level={u.level}
+            id={u.id}/>
           )}
         </Table.Body>
       </Table>

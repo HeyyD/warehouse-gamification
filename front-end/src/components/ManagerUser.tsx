@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Table, Header, Image, Button } from 'semantic-ui-react';
+import UserForm from './UserForm';
+import { Table, Header, Image } from 'semantic-ui-react';
 
-const ManagerUser = ({username, level} : {username: string, level: number}) => {
+const ManagerUser = ({username, level, id} : {username: string, level: number, id: string}) => {
   return(
     <Table.Row>
       <Table.Cell>
@@ -14,7 +15,7 @@ const ManagerUser = ({username, level} : {username: string, level: number}) => {
         </Header>
       </Table.Cell>
       <Table.Cell>{level}</Table.Cell>
-      <Table.Cell><Button color="red">PUNISH</Button></Table.Cell>
+      <Table.Cell><UserForm username={username} level={level} id={id}/></Table.Cell>
     </Table.Row>
   );
 };
