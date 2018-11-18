@@ -1,0 +1,47 @@
+@import '../index.scss';
+
+.friends-list {
+  background: $color-primary-light;
+  border-top: $color-primary solid 2px;
+  border-bottom: $color-primary solid 2px;
+  height: calc(100% - 104px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+
+  li {
+    display: flex;
+    color: #fff;
+
+    i {
+      color: $color-primary;
+      $size: 50px;
+      height: $size;
+      width: $size;
+      font-size: $size;
+      text-align: center;
+    }
+
+    .item-content {
+      flex: 1 0 auto;
+      align-self: center;
+
+      &-name {
+        font-weight: 600;
+      }
+
+      &-info {
+        color: $lw-light-grey;
+      }
+    }
+
+    &:hover {
+      background: #ffad00;
+
+      i {
+        color: #fff;
+      }
+    }
+  }
+}
