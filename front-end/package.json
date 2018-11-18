@@ -6,7 +6,7 @@
     "@petejkim/react-scripts-ts-sass": "2.15.2",
     "axios": "^0.18.0",
     "rc-progress": "^2.2.6",
-    "react": "^16.5.2",
+    "react": "^16.6.3",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.6.3",
     "react-redux": "^5.0.7",
@@ -15,7 +15,14 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.83.0",
-    "typescript": "^3.1.1"
+    "typescript": "^3.1.1",
+    "@types/jest": "^23.3.3",
+    "@types/node": "^10.11.4",
+    "@types/react": "^16.7.6",
+    "@types/react-addons-css-transition-group": "^15.0.5",
+    "@types/react-dom": "^16.0.9",
+    "@types/react-redux": "^6.0.9",
+    "@types/react-router-dom": "^4.3.1"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -23,14 +30,6 @@
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
-  "devDependencies": {
-    "@types/react-addons-css-transition-group": "^15.0.5",
-    "@types/react-redux": "^6.0.9",
-    "@types/react-router-dom": "^4.3.1",
-    "@types/jest": "^23.3.3",
-    "@types/node": "^10.11.4",
-    "@types/react": "^16.4.14",
-    "@types/react-dom": "^16.0.9"
-  },
+  "devDependencies": {},
   "proxy": "http://localhost:3001/"
 }
