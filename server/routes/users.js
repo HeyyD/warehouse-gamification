@@ -27,6 +27,24 @@ router.get('/:id', function(req, res, next) {
   }
 });
 
+router.put('/:id', (req, res, next) => {
+  console.log(req.body.lvl, req.params.id);
+  if(isValidId(req.params.id)) {
+    models.User.update(
+      {level: req.body.level},
+      {where: {id: req.params.id}} 
+    ) 
+    .then((rowsUpdated) => {
+      res.json(rowsUpdated) 
+    })
+    .catch(e => {
+      res.json(e) 
+    })
+  } else {
+    res.json({ msg: "Bad request" }) 
+  }
+})
+
 
 const isValidId = (id) => {
   if (!isNaN(id) & isFinite(id) & id %1 === 0) {
