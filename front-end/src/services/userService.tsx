@@ -7,6 +7,12 @@ const getAll = async () => {
   return req.data;
 };
 
+const update = async (id: number, level: {level: number}) => {
+  const req = await axios.put(`${baseUrl}/${id}`, level);
+  return req.data;
+};
+
 export default {
-  getAll
+  getAll,
+  update
 };
