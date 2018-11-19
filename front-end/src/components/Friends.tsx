@@ -23,7 +23,7 @@ class Friends extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
-    fetch('http://localhost:3001/api/users')
+    fetch('/api/users')
     .then(res => res.json())
     .then(res => {
       this.setState({ users: this.createListItems(res)});

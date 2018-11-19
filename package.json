@@ -2,11 +2,10 @@
   "name": "warehouse-gamification",
   "version": "0.0.2",
   "description": "",
-  "main": "server/bin/www.js",
   "scripts": {
     "preinstall": "npm install --prefix ./server && npm install --prefix ./front-end",
     "postinstall": "npm run build --prefix ./front-end && echo PLEASE-WORK && cpx front-end/build/**/*.* server/public",
-    "start": "pm2 start server/bin/www",
+    "start": "node server/bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,8 +19,7 @@
   },
   "homepage": "https://warehouse-gamification-app.herokuapp.com/",
   "dependencies": {
-    "cpx": "^1.5.0",
-    "pm2": "^3.2.2"
+    "cpx": "^1.5.0"
   },
   "engines": {
     "node": "10.7.0"
