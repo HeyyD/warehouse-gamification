@@ -16,7 +16,6 @@ const DesktopLayout = (
     isReady: boolean 
   }) => {
   const pathname = props.location.pathname.toLowerCase();
-  console.log(props.isReady);
   return(
     <div className='desktop-layout'>
       <div className='upper-section'>
