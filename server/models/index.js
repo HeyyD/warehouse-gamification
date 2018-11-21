@@ -6,7 +6,7 @@ const basename  = path.basename(__filename);
 let db = {};
 
 // ORM connection
-const sequelize = new Sequelize('warehouseDB', process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+const sequelize = new Sequelize('warehouse-gamification', process.env.DB_USERNAME, process.env.DB_PASSWORD, {
     dialect: 'mssql', // SQLServer
     host: process.env.DB_ADDRESS,
     port: 1433, // Default port
