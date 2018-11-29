@@ -22,7 +22,7 @@ const UnlockModal = (props: IProps) => {
         }} width='90px' height='90px'>item</canvas>
         <button onClick={ props.onClick }>OK!</button>
       </div>
-      <div className='modal-background'></div>
+      <div className='modal-background' />
     </div>
   );
 };

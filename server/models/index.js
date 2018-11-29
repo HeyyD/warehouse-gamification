@@ -2,14 +2,13 @@ const fs        = require('fs');
 const path      = require('path');
 const Sequelize = require('sequelize');
 const basename  = path.basename(__filename);
-const secret = require('../secret/db.json');
 
 let db = {};
 
 // ORM connection
-const sequelize = new Sequelize('warehouseDB', secret.username, secret.password, {
+const sequelize = new Sequelize('warehouse-gamification', process.env.DB_USERNAME, process.env.DB_PASSWORD, {
     dialect: 'mssql', // SQLServer
-    host: secret.address,
+    host: process.env.DB_ADDRESS,
     port: 1433, // Default port
     encrypt: true,
     logging: false, 

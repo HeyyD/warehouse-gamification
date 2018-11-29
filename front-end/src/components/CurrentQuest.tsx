@@ -1,9 +1,9 @@
 import { Line } from 'rc-progress';
 import * as React from 'react';
-import Quest from '../models/quest';
+import IQuest from '../models/quest';
 import './CurrentQuest.scss';
 
-const CurrentQuest = ({quest}: {quest: Quest}) => {
+const CurrentQuest = ({quest}: {quest: IQuest}) => {
   const { name, current, max } = quest;
   return(
     <div className='quest'>

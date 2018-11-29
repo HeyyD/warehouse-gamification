@@ -23,6 +23,7 @@ const Navigation = (props : {toggled: boolean, toggle: ()=>{}}) => {
           </div>
           <Link to='/'><NavigationItem text='Home' icon='fa fa-home' /></Link>
           <Link to='/inventory/menu'><NavigationItem text='Inventory' icon='fa fa-archive' /></Link>
+          <Link to='/friends'><NavigationItem text='Friends' icon='fa fa-user' /></Link>
           <Link to='/settings'><NavigationItem text='Settings' icon='fa fa-cog' /></Link>
           <Link to='/quests'><NavigationItem text='Quests' icon='fa fa-trophy' /></Link>
         </div>
