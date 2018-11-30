@@ -3,7 +3,10 @@
         "title": "quest title here",
         "dueDate": "2018-11-10T20:34:30.606Z",
         "isComplete": false,
-        "description": "quest description"
+        "description": "quest description",
+        "rewardExp": 128,
+        "currentAmount": 14,
+        "requiredAmount": 68
     }
 ]
  
