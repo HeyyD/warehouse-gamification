@@ -5,7 +5,7 @@ import './QuestListItem.scss';
 
 
 interface IProps {
-  quest: {id: number, name: string, currentExp: number, requiredExp: number}
+  quest: {id: number, name: string, currentExp: number, requiredExp: number};
 }
 
 class QuestListItem extends React.Component<IProps> {
@@ -16,7 +16,7 @@ class QuestListItem extends React.Component<IProps> {
 
   public render() {
 
-    let expPercent = this.props.quest.currentExp 
+    const expPercent = this.props.quest.currentExp 
                   / this.props.quest.requiredExp 
                   * 90;
 
@@ -35,7 +35,7 @@ class QuestListItem extends React.Component<IProps> {
           </div>
         </Link>
       </div>
-    )
+    );
   }
 }
 

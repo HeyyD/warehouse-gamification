@@ -4,8 +4,8 @@ import { RouteComponentProps } from 'react-router-dom';
 import './QuestSingle.scss';
 
 interface IProps extends RouteComponentProps<any> {
-    //quest: {id: number, name: string, description: string,
-         //currentExp: number, requiredExp: number}
+    // quest: {id: number, name: string, description: string,
+         // currentExp: number, requiredExp: number}
   }
 
 class QuestSingle extends React.Component<IProps> {
@@ -20,9 +20,9 @@ class QuestSingle extends React.Component<IProps> {
   public render() {
 
     // Get quest information from DB
-    //const { id } = this.props.match.params;
+    // const { id } = this.props.match.params;
 
-    let expPercent = 181/200*90
+    const expPercent = 181/200*90;
                   
     return(
         <div className='quest-single'>
@@ -41,7 +41,7 @@ class QuestSingle extends React.Component<IProps> {
           </div>
           <div className='reward'><h1>Reward: 100 xp</h1></div>
         </div>
-    )
+    );
   }
 }
 
