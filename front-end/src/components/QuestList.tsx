@@ -1,47 +1,51 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import QuestListItem from './QuestListItem';
+import IUser from '../models/IUser';
+import IQuest from '../models/IQuest';
 import './QuestList.scss';
 
 interface IProps {
-  assets: {data: {}};
+  user: IUser;
+  quest: IQuest;
+  isMobile: boolean;
 }
 
 class QuestList extends React.Component<IProps> {
 
-  private quests = [{id: 1, name: 'Defeat the box dragon!', currentExp: 181, requiredExp: 200},
-                    {id: 2, name: 'Beat your friend!', currentExp: 36, requiredExp: 100},
-                    {id: 3, name: 'Picking challenge', currentExp: 3, requiredExp: 7},
-                    {id: 4, name: 'Work for 100 days', currentExp: 55, requiredExp: 100},
-                    {id: 5, name: 'Quest #5', currentExp: 470, requiredExp: 1000},
-                    {id: 6, name: 'Quest #6', currentExp: 24, requiredExp: 500}];
+  private quests: any;
 
   constructor(props: IProps) {
     super(props);
-  }
-
-  public render() {
-
-    fetch('api/quests').then(res => res.json().then(res1 => console.log(res1)));
-    fetch('api/users').then(res => res.json().then(res1 => console.log(res1)));
-    fetch('api/quests/1').then(res => res.json().then(res1 => console.log(res1)));
-
-    const elements = this.quests.map(q => {
+    console.log(this.props.user);
+    this.quests = this.props.user.quests.map(q => {
       return(
         <li key={q.id}>
           <QuestListItem quest={q}/>
         </li>
       );
     });
+  }
 
+  public render() {
+    // fetch('api/quests').then(res => res.json().then(res1 => console.log(res1)));
     return(
         <div className='quest-list'>
           <h2>Quests</h2>
           <ul>
-            {elements}
+            {this.quests}
           </ul>
         </div>
     );
   }
 }
 
-export default QuestList;
+const mapStateToProps = (state: {user: IUser, assets: {}, isMobile: boolean}) => {
+  return {
+    assets: state.assets,
+    user: state.user,
+    isMobile: state.isMobile
+  };
+};
+
+export default connect(mapStateToProps, null) (QuestList);

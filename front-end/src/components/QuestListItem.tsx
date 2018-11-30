@@ -2,10 +2,11 @@ import * as React from 'react';
 import { Line } from 'rc-progress';
 import { Link } from 'react-router-dom';
 import './QuestListItem.scss';
+import IQuest from 'src/models/IQuest';
 
 
 interface IProps {
-  quest: {id: number, name: string, currentExp: number, requiredExp: number};
+  quest: IQuest;
 }
 
 class QuestListItem extends React.Component<IProps> {
@@ -16,14 +17,14 @@ class QuestListItem extends React.Component<IProps> {
 
   public render() {
 
-    const expPercent = this.props.quest.currentExp 
-                  / this.props.quest.requiredExp 
+    const expPercent = this.props.quest.currentAmount 
+                  / this.props.quest.requiredAmount 
                   * 90;
 
     return(
       <div className='quest-item'>
         <Link to={`/quests/${this.props.quest.id}`}>
-          <span>{this.props.quest.name}</span>
+          <span>{this.props.quest.title}</span>
           <div className='line-container'>
             <Line 
               percent={expPercent}
@@ -31,7 +32,7 @@ class QuestListItem extends React.Component<IProps> {
               strokeColor="#eb9605"
               trailWidth={10}
             />
-            <span>{this.props.quest.currentExp} / {this.props.quest.requiredExp}</span>
+            <span>{this.props.quest.currentAmount} / {this.props.quest.requiredAmount}</span>
           </div>
         </Link>
       </div>

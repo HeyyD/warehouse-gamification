@@ -1,5 +1,6 @@
 import IEquipment from '../models/IEquipment';
 import ILoginInfo from '../models/ILoginInfo';
+// import IQuest from '../models/IQuest';
 
 const mockUser = {
   name: 'Tom',
@@ -7,6 +8,7 @@ const mockUser = {
   xp: 213222,
   lvl: 6,
   boxesPicked: 129,
+  quests: [],
   questsCompleted: 32,
   equipment : {
     hair: 0,
@@ -37,7 +39,8 @@ const reducer = (state = mockUser, action: {type: string, equipment: IEquipment,
         ...state,
         name: action.user.username,
         lvl: action.user.level,
-        xp: action.user.xp
+        xp: action.user.xp,
+        quests: action.user.quests
       };
     default:
       return state;

@@ -1,4 +1,5 @@
 export default interface IQuest {
+  id: number;
   title: string;
   description: string;
   isComplete: boolean;
