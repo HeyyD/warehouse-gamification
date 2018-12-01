@@ -1,6 +1,5 @@
 import IEquipment from '../models/IEquipment';
 import ILoginInfo from '../models/ILoginInfo';
-// import IQuest from '../models/IQuest';
 
 const mockUser = {
   name: 'Tom',

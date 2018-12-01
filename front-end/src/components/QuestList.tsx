@@ -2,12 +2,10 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import QuestListItem from './QuestListItem';
 import IUser from '../models/IUser';
-import IQuest from '../models/IQuest';
 import './QuestList.scss';
 
 interface IProps {
   user: IUser;
-  quest: IQuest;
   isMobile: boolean;
 }
 
@@ -28,7 +26,7 @@ class QuestList extends React.Component<IProps> {
   }
 
   public render() {
-    // fetch('api/quests').then(res => res.json().then(res1 => console.log(res1)));
+    fetch('api/quests').then(res => res.json().then(res1 => console.log(res1)));
     return(
         <div className='quest-list'>
           <h2>Quests</h2>

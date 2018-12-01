@@ -7,6 +7,7 @@ import Inventory from '../components/Inventory';
 import Stats from '../components/Stats';
 import User from '../models/IUser';
 import './DesktopLayout.scss';
+import QuestList from 'src/components/QuestList';
 
 const DesktopLayout = (
   props: {
@@ -34,7 +35,7 @@ const DesktopLayout = (
           {pathname.startsWith('/inventory')? props.children : <Inventory />}
         </div>
         <div className='quest-section'>
-          quest
+          <QuestList />
         </div>
       </div>
     </div>

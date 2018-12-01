@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Line } from 'rc-progress';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+// import IQuest from '../models/IQuest';
 import './QuestSingle.scss';
 
 interface IProps extends RouteComponentProps<any> {
@@ -10,15 +12,19 @@ interface IProps extends RouteComponentProps<any> {
 
 class QuestSingle extends React.Component<IProps> {
 
+  // private quest: IQuest;
 
   constructor(props: IProps) {
     super(props);
-
-    
   }
 
   public render() {
 
+    /*console.log(this.props.match.params);
+    const { id } = this.props.match.params;
+    console.log(id);
+    
+    fetch(`api/quests`).then(res => res.json().then(res1 => console.log(res1)));*/
     // Get quest information from DB
     // const { id } = this.props.match.params;
 
@@ -45,4 +51,11 @@ class QuestSingle extends React.Component<IProps> {
   }
 }
 
-export default QuestSingle;
+const mapStateToProps = (state: {assets: {data: {}}, isMobile: boolean}) => {
+  return {
+    assets: state.assets,
+    isMobile: state.isMobile
+  };
+};
+
+export default withRouter(connect(mapStateToProps, null) (QuestSingle));
