@@ -11,27 +11,52 @@ interface IProps {
 
 class QuestList extends React.Component<IProps> {
 
-  private quests: any;
+  private incompleteQuests: any;
+  private completedQuests: any;
 
   constructor(props: IProps) {
     super(props);
-    console.log(this.props.user);
-    this.quests = this.props.user.quests.map(q => {
-      return(
-        <li key={q.id}>
-          <QuestListItem quest={q}/>
-        </li>
-      );
+    this.incompleteQuests = this.props.user.quests.map(q => {
+
+      if (!q.isComplete && q.currentAmount >= q.requiredAmount) {
+        // add xp to user
+        // mark quest as completed
+      }
+
+      if (!q.isComplete) {
+        return(
+          <li key={q.id}>
+            <QuestListItem quest={q}/>
+          </li>
+        );
+      } else {
+        return null;
+      }
+    });
+
+    this.completedQuests = this.props.user.quests.map(q => {
+      if (q.isComplete) {
+        return(
+          <li key={q.id}>
+            <QuestListItem quest={q}/>
+          </li>
+        );
+      } else {
+        return null;
+      }
     });
   }
 
   public render() {
-    fetch('api/quests').then(res => res.json().then(res1 => console.log(res1)));
+    // fetch('api/quests').then(res => res.json().then(res1 => console.log(res1)));
     return(
         <div className='quest-list'>
           <h2>Quests</h2>
           <ul>
-            {this.quests}
+            {this.incompleteQuests}
+          </ul>
+          <ul className='completed'>
+            {this.completedQuests}
           </ul>
         </div>
     );
