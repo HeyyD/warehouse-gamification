@@ -63,9 +63,8 @@ class QuestList extends React.Component<IProps> {
   }
 }
 
-const mapStateToProps = (state: {user: IUser, assets: {}, isMobile: boolean}) => {
+const mapStateToProps = (state: {user: IUser, isMobile: boolean}) => {
   return {
-    assets: state.assets,
     user: state.user,
     isMobile: state.isMobile
   };

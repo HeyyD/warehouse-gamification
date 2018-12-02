@@ -15,7 +15,7 @@ const MainPage = (props: {user: IUser, quest: IQuest}) => {
           <h2>{props.user.name}, lvl{props.user.lvl}</h2>
         </div>
         <Stats user={props.user}/>
-        <CurrentQuest quest={props.quest}/>
+        <CurrentQuest />
       </div>
     </React.Fragment>
   );
