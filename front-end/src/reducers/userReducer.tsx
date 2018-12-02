@@ -34,12 +34,20 @@ const reducer = (state = mockUser, action: {type: string, equipment: IEquipment,
     case 'CHANGE_EQUIPMENT':
       return {...state, equipment: action.equipment};
     case 'CHANGE_USER':
+
+    let completedQuests: number = 0;
+    action.user.quests.forEach(quest => {
+      if (quest.isComplete) {
+        completedQuests += 1;
+      }
+    });
       return {
         ...state,
         name: action.user.username,
         lvl: action.user.level,
         xp: action.user.xp,
-        quests: action.user.quests
+        quests: action.user.quests,
+        questsCompleted: completedQuests
       };
     default:
       return state;
