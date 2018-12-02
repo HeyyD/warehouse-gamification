@@ -75,7 +75,7 @@ class App extends React.Component<IProps, IState> {
               <Route exact={true} path='/inventory/:id' component={Inventory} />
               <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
               <Route exact={true} path='/quests' component={QuestList} />
-              <Route exact={true} path='/quests/1' component={QuestSingle} />
+              <Route exact={true} path='/quests/:id' component={QuestSingle} />
               <Route exact={true} path='/friends' component={Friends} />
             </MainLayout>
           }
