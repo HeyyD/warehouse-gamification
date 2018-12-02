@@ -36,8 +36,8 @@ const reducer = (state = mockUser, action: {type: string, equipment: IEquipment,
     case 'CHANGE_USER':
 
     let completedQuests: number = 0;
-    action.user.quests.forEach(quest => {
-      if (quest.isComplete) {
+    action.user.quests.forEach(element => {
+      if (element.isComplete) {
         completedQuests += 1;
       }
     });

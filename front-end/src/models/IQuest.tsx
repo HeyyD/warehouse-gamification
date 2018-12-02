@@ -3,7 +3,7 @@ export default interface IQuest {
   title: string;
   description: string;
   isComplete: boolean;
-  // dueDate: Date;
+  dueDate: string;
   rewardExp: number;
   currentAmount: number;
   requiredAmount: number;

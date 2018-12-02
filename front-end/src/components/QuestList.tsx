@@ -18,10 +18,24 @@ class QuestList extends React.Component<IProps> {
     super(props);
     this.incompleteQuests = this.props.user.quests.map(q => {
 
+      const dueDate: Date = new Date();
+
+      dueDate.setFullYear(parseInt(q.dueDate.substr(0, 4), 10));
+      dueDate.setMonth(parseInt(q.dueDate.substr(5, 2), 10));
+      dueDate.setDate(parseInt(q.dueDate.substr(8, 2), 10));
+      dueDate.setHours(parseInt(q.dueDate.substr(11, 2), 10));
+      dueDate.setMinutes(parseInt(q.dueDate.substr(14, 2), 10));
+
+      console.log(dueDate < new Date());
+
       if (!q.isComplete && q.currentAmount >= q.requiredAmount) {
         // add xp to user
         // mark quest as completed
       }
+
+      if (!q.isComplete && dueDate < new Date()) {
+        // quest is expired
+      } 
 
       if (!q.isComplete) {
         return(
