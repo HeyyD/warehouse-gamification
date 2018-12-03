@@ -17,12 +17,16 @@ class QuestSingle extends React.Component<IProps> {
   
   constructor(props: IProps) {
     super(props);
+
+    // Iterate through user's quest array and find the one with
+    // an id matching with the id in the URL
     this.props.user.quests.forEach(element => {
       if (element.id === parseInt(this.props.match.params.id, 10)) {
         this.quest = element;
       }
     });
 
+    // Parse dueDate string from database to be clearer to viewer
     this.dueDate += (this.quest.dueDate.substr(8, 2) + '.');
     if (this.quest.dueDate.substr(5, 1) === '0') {
       this.dueDate += (this.quest.dueDate.substr(6, 1) + '.');

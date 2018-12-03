@@ -17,6 +17,9 @@ class QuestListItem extends React.Component<IProps> {
 
   public render() {
 
+    // Calculate percentage of quest completion for the 
+    // filling bar. Multiply with 90 instead of 100 to 
+    // compensate for Line's strokeWidth of 10.
     const expPercent = this.props.quest.currentAmount 
                   / this.props.quest.requiredAmount 
                   * 90;

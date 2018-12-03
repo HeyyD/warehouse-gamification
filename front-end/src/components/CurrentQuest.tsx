@@ -12,18 +12,31 @@ interface IProps {
 class CurrentQuest extends React.Component<IProps> {
 
   private biggest: IQuest;
-  
 
   constructor(props: IProps) {
     super(props);
 
+    // Copy array of quests from user data
     const ordered = this.props.user.quests;
 
+    // Sort copied array by completion percentage, largest percentage first
     ordered.sort((a,b) => {
       return (b.currentAmount/b.requiredAmount) - (a.currentAmount/a.requiredAmount);
     });
 
-    this.biggest = ordered[0];
+    // First insert smallest percentage to variable
+    this.biggest = ordered[ordered.length - 1];
+
+    // Then iterate through the ordered array and if a quest has a larger
+    // percentage than the current one, but still under 100%, insert it as
+    // biggest.
+    ordered.forEach(element => {
+      if (element.currentAmount/element.requiredAmount < 1
+        && element.currentAmount / element.requiredAmount 
+        > this.biggest.currentAmount / this.biggest.requiredAmount) {
+          this.biggest = element;
+        }
+    });
   }
   
   public render() {
