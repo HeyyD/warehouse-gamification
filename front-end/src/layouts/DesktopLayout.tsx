@@ -7,6 +7,7 @@ import Inventory from '../components/Inventory';
 import Stats from '../components/Stats';
 import User from '../models/IUser';
 import './DesktopLayout.scss';
+import QuestList from 'src/components/QuestList';
 
 const DesktopLayout = (
   props: {
@@ -16,7 +17,6 @@ const DesktopLayout = (
     isReady: boolean 
   }) => {
   const pathname = props.location.pathname.toLowerCase();
-  console.log(props.isReady);
   return(
     <div className='desktop-layout'>
       <div className='upper-section'>
@@ -35,7 +35,7 @@ const DesktopLayout = (
           {pathname.startsWith('/inventory')? props.children : <Inventory />}
         </div>
         <div className='quest-section'>
-          quest
+          <QuestList />
         </div>
       </div>
     </div>

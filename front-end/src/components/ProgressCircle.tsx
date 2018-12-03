@@ -6,7 +6,7 @@ const ProgressCircle = () => {
   return(
     <div className='progressbar-container'>
     <Circle
-      percent={20}
+      percent={124/240*100}
       strokeWidth={6}
       strokeColor="#eb9605"
       trailWidth={6}

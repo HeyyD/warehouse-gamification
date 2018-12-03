@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     dueDate: DataTypes.DATE,
     isComplete: DataTypes.BOOLEAN,
     description: DataTypes.TEXT,
+    rewardExp: DataTypes.SMALLINT,
+    currentAmount: DataTypes.SMALLINT,
+    requiredAmount: DataTypes.SMALLINT,
   });
 
   Quest.associate = function(models) {
