@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "",
   "scripts": {
-    "preinstall": "npm install --prefix ./server && npm install --prefix ./front-end",
+    "preinstall": "npm ci --prefix ./server && npm ci --prefix ./front-end",
     "postinstall": "npm run build --prefix ./front-end && echo PLEASE-WORK && cpx front-end/build/**/*.* server/public",
     "start": "node server/bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
