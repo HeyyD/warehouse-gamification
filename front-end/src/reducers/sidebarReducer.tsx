@@ -13,7 +13,7 @@ const reducer = (state = false, action: {type: string}) => {
 };
 
 export const toggle = () => {
-  return async (dispatch: ({}) => {type: string}) => {
+  return (dispatch: any) => {
     dispatch({
       type: 'TOGGLE' 
     });
@@ -21,7 +21,7 @@ export const toggle = () => {
 };
 
 export const setTrue = () => {
-  return async (dispatch: ({}) => {type: string}) => {
+  return (dispatch: any) =>  {
     dispatch({
       type: 'TRUE' 
     });
@@ -29,7 +29,7 @@ export const setTrue = () => {
 };
 
 export const setFalse = () => {
-  return async (dispatch: ({}) => {type: string}) => {
+  return (dispatch: any) => {
     dispatch({
       type: 'FALSE' 
     });

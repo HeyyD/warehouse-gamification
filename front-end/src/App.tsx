@@ -58,29 +58,26 @@ class App extends React.Component<IProps, IState> {
   public render() {
     if (!this.state.isLoggedIn) {
       return (
-        <Login login={(login: boolean) => {
-          this.setState({isLoggedIn: login});
-        }}/>
+        <Login login={login =>  this.setState({isLoggedIn: login}) }/>
       );
     } else if(this.props.isReady) {
       return (
         <React.Fragment>
-        <Router>
-          <div className='content-wrapper'>
-          { this.props.isManager? 
-            <ManagerLayout />
-            :
-            <MainLayout>
-              <Route exact={true} path='/' component={MainPage} />
-              <Route exact={true} path='/inventory/:id' component={Inventory} />
-              <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
-              <Route exact={true} path='/quests' component={QuestList} />
-              <Route exact={true} path='/quests/:id' component={QuestSingle} />
-              <Route exact={true} path='/friends' component={Friends} />
-            </MainLayout>
-          }
-          </div>
-        </Router>
+          <Router>
+            <div className='content-wrapper'>
+              { this.props.isManager
+                  ? <ManagerLayout />
+                  : <MainLayout>
+                      <Route exact={true} path='/' component={MainPage} />
+                      <Route exact={true} path='/inventory/:id' component={Inventory} />
+                      <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
+                      <Route exact={true} path='/quests' component={QuestList} />
+                      <Route exact={true} path='/quests/:id' component={QuestSingle} />
+                      <Route exact={true} path='/friends' component={Friends} />
+                    </MainLayout>
+              }
+            </div>
+          </Router>
         </React.Fragment>
       ); 
     } else {

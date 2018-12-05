@@ -17,7 +17,7 @@ class CurrentQuest extends React.Component<IProps> {
     super(props);
 
     // Copy array of quests from user data
-    const ordered = this.props.user.quests;
+    const ordered = [...this.props.user.quests];
 
     // Sort copied array by completion percentage, largest percentage first
     ordered.sort((a,b) => {
@@ -40,19 +40,27 @@ class CurrentQuest extends React.Component<IProps> {
   }
   
   public render() {
+    if(this.biggest) {
+      return(
+        <div className='quest'>
+          <h2> Current quest </h2>
+          <span>{this.biggest.title}</span>
+          <div className='line-container'>
+            <Line 
+              percent={this.biggest.currentAmount / this.biggest.requiredAmount * 90}
+              strokeWidth={10}
+              strokeColor="#eb9605"
+              trailWidth={10}
+            />
+            <span>{this.biggest.currentAmount} / {this.biggest.requiredAmount}</span>
+          </div>
+        </div>
+      );
+    }
     return(
       <div className='quest'>
         <h2> Current quest </h2>
-        <span>{this.biggest.title}</span>
-        <div className='line-container'>
-          <Line 
-            percent={this.biggest.currentAmount / this.biggest.requiredAmount * 90}
-            strokeWidth={10}
-            strokeColor="#eb9605"
-            trailWidth={10}
-          />
-          <span>{this.biggest.currentAmount} / {this.biggest.requiredAmount}</span>
-        </div>
+        <span>No quests active!</span>
       </div>
     );
   }

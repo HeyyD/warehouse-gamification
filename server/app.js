@@ -22,7 +22,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
-app.use(cors());
 
 
 // Define routes
@@ -30,7 +29,9 @@ app.use('/api/users', usersRoute);
 app.use('/api/quests', questRoute)
 //app.use('/', indexRoute)
 
-app.use(express.static('public'));
+app.use(express.static('public', {
+  etag: false
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
