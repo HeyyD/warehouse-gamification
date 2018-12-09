@@ -32,49 +32,42 @@ const Navigation = (props : {toggled: boolean, children: any, toggle: ()=>{}}) =
           visible={props.toggled}
           width='thin'
           >
-          <Link to='/'>
-            <Menu.Item as='a'>
-              <Icon name='home' />
-              Home
-            </Menu.Item>
-          </Link>
-          <Link to='/inventory/menu'>
-            <Menu.Item as='a'>
-              <Icon name='archive' />
-              Inventory
-            </Menu.Item>
-          </Link>
-          <Link to='/friends'>
-            <Menu.Item as='a'>
-              <Icon name='users' />
-              Friends
-            </Menu.Item>
-          </Link>
-          <Link to='/settings'>
-            <Menu.Item as='a'>
-              <Icon name='cogs' />
-              Settings
-            </Menu.Item>
-          </Link>
-          <Link to='/quests'>
-          <Menu.Item as='a'>
+          
+          <Menu.Item as={Link} to='/'>
+            <Icon name='home' />
+            Home
+          </Menu.Item>
+      
+          <Menu.Item as={Link} to='/inventory/menu'>
+            <Icon name='archive' />
+            Inventory
+          </Menu.Item>
+        
+          <Menu.Item as={Link} to='/friends'>
+            <Icon name='users' />
+            Friends
+          </Menu.Item>
+        
+          <Menu.Item as={Link} to='/settings'>
+            <Icon name='cogs' />
+            Settings
+          </Menu.Item>
+        
+          <Menu.Item as={Link} to='/quests'>
             <Icon name='trophy' />
             Quests
           </Menu.Item>
-          </Link>
+         
         </Sidebar>
 
-    
-
-    <Sidebar.Pusher dimmed={props.toggled}>
-            <Segment basic>
-              {props.children}
-            </Segment>
-    </Sidebar.Pusher>
+      <Sidebar.Pusher dimmed={props.toggled}>
+        <Segment basic>
+          {props.children}
+        </Segment>
+      </Sidebar.Pusher>
   
-  </Sidebar.Pushable>
-   
-    </div>
+    </Sidebar.Pushable>
+  </div>
   )
 
 };
