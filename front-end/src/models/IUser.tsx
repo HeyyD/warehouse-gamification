@@ -12,4 +12,5 @@ export default interface IUser {
   quests: [IQuest];
   equipment: IEquipment;
   availableEquipment: IAvailableEquipment;
+  isManager: boolean;
 }

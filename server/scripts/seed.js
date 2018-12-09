@@ -33,31 +33,36 @@ function createUsers() {
             username: 'Demon_Slayer' + Math.floor(Math.random()*1000),
             password: 'Shrestinian',
             level: Math.floor(Math.random()*100),
-            xp: Math.floor(Math.random()*1000000)
+            xp: Math.floor(Math.random()*1000000),
+            isManager: false,
         },
         {
             username: 'Ninja_Slayer' + Math.floor(Math.random()*1000),
             password: 'tmnt',
             level: Math.floor(Math.random()*100),
-            xp: Math.floor(Math.random()*1000000)
+            xp: Math.floor(Math.random()*1000000),
+            isManager: false,
         },
         {
             username: 'Box_Slayer' + Math.floor(Math.random()*1000),
             password: 'bucket4president',
             level: Math.floor(Math.random()*100),
-            xp: Math.floor(Math.random()*1000000)
+            xp: Math.floor(Math.random()*1000000),
+            isManager: false,
         },
         {
             username: 'Tokyo Machine' + Math.floor(Math.random()*1000),
             password: 'kawaii',
             level: Math.floor(Math.random()*100),
-            xp: Math.floor(Math.random()*1000000)
+            xp: Math.floor(Math.random()*1000000),
+            isManager: false,
         },
         {
             username: 'hedonisti_84' + Math.floor(Math.random()*1000),
             password: 'jallu_kjeh_khej',
             level: Math.floor(Math.random()*100),
-            xp: Math.floor(Math.random()*1000000)
+            xp: Math.floor(Math.random()*1000000),
+            isManager: false,
         }
     ];
 

@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     level: DataTypes.INTEGER,
     xp: DataTypes.INTEGER,
+    isManager: DataTypes.BOOLEAN,
   });
 
   
