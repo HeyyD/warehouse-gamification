@@ -43,8 +43,8 @@ class QuestSingle extends React.Component<IProps> {
       if (this.quest) {
         return(
           <div className='quest-single'>
-            <h2>Quests</h2>
-            <h3>{this.quest.title}</h3>
+            <h2>{this.quest.title}</h2>
+           
             <div className='description'>{this.quest.description}</div>
             <div className='due-date'>Due: {this.dueDate}</div>
             <div className='line-container'>
@@ -62,7 +62,7 @@ class QuestSingle extends React.Component<IProps> {
     } else {
       return(
         <div className='quest-single'>
-          <h2>Quests</h2>
+          <h2>Quest</h2>
           <h3>No quest found!</h3>
         </div>
       );

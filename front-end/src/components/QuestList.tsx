@@ -14,8 +14,8 @@ class QuestList extends React.Component<IProps> {
   private incompleteQuests: any;
   private completedQuests: any;
 
+
   constructor(props: IProps) {
-    console.log('user', props.user);
     super(props);
     this.incompleteQuests = this.props.user.quests.map(q => {
 
@@ -76,9 +76,11 @@ class QuestList extends React.Component<IProps> {
     return(
         <div className='quest-list'>
           <h2>Quests</h2>
+          <h4>Ongoing</h4>
           <ul>
             {this.incompleteQuests}
           </ul>
+          <h4>Completed</h4>
           <ul className='completed'>
             {this.completedQuests}
           </ul>
