@@ -132,9 +132,9 @@ class ItemList extends React.Component<IProps & StoreProps, IState> {
   }
 }
 
-const mapStateToProps = (state: {user: IUser, assets: {}, isMobile: boolean}) => {
+const mapStateToProps = (state: {user: IUser, assets: any, isMobile: boolean}) => {
   return {
-    assets: state.assets,
+    assets: state.assets.data,
     user: state.user,
     equipment: state.user.equipment,
     availableEquipment: state.user.availableEquipment,
