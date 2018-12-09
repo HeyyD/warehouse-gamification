@@ -5,6 +5,7 @@ import { toggle } from '../reducers/sidebarReducer';
 import './Navigation.scss'; 
 //import NavigationItem from './NavigationItem';
 import { Sidebar, Segment, Menu, Icon } from 'semantic-ui-react';
+import * as logo from '../assets/Leanware.png';
 
 const Navigation = (props : {toggled: boolean, children: any, toggle: ()=>{}}) => {
   const openSidebar = (event: React.MouseEvent<HTMLElement>) => {
@@ -20,6 +21,7 @@ const Navigation = (props : {toggled: boolean, children: any, toggle: ()=>{}}) =
     <div id='wrapper'>
       <div className='navigation'>
         <i className='fa fa-bars' onClick={openSidebar}/> 
+        <img src={logo} />
       </div>
       
       <Sidebar.Pushable as={Segment}>

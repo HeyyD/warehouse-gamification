@@ -110,6 +110,7 @@ class ItemList extends React.Component<IProps & StoreProps, IState> {
   }
 
   private changeEquipmentByIndex(index: number) {
+    console.log('hello')
     const availableEquipment = this.props.availableEquipment[this.props.itemId];
 
     if (availableEquipment.includes(index)) {
