@@ -1,7 +1,7 @@
 @import '../index.scss';
 
 .navigation {
-  height: 2.5em;
+  padding: 10px;
   background-color: #eb9605;
   color: #fff;
   overflow: hidden;
@@ -11,8 +11,9 @@
   justify-content: center;
 
   i {
-    margin-left: 20px;
+    margin-left: 10px;
   }
+
   a {
     text-decoration: none;
     color: black;
