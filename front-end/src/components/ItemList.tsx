@@ -15,6 +15,7 @@ interface IProps {
 }
 
 interface StoreProps {
+  changeEquipment: (arg: any) => any;
   user: IUser;
   equipment: IEquipment;
   availableEquipment: IAvailableEquipment;
@@ -110,7 +111,6 @@ class ItemList extends React.Component<IProps & StoreProps, IState> {
   }
 
   private changeEquipmentByIndex(index: number) {
-    console.log('hello')
     const availableEquipment = this.props.availableEquipment[this.props.itemId];
 
     if (availableEquipment.includes(index)) {
@@ -123,7 +123,8 @@ class ItemList extends React.Component<IProps & StoreProps, IState> {
           newState[key] = this.props.equipment[key];
         }
       });
-      changeEquipment(newState as IEquipment);
+
+      this.props.changeEquipment(newState as IEquipment);
     } else if (this.props.user.lvl >= index){
       this.selectedItemIndex = index;
       this.setState({showModal: true});

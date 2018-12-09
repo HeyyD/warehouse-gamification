@@ -31,8 +31,9 @@ const mockUser = {
 
 const reducer = (state = mockUser, action: {type: string, equipment: IEquipment, user: ILoginInfo}) => {
   switch(action.type){
-    case 'CHANGE_EQUIPMENT':
+    case 'CHANGE_EQUIPMENT': {
       return {...state, equipment: action.equipment};
+    }
     case 'CHANGE_USER':
 
     let completedQuests: number = 0;
@@ -55,7 +56,7 @@ const reducer = (state = mockUser, action: {type: string, equipment: IEquipment,
 };
 
 export const changeEquipment = (eq: IEquipment) => {
-  return async (dispatch: ({}) => {type: string}) => {
+  return (dispatch: any) => {
     dispatch({
       equipment: eq,
       type: 'CHANGE_EQUIPMENT'
