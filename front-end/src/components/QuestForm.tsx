@@ -80,4 +80,4 @@ class QuestForm extends React.Component<IProps, IState> {
   }
 }
 
-export default connect(null, {addQuest})(QuestForm);
+export default connect(null, {addQuest})(QuestForm as any);

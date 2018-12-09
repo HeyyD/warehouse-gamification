@@ -57,6 +57,7 @@ class CurrentQuest extends React.Component<IProps> {
         </div>
       );
     }
+    
     return(
       <div className='quest'>
         <h2> Current quest </h2>

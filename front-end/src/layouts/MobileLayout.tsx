@@ -25,4 +25,4 @@ const MobileLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => 
   
 };
 
-export default withRouter(connect(null,{setFalse})(MobileLayout) as any);
+export default withRouter(connect(null,{setFalse})(MobileLayout as any) as any);

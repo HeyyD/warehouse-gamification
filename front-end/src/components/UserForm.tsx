@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './QuestForm.scss';
 
 interface IProps {
-  updateUser: (id: string, level: {}) => any;
+  dispatch: (actionCreator: any) => void;
   level: number;
   username: string;
   id: string;
@@ -79,9 +79,9 @@ class UserForm extends React.Component<IProps, IState> {
   }
   private updateLevel(id: string, user: {level: number}) {
     if(user.level > 0){
-      this.props.updateUser(this.props.id, user);
+      this.props.dispatch(updateUser(this.props.id, user));
     }
   }
 }
 
-export default connect(null, {updateUser})(UserForm);
+export default connect(null)(UserForm);

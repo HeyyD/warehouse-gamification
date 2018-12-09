@@ -21,11 +21,11 @@ const Navigation = (props : {toggled: boolean, toggle: ()=>{}}) => {
             <img src='https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png' />
             <h2> Tom </h2>
           </div>
-          <Link to='/'><NavigationItem text='Home' icon='fa fa-home' /></Link>
-          <Link to='/inventory/menu'><NavigationItem text='Inventory' icon='fa fa-archive' /></Link>
-          <Link to='/friends'><NavigationItem text='Friends' icon='fa fa-user' /></Link>
-          <Link to='/settings'><NavigationItem text='Settings' icon='fa fa-cog' /></Link>
-          <Link to='/quests'><NavigationItem text='Quests' icon='fa fa-trophy' /></Link>
+          <Link to='/'><NavigationItem text={'Home'} icon={'fa fa-home'} /></Link>
+          <Link to='/inventory/menu'><NavigationItem text={'Inventory'} icon={'fa fa-archive'} /></Link>
+          <Link to='/friends'><NavigationItem text={'Friends'} icon={'fa fa-user'} /></Link>
+          <Link to='/settings'><NavigationItem text={'Settings'} icon={'fa fa-cog'} /></Link>
+          <Link to='/quests'><NavigationItem text={'Quests'} icon={'fa fa-trophy'} /></Link>
         </div>
     </div>
   );
@@ -37,4 +37,4 @@ const mapStateToProps = (state : {sidebar: boolean}) => {
   };
 };
 
-export default connect(mapStateToProps, {toggle})(Navigation);
+export default connect(mapStateToProps, {toggle})(Navigation as any);

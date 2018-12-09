@@ -11,14 +11,14 @@ import userReducer from './reducers/userReducer';
 import usersReducer from './reducers/usersReducer';
 
 const reducer = combineReducers({
-  assets: assetsReducer,
+  assets: assetsReducer as any,
   isManager: managerReducer,
   isMobile: mobileReducer,
   quest: questReducer,
   quests: questsReducer,
   sidebar: sidebarReducer,
-  user: userReducer,
-  users: usersReducer
+  user: userReducer as any,
+  users: usersReducer as any
 });
 
 

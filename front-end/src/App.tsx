@@ -58,7 +58,7 @@ class App extends React.Component<IProps, IState> {
   public render() {
     if (!this.state.isLoggedIn) {
       return (
-        <Login login={login =>  this.setState({isLoggedIn: login}) }/>
+        <Login login={(login: boolean) =>  this.setState({isLoggedIn: login}) }/>
       );
     } else if(this.props.isReady) {
       return (
@@ -69,7 +69,7 @@ class App extends React.Component<IProps, IState> {
                   ? <ManagerLayout />
                   : <MainLayout>
                       <Route exact={true} path='/' component={MainPage} />
-                      <Route exact={true} path='/inventory/:id' component={Inventory} />
+                      <Route exact={true} path='/inventory/:inventoryId' component={Inventory} />
                       <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
                       <Route exact={true} path='/quests' component={QuestList} />
                       <Route exact={true} path='/quests/:id' component={QuestSingle} />
@@ -103,4 +103,4 @@ const mapStateToProps = (state: {isManager: boolean, isMobile: boolean, assets: 
   };
 };
 
-export default connect(mapStateToProps, {changeMobileState, initAssets, initUsers, initQuests})(App);
+export default connect(mapStateToProps, {changeMobileState, initAssets, initUsers, initQuests})(App as any);

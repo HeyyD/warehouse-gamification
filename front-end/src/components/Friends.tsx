@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import './Friends.scss';
-import IUser from 'src/models/IUser';
+import IUser from '../models/IUser';
 
 interface IProps {
   user: IUser;

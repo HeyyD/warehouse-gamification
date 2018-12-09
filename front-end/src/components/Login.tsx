@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import ILoginInfo from '../models/ILoginInfo';
-import { changeUser } from '../reducers/userReducer';
 
 import './Login.scss';
+import { changeUser } from '../reducers/userReducer';
 
 interface IProps {
-  login: (login: boolean) => any;
-  changeUser: (user: ILoginInfo) => any;
+  dispatch: (actionCreator: any) => void
+  login: (login: boolean) => void;
 }
 
 interface IState {
@@ -66,7 +66,7 @@ class Login extends React.Component<IProps, IState> {
     this.state.users.forEach(user => {
       if (user.username === this.state.username && user.password === this.state.password) {
         success = true;
-        this.props.changeUser(user);
+        this.props.dispatch(changeUser(user));
       }
     });
     return success;
@@ -77,4 +77,7 @@ class Login extends React.Component<IProps, IState> {
   }
 }
 
-export default connect(null, {changeUser})(Login);
+
+
+
+export default connect(null)(Login);

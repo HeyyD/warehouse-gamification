@@ -7,7 +7,7 @@ import Inventory from '../components/Inventory';
 import Stats from '../components/Stats';
 import User from '../models/IUser';
 import './DesktopLayout.scss';
-import QuestList from 'src/components/QuestList';
+import QuestList from '../components/QuestList';
 
 const DesktopLayout = (
   props: {

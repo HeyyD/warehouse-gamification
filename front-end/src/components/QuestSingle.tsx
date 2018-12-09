@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 import IQuest from '../models/IQuest';
 import './QuestSingle.scss';
-import IUser from 'src/models/IUser';
+import IUser from '../models/IUser';
 
 interface IProps extends RouteComponentProps<any> {
     user: IUser;
@@ -12,7 +12,7 @@ interface IProps extends RouteComponentProps<any> {
 
 class QuestSingle extends React.Component<IProps> {
 
-  private quest: IQuest;
+  private quest?: IQuest;
   private dueDate: string = '';
   
   constructor(props: IProps) {
@@ -25,38 +25,48 @@ class QuestSingle extends React.Component<IProps> {
         this.quest = element;
       }
     });
-
-    // Parse dueDate string from database to be clearer to viewer
-    this.dueDate += (this.quest.dueDate.substr(8, 2) + '.');
-    if (this.quest.dueDate.substr(5, 1) === '0') {
-      this.dueDate += (this.quest.dueDate.substr(6, 1) + '.');
-    } else {
-      this.dueDate += (this.quest.dueDate.substr(5, 2) + '.');
+    if (this.quest) {
+      // Parse dueDate string from database to be clearer to viewer
+      this.dueDate += (this.quest.dueDate.substr(8, 2) + '.');
+      if (this.quest.dueDate.substr(5, 1) === '0') {
+        this.dueDate += (this.quest.dueDate.substr(6, 1) + '.');
+      } else {
+        this.dueDate += (this.quest.dueDate.substr(5, 2) + '.');
+      }
+      this.dueDate += (this.quest.dueDate.substr(0, 4) + ' ');
+      this.dueDate += (this.quest.dueDate.substr(11, 2) + ':');
+      this.dueDate += (this.quest.dueDate.substr(14, 2));
     }
-    this.dueDate += (this.quest.dueDate.substr(0, 4) + ' ');
-    this.dueDate += (this.quest.dueDate.substr(11, 2) + ':');
-    this.dueDate += (this.quest.dueDate.substr(14, 2));
-  }
-
-  public render() {
-    return(
+    }
+    
+    public render() {
+      if (this.quest) {
+        return(
+          <div className='quest-single'>
+            <h2>Quests</h2>
+            <h3>{this.quest.title}</h3>
+            <div className='description'>{this.quest.description}</div>
+            <div className='due-date'>Due: {this.dueDate}</div>
+            <div className='line-container'>
+              <Line 
+                percent={this.quest.currentAmount / this.quest.requiredAmount * 90}
+                strokeWidth={10}
+                strokeColor="#eb9605"
+                trailWidth={10}
+                />
+              <span>{this.quest.currentAmount} / {this.quest.requiredAmount}</span>
+            </div>
+            <div className='reward'><h1>Reward: {this.quest.rewardExp} xp</h1></div>
+          </div>
+    );
+    } else {
+      return(
         <div className='quest-single'>
           <h2>Quests</h2>
-          <h3>{this.quest.title}</h3>
-          <div className='description'>{this.quest.description}</div>
-          <div className='due-date'>Due: {this.dueDate}</div>
-          <div className='line-container'>
-            <Line 
-              percent={this.quest.currentAmount / this.quest.requiredAmount * 90}
-              strokeWidth={10}
-              strokeColor="#eb9605"
-              trailWidth={10}
-            />
-            <span>{this.quest.currentAmount} / {this.quest.requiredAmount}</span>
-          </div>
-          <div className='reward'><h1>Reward: {this.quest.rewardExp} xp</h1></div>
+          <h3>No quest found!</h3>
         </div>
-    );
+      );
+    }
   }
 }
 
