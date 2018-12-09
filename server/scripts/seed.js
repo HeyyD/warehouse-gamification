@@ -69,7 +69,7 @@ function createQuests() {
     let quests = [
         {
             title: 'Kill the Box Dragon!',
-            dueDate: new Date(2017,04,01),
+            dueDate: new Date(2040,04,01),
             isComplete: false,
             description: "Just kill the dragon!",
             rewardExp: 100,
@@ -78,7 +78,7 @@ function createQuests() {
         },
         {
             title: 'Kill the Ninja Dragon!',
-            dueDate: new Date(2017,04,01),
+            dueDate: new Date(2020,04,01),
             isComplete: false,
             description: "Just kill the dragon! You can have pizza afterwards",
             rewardExp: 200,
@@ -87,7 +87,7 @@ function createQuests() {
         },
         {
             title: 'Kill the Demon Dragon!',
-            dueDate: new Date(2017,04,01),
+            dueDate: new Date(2019,04,01),
             isComplete: false,
             description: "Just kill the dragon! Watch out form ummm... demons?",
             rewardExp: 300,
@@ -96,7 +96,7 @@ function createQuests() {
         },
         {
             title: 'Kill the Box Dragon!',
-            dueDate: new Date(2017,04,01),
+            dueDate: new Date(2019,04,01),
             isComplete: false,
             description: "Scan 100 delivieries to kill this mytchical beast!!",
             rewardExp: 400,
@@ -105,7 +105,7 @@ function createQuests() {
         },
         {
             title: 'Defend the village!',
-            dueDate: new Date(2017,04,01),
+            dueDate: new Date(2019,04,01),
             isComplete: false,
             description: "A great new enemy has entered the village... The great JalluPullo\n" + 
                         "in order to defeat him, you must consume him before others suffer!!",
