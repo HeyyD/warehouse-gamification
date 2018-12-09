@@ -1,12 +1,11 @@
 @import '../index.scss';
 
 .modal {
-  position: fixed;
+  position: absolute;
   text-align: center;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   &-panel {
     color: wheat;
@@ -39,4 +38,13 @@
     opacity: 0.5;
     background: black;
   }
+}
+
+.ui.modal {
+  padding: 0;
+  margin: 0;
+}
+
+.ui.modal > .content {
+  padding: 0 !important;
 }

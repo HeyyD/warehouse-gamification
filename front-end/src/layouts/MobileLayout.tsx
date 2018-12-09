@@ -12,14 +12,15 @@ const MobileLayout = (props: {setFalse: ()=>{}, children: React.ReactNode }) => 
     const { setFalse, children } = props;
     return (
       <div className='main-layout' onClick={setFalse}>
-        <Navigation />
-        <div className='avatar'>
-          <Avatar />
-        </div>
-        <div className='content-wrapper'>
-          <ProgressCircle />
-          { children }
-        </div>
+        <Navigation>
+          <div className='avatar'>
+            <Avatar />
+          </div>
+          <div className='content-wrapper'>
+            <ProgressCircle />
+            { children }
+          </div>
+        </Navigation>
       </div>
     );
   
