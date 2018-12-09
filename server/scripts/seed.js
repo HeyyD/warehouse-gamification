@@ -60,7 +60,9 @@ function createUsers() {
             xp: Math.floor(Math.random()*1000000)
         }
     ];
-    return models.User.bulkCreate([...users, ...jsonUsers], {returning: true})
+
+    const allUsers = [...jsonUsers, ...users ]
+    return models.User.bulkCreate(allUsers, {returning: true})
 }
 
 function createQuests() {
@@ -113,12 +115,16 @@ function createQuests() {
         },
     ];
 
-    return models.Quest.bulkCreate([...quests, ...jsonQuests], { returning: true });
+    return models.Quest.bulkCreate([...jsonQuests, ...quests ], { returning: true });
 }
 
 function mapQuestsToUsers(users, quests) {
     users.forEach(user => {
-        const i = Math.floor(Math.random() * quests.length)
-        user.addQuest(quests[i]);
+        if(user.username === 'demo' ) {
+            quests.forEach(quest => user.addQuest(quest));
+        } else {
+            const i = Math.floor(Math.random() * quests.length)
+            user.addQuest(quests[i]);
+        }
     });
 }

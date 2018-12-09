@@ -15,6 +15,7 @@ class QuestList extends React.Component<IProps> {
   private completedQuests: any;
 
   constructor(props: IProps) {
+    console.log('user', props.user);
     super(props);
     this.incompleteQuests = this.props.user.quests.map(q => {
 
