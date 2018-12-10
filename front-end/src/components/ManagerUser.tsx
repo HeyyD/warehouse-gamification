@@ -15,7 +15,9 @@ const ManagerUser = ({username, level, id} : {username: string, level: number, i
         </Header>
       </Table.Cell>
       <Table.Cell>{level}</Table.Cell>
-      <Table.Cell><UserForm username={username} level={level} id={id}/></Table.Cell>
+      <Table.Cell>
+        <UserForm username={username} level={level} id={id}/>
+      </Table.Cell>
     </Table.Row>
   );
 };

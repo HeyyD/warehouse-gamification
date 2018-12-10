@@ -33,41 +33,48 @@ function createUsers() {
             username: 'Demon_Slayer' + Math.floor(Math.random()*1000),
             password: 'Shrestinian',
             level: Math.floor(Math.random()*100),
-            xp: Math.floor(Math.random()*1000000)
+            xp: Math.floor(Math.random()*1000000),
+            isManager: false,
         },
         {
             username: 'Ninja_Slayer' + Math.floor(Math.random()*1000),
             password: 'tmnt',
             level: Math.floor(Math.random()*100),
-            xp: Math.floor(Math.random()*1000000)
+            xp: Math.floor(Math.random()*1000000),
+            isManager: false,
         },
         {
             username: 'Box_Slayer' + Math.floor(Math.random()*1000),
             password: 'bucket4president',
             level: Math.floor(Math.random()*100),
-            xp: Math.floor(Math.random()*1000000)
+            xp: Math.floor(Math.random()*1000000),
+            isManager: false,
         },
         {
             username: 'Tokyo Machine' + Math.floor(Math.random()*1000),
             password: 'kawaii',
             level: Math.floor(Math.random()*100),
-            xp: Math.floor(Math.random()*1000000)
+            xp: Math.floor(Math.random()*1000000),
+            isManager: false,
         },
         {
             username: 'hedonisti_84' + Math.floor(Math.random()*1000),
             password: 'jallu_kjeh_khej',
             level: Math.floor(Math.random()*100),
-            xp: Math.floor(Math.random()*1000000)
+            xp: Math.floor(Math.random()*1000000),
+            isManager: false,
         }
     ];
-    return models.User.bulkCreate([...users, ...jsonUsers], {returning: true})
+
+    const allUsers = [...jsonUsers, ...users ]
+    return models.User.bulkCreate(allUsers, {returning: true})
 }
 
 function createQuests() {
     let quests = [
         {
             title: 'Kill the Box Dragon!',
-            dueDate: new Date(2017,04,01),
+            dueDate: new Date(2040,04,01),
             isComplete: false,
             description: "Just kill the dragon!",
             rewardExp: 100,
@@ -76,7 +83,7 @@ function createQuests() {
         },
         {
             title: 'Kill the Ninja Dragon!',
-            dueDate: new Date(2017,04,01),
+            dueDate: new Date(2020,04,01),
             isComplete: false,
             description: "Just kill the dragon! You can have pizza afterwards",
             rewardExp: 200,
@@ -85,7 +92,7 @@ function createQuests() {
         },
         {
             title: 'Kill the Demon Dragon!',
-            dueDate: new Date(2017,04,01),
+            dueDate: new Date(2019,04,01),
             isComplete: false,
             description: "Just kill the dragon! Watch out form ummm... demons?",
             rewardExp: 300,
@@ -94,7 +101,7 @@ function createQuests() {
         },
         {
             title: 'Kill the Box Dragon!',
-            dueDate: new Date(2017,04,01),
+            dueDate: new Date(2019,04,01),
             isComplete: false,
             description: "Scan 100 delivieries to kill this mytchical beast!!",
             rewardExp: 400,
@@ -103,7 +110,7 @@ function createQuests() {
         },
         {
             title: 'Defend the village!',
-            dueDate: new Date(2017,04,01),
+            dueDate: new Date(2019,04,01),
             isComplete: false,
             description: "A great new enemy has entered the village... The great JalluPullo\n" + 
                         "in order to defeat him, you must consume him before others suffer!!",
@@ -113,12 +120,16 @@ function createQuests() {
         },
     ];
 
-    return models.Quest.bulkCreate([...quests, ...jsonQuests], { returning: true });
+    return models.Quest.bulkCreate([...jsonQuests, ...quests ], { returning: true });
 }
 
 function mapQuestsToUsers(users, quests) {
     users.forEach(user => {
-        const i = Math.floor(Math.random() * quests.length)
-        user.addQuest(quests[i]);
+        if(user.username === 'demo' ) {
+            quests.forEach(quest => user.addQuest(quest));
+        } else {
+            const i = Math.floor(Math.random() * quests.length)
+            user.addQuest(quests[i]);
+        }
     });
 }

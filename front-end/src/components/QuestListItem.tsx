@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Line } from 'rc-progress';
 import { Link } from 'react-router-dom';
 import './QuestListItem.scss';
-import IQuest from 'src/models/IQuest';
+import IQuest from '../models/IQuest';
 
 
 interface IProps {

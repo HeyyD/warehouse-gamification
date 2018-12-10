@@ -21,7 +21,7 @@ const MainPage = (props: {user: IUser, quest: IQuest}) => {
   );
 };
 
-const mapStateToProps = (state: {user: {}, quest:{}}) => {
+const mapStateToProps = (state: {user: IUser, quest: IQuest }) => {
   return {
     quest: state.quest,
     user: state.user

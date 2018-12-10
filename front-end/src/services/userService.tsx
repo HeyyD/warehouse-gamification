@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3001/api/users';
+const baseUrl = '/api/users';
 
 const getAll = async () => {
   const req = await axios.get(baseUrl);
@@ -9,6 +9,7 @@ const getAll = async () => {
 
 const update = async (id: string, level: {level: number}) => {
   const req = await axios.put(`${baseUrl}/${id}`, level);
+  console.log('helloteste');
   return req.data;
 };
 

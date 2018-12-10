@@ -11,7 +11,7 @@ const ManagerLayout = () => {
       <Menu>
         <Menu.Item>
           <Header>
-            Manager sivu
+            Manager page
           </Header>
         </Menu.Item>
       </Menu> 

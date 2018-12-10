@@ -14,6 +14,7 @@ import { initUsers } from './reducers/usersReducer';
 import { initQuests } from './reducers/questsReducer';
 import Login from './components/Login';
 import Friends from './components/Friends';
+import IUser from './models/IUser';
 
 interface IProps {
   initAssets: () => any;
@@ -27,21 +28,33 @@ interface IProps {
 
 interface IState {
   isLoggedIn: boolean;
+  user?: IUser;
 }
 
 class App extends React.Component<IProps, IState> {
+
+  initDone = false;
 
   constructor(props: IProps) {
     super(props);
 
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      user: undefined
     };
 
     this.init();
     window.addEventListener('resize', this.handleResize); 
     if(window.innerWidth > 720){
       props.changeMobileState(false); 
+    }
+  }
+
+  componentDidUpdate(prevProps: any, prevState: any) {
+    if(!this.initDone && this.state.user && this.state.user.isManager) {
+      this.initDone = true;
+      this.init();
+      
     }
   }
 
@@ -58,18 +71,18 @@ class App extends React.Component<IProps, IState> {
   public render() {
     if (!this.state.isLoggedIn) {
       return (
-        <Login login={login =>  this.setState({isLoggedIn: login}) }/>
+        <Login login={({isLoggedIn, user}) =>  this.setState({isLoggedIn, user}) }/>
       );
     } else if(this.props.isReady) {
       return (
         <React.Fragment>
           <Router>
             <div className='content-wrapper'>
-              { this.props.isManager
+              { (this.state.user && this.state.user.isManager) || this.props.isManager
                   ? <ManagerLayout />
                   : <MainLayout>
                       <Route exact={true} path='/' component={MainPage} />
-                      <Route exact={true} path='/inventory/:id' component={Inventory} />
+                      <Route exact={true} path='/inventory/:inventoryId' component={Inventory} />
                       <Route exact={true} path='/settings' render={() =>(<div>settings</div>)} />
                       <Route exact={true} path='/quests' component={QuestList} />
                       <Route exact={true} path='/quests/:id' component={QuestSingle} />
@@ -87,7 +100,7 @@ class App extends React.Component<IProps, IState> {
 
   private async init() {
     this.props.initAssets();
-    if(this.props.isManager) {
+    if(this.props.isManager || this.state.user && this.state.user.isManager) {
       this.props.initUsers(); 
       this.props.initQuests();
     }
@@ -103,4 +116,4 @@ const mapStateToProps = (state: {isManager: boolean, isMobile: boolean, assets: 
   };
 };
 
-export default connect(mapStateToProps, {changeMobileState, initAssets, initUsers, initQuests})(App);
+export default connect(mapStateToProps, {changeMobileState, initAssets, initUsers, initQuests})(App as any);

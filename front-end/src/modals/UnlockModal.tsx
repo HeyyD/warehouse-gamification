@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './UnlockModal.scss';
 import SpriteSheet from '../components/SpriteSheet';
+import { Modal } from 'semantic-ui-react';
 
 interface IProps {
   onClick: () => any;
@@ -10,7 +11,10 @@ interface IProps {
 
 const UnlockModal = (props: IProps) => {
   return (
-    <div className='modal'>
+    <Modal
+    open={true}>
+<Modal.Content>
+
       <div className='modal-panel'>
         <h1>CONGRATULATIONS!</h1>
         <h3>You unlocked a new item</h3>
@@ -21,9 +25,9 @@ const UnlockModal = (props: IProps) => {
           }
         }} width='90px' height='90px'>item</canvas>
         <button onClick={ props.onClick }>OK!</button>
-      </div>
-      <div className='modal-background' />
     </div>
+        </Modal.Content>
+    </Modal>
   );
 };
 

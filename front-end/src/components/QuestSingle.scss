@@ -1,16 +1,11 @@
 @import '../index.scss';
 
 .quest-single {
-  height: calc(100% - 92px);
   margin-right: 5%;
   margin-left: 5%;
-  margin-top: 30%;
+  margin-top: 15%;
+
   h2 {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 50%;
-    height: 50%;
     text-align: left;
     font-size: 2.5em;
   }

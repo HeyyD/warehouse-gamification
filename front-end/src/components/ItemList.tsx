@@ -9,13 +9,17 @@ import lockedIcons from '../assets/spritesheet_items.png';
 import IAvailableEquipment from '../models/IAvailableEquipment';
 import UnlockModal from '../modals/UnlockModal';
 
+
 interface IProps {
-  changeEquipment: (equipment: IEquipment) => any;
-  id: string;
+  itemId: any;
+}
+
+interface StoreProps {
+  changeEquipment: (arg: any) => any;
   user: IUser;
   equipment: IEquipment;
   availableEquipment: IAvailableEquipment;
-  assets: {data: {}};
+  assets:  {};
   isMobile: boolean;
 }
 
@@ -23,7 +27,7 @@ interface IState {
   showModal: boolean;
 }
 
-class ItemList extends React.Component<IProps, IState> {
+class ItemList extends React.Component<IProps & StoreProps, IState> {
 
   private canvasRefs: HTMLCanvasElement[] = [];
   private spritesheet: SpriteSheet;
@@ -31,17 +35,23 @@ class ItemList extends React.Component<IProps, IState> {
 
   private selectedItemIndex: number;
 
-  constructor(props: IProps) {
+  constructor(props: IProps & StoreProps) {
     super(props);
-    this.spritesheet = this.props.assets.data[this.props.id];
-
+    
+    this.spritesheet = this.props.assets[this.props.itemId];
+    this.selectedItemIndex = 0;
     this.state = {
       showModal: false
     };
 
     this.items = this.spritesheet.getSprites().map((sprite, index) => {
       return (
-        <canvas key={ index } onClick={() => this.changeEquipment(index) } ref={ (canvas) => this.canvasRefs.push(canvas!) } width='90px' height='90px'>item</canvas>
+        <canvas 
+          onClick={() => this.changeEquipmentByIndex(index) }
+          ref={ (canvas) => this.canvasRefs.push(canvas!) }
+          width='90px'
+          height='90px' 
+          />
       );
     });
   }
@@ -51,7 +61,7 @@ class ItemList extends React.Component<IProps, IState> {
   }
 
   public componentWillUpdate() {
-    const availableEquipment = this.props.availableEquipment[this.props.id];
+    const availableEquipment = this.props.availableEquipment[this.props.itemId];
     if (!availableEquipment.includes(this.selectedItemIndex)) {
       availableEquipment.push(this.selectedItemIndex);
     }
@@ -68,7 +78,7 @@ class ItemList extends React.Component<IProps, IState> {
         <div className={(this.props.isMobile ? 'mobile ' : '') + 'inventory-container'}>
           { this.items.map((item, index) => {
             return (
-              <div key={ index } className={'item-wrapper' + (this.props.availableEquipment[this.props.id ].includes(index) ? '-available' : '')}>
+              <div key={ index } className={'item-wrapper' + (this.props.availableEquipment[this.props.itemId ].includes(index) ? '-available' : '')}>
                 {item}
               </div>
             );
@@ -79,7 +89,7 @@ class ItemList extends React.Component<IProps, IState> {
   }
 
   private initDraw(): void {
-    const availableEquipment = this.props.availableEquipment[this.props.id];
+    const availableEquipment = this.props.availableEquipment[this.props.itemId];
     const img = new Image();
     img.src = lockedIcons;
     img.onload = () => {
@@ -100,19 +110,20 @@ class ItemList extends React.Component<IProps, IState> {
     };
   }
 
-  private changeEquipment(index: number) {
-    const availableEquipment = this.props.availableEquipment[this.props.id];
+  private changeEquipmentByIndex(index: number) {
+    const availableEquipment = this.props.availableEquipment[this.props.itemId];
 
     if (availableEquipment.includes(index)) {
       const newState = {};
 
       Object.keys(this.props.equipment).forEach(key => {
-        if(key === this.props.id) {
+        if(key === this.props.itemId) {
           newState[key] = index;
         } else {
           newState[key] = this.props.equipment[key];
         }
       });
+
       this.props.changeEquipment(newState as IEquipment);
     } else if (this.props.user.lvl >= index){
       this.selectedItemIndex = index;
@@ -123,9 +134,9 @@ class ItemList extends React.Component<IProps, IState> {
   }
 }
 
-const mapStateToProps = (state: {user: IUser, assets: {}, isMobile: boolean}) => {
+const mapStateToProps = (state: {user: IUser, assets: any, isMobile: boolean}) => {
   return {
-    assets: state.assets,
+    assets: state.assets.data,
     user: state.user,
     equipment: state.user.equipment,
     availableEquipment: state.user.availableEquipment,

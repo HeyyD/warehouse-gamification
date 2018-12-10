@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { deleteQuest } from '../reducers/questsReducer';
 
 // tslint:disable-next-line:no-shadowed-variable
-const ManagerQuest = ({title, id, deleteQuest}: {title: string, id: string, deleteQuest: (id: string) => any}) => {
+const ManagerQuest = ({title, id, dispatch}: {title: string, id: string, dispatch: (actionCreater: any) => any}) => {
   return(
     <Table.Row>
       <Table.Cell>{id}</Table.Cell>
@@ -15,9 +15,9 @@ const ManagerQuest = ({title, id, deleteQuest}: {title: string, id: string, dele
           </Header.Content>
         </Header>
       </Table.Cell>
-      <Table.Cell><Button color="red" onClick={() => deleteQuest(id)}>Delete Quest </Button></Table.Cell>
+      <Table.Cell><Button color="red" onClick={() => dispatch(deleteQuest(id))}>Delete Quest </Button></Table.Cell>
     </Table.Row>
   );
 };
 
-export default connect(null, {deleteQuest})( ManagerQuest );
+export default connect(null)( ManagerQuest);

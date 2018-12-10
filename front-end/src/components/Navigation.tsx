@@ -3,32 +3,75 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggle } from '../reducers/sidebarReducer';
 import './Navigation.scss'; 
-import NavigationItem from './NavigationItem';
+//import NavigationItem from './NavigationItem';
+import { Sidebar, Segment, Menu, Icon } from 'semantic-ui-react';
+import * as logo from '../assets/Leanware.png';
 
-const Navigation = (props : {toggled: boolean, toggle: ()=>{}}) => {
+const Navigation = (props : {toggled: boolean, children: any, toggle: ()=>{}}) => {
   const openSidebar = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     props.toggle(); 
   };
-  const preventPropagation = (event: React.MouseEvent<HTMLElement>) =>{
-    event.stopPropagation(); 
-  };
+  //const preventPropagation = (event: React.MouseEvent<HTMLElement>) =>{
+  //  event.stopPropagation(); 
+  //};
+
   return (
-    <div className='navigation'>
-      <i className='fa fa-bars' onClick={openSidebar}/> 
-        <div className='sidebar' style={props.toggled? {left: 0} : {left: -500}} onClick={preventPropagation}>
-          <div className='sidebar-profile'>
-            <img src='https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png' />
-            <h2> Tom </h2>
-          </div>
-          <Link to='/'><NavigationItem text='Home' icon='fa fa-home' /></Link>
-          <Link to='/inventory/menu'><NavigationItem text='Inventory' icon='fa fa-archive' /></Link>
-          <Link to='/friends'><NavigationItem text='Friends' icon='fa fa-user' /></Link>
-          <Link to='/settings'><NavigationItem text='Settings' icon='fa fa-cog' /></Link>
-          <Link to='/quests'><NavigationItem text='Quests' icon='fa fa-trophy' /></Link>
-        </div>
-    </div>
-  );
+
+    <div id='wrapper'>
+      <div className='navigation'>
+        <i className='fa fa-bars' onClick={openSidebar}/> 
+        <img src={logo} />
+      </div>
+      
+      <Sidebar.Pushable as={Segment}>
+        <Sidebar
+          as={Menu}
+          animation='push'
+          icon='labeled'
+          inverted
+          vertical
+          visible={props.toggled}
+          width='thin'
+          >
+          
+          <Menu.Item as={Link} to='/'>
+            <Icon name='home' />
+            Home
+          </Menu.Item>
+      
+          <Menu.Item as={Link} to='/inventory/menu'>
+            <Icon name='archive' />
+            Inventory
+          </Menu.Item>
+        
+          <Menu.Item as={Link} to='/friends'>
+            <Icon name='users' />
+            Friends
+          </Menu.Item>
+        
+          <Menu.Item as={Link} to='/settings'>
+            <Icon name='cogs' />
+            Settings
+          </Menu.Item>
+        
+          <Menu.Item as={Link} to='/quests'>
+            <Icon name='trophy' />
+            Quests
+          </Menu.Item>
+         
+        </Sidebar>
+
+      <Sidebar.Pusher dimmed={props.toggled}>
+        <Segment basic>
+          {props.children}
+        </Segment>
+      </Sidebar.Pusher>
+  
+    </Sidebar.Pushable>
+  </div>
+  )
+
 };
 
 const mapStateToProps = (state : {sidebar: boolean}) => {
@@ -37,4 +80,4 @@ const mapStateToProps = (state : {sidebar: boolean}) => {
   };
 };
 
-export default connect(mapStateToProps, {toggle})(Navigation);
+export default connect(mapStateToProps, {toggle})(Navigation as any);

@@ -6,4 +6,5 @@ export default interface ILoginInfo {
   level: number;
   xp: number;
   quests: [IQuest];
+  isManager: boolean;
 }

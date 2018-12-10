@@ -3,12 +3,21 @@
         "username": "Username here",
         "password": "password here",
         "level": 42,
-        "xp": 1724717
+        "xp": 1724717,
+        "isManager": false
     },
     {
         "username": "demo",
         "password": "demo",
         "level": 49,
-        "xp": 1724717
+        "xp": 1724717,
+        "isManager": false
+    },
+    {
+        "username": "manager",
+        "password": "manager",
+        "level": 1,
+        "xp": 124,
+        "isManager": true
     }
 ]

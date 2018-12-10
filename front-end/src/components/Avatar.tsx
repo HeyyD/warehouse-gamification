@@ -26,7 +26,7 @@ class Avatar extends React.Component<IProps> {
 
   constructor(props: IProps) {
     super(props);
-
+    this.canvas = null;
     this.reDraw = this.reDraw.bind(this);
 
     const data = props.assets.data;
@@ -82,4 +82,4 @@ const mapStateToProps = (state: {user: IUser, assets: {}}) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Avatar);
+export default connect(mapStateToProps, null)(Avatar as any);

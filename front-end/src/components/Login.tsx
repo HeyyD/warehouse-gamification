@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import ILoginInfo from '../models/ILoginInfo';
-import { changeUser } from '../reducers/userReducer';
 
 import './Login.scss';
+import { changeUser } from '../reducers/userReducer';
+import * as pic from '../assets/Leanware.png';
+import { Loader, Dimmer, Input } from 'semantic-ui-react';
+import IUser from '../models/IUser';
 
 interface IProps {
-  login: (login: boolean) => any;
-  changeUser: (user: ILoginInfo) => any;
+  dispatch: (actionCreator: any) => void
+  login: (res: {isLoggedIn: boolean, user: IUser | undefined}) => void;
 }
 
 interface IState {
@@ -47,29 +50,43 @@ class Login extends React.Component<IProps, IState> {
 
   public render() {
     return (
-      <div className='login-container'>
+      <div className='container'>
+       <div className='login-container'>
         <div className='login-panel'>
-          <h1>Welcome</h1>
-          <p>Sign in with your credentials</p>
+          <h1>World of Warehouse</h1>
+          <h3>Sign in with your credentials</h3>
           <div className='input-container'>
-            <input name='username' type='text' onChange={e => this.onChange(e)}/>
-            <input name='password' type='password' onChange={e => this.onChange(e)}/>
+            <Input width={'100%'}placeholder='username' name='username' type='text' onChange={e => this.onChange(e)}/>
+            <br></br>
+            <Input placeholder='password' name='password' type='password' onChange={e => this.onChange(e)}/>
           </div>
-          <button disabled={!this.state.isReady} onClick={() => this.props.login(this.login())}>Login</button>
+          {this.state.isReady 
+            ? <a className=' button-enabled'onClick={() => this.props.login( this.login())}>Login</a>
+            : <Dimmer active>
+                <Loader />
+              </Dimmer>
+          }
+        </div>
+       </div>
+        <div className='img-container'>
+           
+          <img className='lw-logo' src={pic} />
         </div>
       </div>
     );
   }
 
-  private login(): boolean {
+  private login(): {isLoggedIn: boolean, user: IUser | undefined} {
     let success = false;
+    let foundUser = undefined;
     this.state.users.forEach(user => {
       if (user.username === this.state.username && user.password === this.state.password) {
         success = true;
-        this.props.changeUser(user);
+        foundUser = user;
+        this.props.dispatch(changeUser(user));
       }
     });
-    return success;
+    return {isLoggedIn: success, user: foundUser};
   }
 
   private onChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -77,4 +94,7 @@ class Login extends React.Component<IProps, IState> {
   }
 }
 
-export default connect(null, {changeUser})(Login);
+
+
+
+export default connect(null)(Login);

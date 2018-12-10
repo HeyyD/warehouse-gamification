@@ -1,4 +1,5 @@
 import usersService from '../services/userService';
+import { Dispatch } from 'redux';
 
 
 const reducer = (state = [], action: {type: string, users?: [], user: {id: number}}) => {
@@ -14,7 +15,7 @@ const reducer = (state = [], action: {type: string, users?: [], user: {id: numbe
 };
 
 export const initUsers = () => {
-  return async (dispatch: ({}) => {type: string}) => {
+  return async (dispatch: any) => {
     const users = await usersService.getAll();
     dispatch({
       users,
@@ -24,7 +25,7 @@ export const initUsers = () => {
 };
 
 export const updateUser = (id: string, level: {level: number}) => {
-  return async (dispatch: ({}) => {type: string}) => {
+  return async (dispatch: Dispatch) => {
     const user = await usersService.update(id, level); 
     dispatch({
       type: 'UPDATEUSER',

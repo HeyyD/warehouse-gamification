@@ -11,7 +11,7 @@ router.get('', function(req, res, next) {
   });
 });
 
-router.get(':id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   if(isValidId(req.params.id)) {
     models.User.findById(req.params.id, { include: [{ all: true }]})
     .then(users => {
@@ -27,7 +27,7 @@ router.get(':id', function(req, res, next) {
   }
 });
 
-router.put(':id', (req, res, next) => {
+router.put('/:id', (req, res, next) => {
   console.log(req.body.level, req.params.id);
   if(isValidId(req.params.id)) {
     models.User.update(

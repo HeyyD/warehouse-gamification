@@ -1,31 +1,102 @@
 @import '../index.scss';
 
-.login-container {
-  background: $color-primary;
+
+.container {
+  background: $white;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  z-index: 0;
+  height: 100%;
 
-  .login-panel {
-    background: #ddd;
-    border-radius: 20px;
-    text-align: center;
-    padding: $space-md;
-    margin: $space-md;
+  &:before {
+      
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('https://www.xmple.com/wallpaper/honeycomb-hexagon-black-white-beehive-1920x1080-c2-f5fffa-000000-l2-22-268-a-0-f-5.svg');
+    z-index: 0;
+    opacity: 0.02;    
+  }
 
-    .input-container {
-      input {
-        display: block;
-        margin: $space-md auto;
+  h1 {
+    font-size: 3.0rem;
+    font-weight: 200;
+  }
+
+  h3 {
+    font-weight: 300;
+  }
+
+  .login-container {
+
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    
+    .login-panel {
+      display: flex;
+      flex-direction: column;
+      max-width: 700px;
+      background: #ddd;
+      border-radius: 7px;
+      padding: 30px;
+      text-align: center;
+      margin: $space-md;
+      z-index: 10;
+      
+      .input-container {
+        padding: 30px 0;
+        
+        input {
+          margin: 5px 0;
+        }
+
       }
-    }
-
-    .sign-up {
-      padding-top: $space-md;
-
-      a, p {
-        margin: 0;
+      
+      .sign-up {
+        padding-top: $space-md;
+      }
+      
+      .button-disabled {
+        margin: 10px;
+        padding: 10px 30px;
+        background: $lw-medium-grey;
+        border-radius: 20px;
+        color: $lw-tainted-white;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      
+      
+      .button-enabled {
+        margin: 10px;
+        padding: 10px 30px;
+        background: $lw-orange;
+        border-radius: 20px;
+        color: $lw-tainted-white;
+        font-size: 1.2rem;
+        font-weight: bold;
       }
     }
   }
+}
+  
+  .img-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+}
+.lw-logo {
+  padding: 50px;
+  object-fit: contain;
+}
+
+.ui.input {
+  width: 100%;
 }
