@@ -6,10 +6,11 @@ import './Login.scss';
 import { changeUser } from '../reducers/userReducer';
 import * as pic from '../assets/Leanware.png';
 import { Loader, Dimmer, Input } from 'semantic-ui-react';
+import IUser from '../models/IUser';
 
 interface IProps {
   dispatch: (actionCreator: any) => void
-  login: (login: boolean) => void;
+  login: (res: {isLoggedIn: boolean, user: IUser | undefined}) => void;
 }
 
 interface IState {
@@ -60,7 +61,7 @@ class Login extends React.Component<IProps, IState> {
             <Input placeholder='password' name='password' type='password' onChange={e => this.onChange(e)}/>
           </div>
           {this.state.isReady 
-            ? <a className=' button-enabled'onClick={() => this.props.login(this.login())}>Login</a>
+            ? <a className=' button-enabled'onClick={() => this.props.login( this.login())}>Login</a>
             : <Dimmer active>
                 <Loader />
               </Dimmer>
@@ -75,15 +76,17 @@ class Login extends React.Component<IProps, IState> {
     );
   }
 
-  private login(): boolean {
+  private login(): {isLoggedIn: boolean, user: IUser | undefined} {
     let success = false;
+    let foundUser = undefined;
     this.state.users.forEach(user => {
       if (user.username === this.state.username && user.password === this.state.password) {
         success = true;
+        foundUser = user;
         this.props.dispatch(changeUser(user));
       }
     });
-    return success;
+    return {isLoggedIn: success, user: foundUser};
   }
 
   private onChange(event: React.ChangeEvent<HTMLInputElement>) {

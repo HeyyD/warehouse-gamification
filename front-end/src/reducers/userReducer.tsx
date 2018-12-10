@@ -48,7 +48,8 @@ const reducer = (state = mockUser, action: {type: string, equipment: IEquipment,
         lvl: action.user.level,
         xp: action.user.xp,
         quests: action.user.quests,
-        questsCompleted: completedQuests
+        questsCompleted: completedQuests,
+        isManager: action.user.isManager,
       };
     default:
       return state;
